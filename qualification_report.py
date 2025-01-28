@@ -78,6 +78,7 @@ class QualificationReport():  # noqa pylint: disable=R0902,R0904
         # Format to represent resource migration status
         self.danger_format = self.workbook.add_format({'bg_color': '#f5cbcc'})
         self.yellow_format = self.workbook.add_format({'bg_color': 'yellow'})
+        self.green_format = self.workbook.add_format({'bg_color': '#5fbd76'})
 
         # Information blue box formats
         self.info_format = self.workbook.add_format(
@@ -987,7 +988,9 @@ class QualificationReport():  # noqa pylint: disable=R0902,R0904
                 validation_report_sheet.write(row, col, values['name'])
                 col += 1
                 if values['importable']:
-                    validation_report_sheet.write(row, col, values['importable'])   # noqa pylint: disable=C0301
+                    validation_report_sheet.write(row, col, values['importable'], self.green_format)   # noqa pylint: disable=C0301
+                    col += 1
+                    validation_report_sheet.write(row, col, 'N/A')
                 if not values['importable']:
                     validation_report_sheet.write(row, col, values['importable'], self.danger_format)   # noqa pylint: disable=C0301
                     col += 1
@@ -998,6 +1001,11 @@ class QualificationReport():  # noqa pylint: disable=R0902,R0904
                             reason_str['violations'] = reason['violations']
 
                     validation_report_sheet.write(row, col, json.dumps(reason_str, indent=2))   # noqa pylint: disable=C0301
+                col += 1
+                if 'imported' in values:
+                    validation_report_sheet.write(row, col, values['imported'])   # noqa pylint: disable=C0301
+                else:
+                    validation_report_sheet.write(row, col, 'UNKNOWN')
                 row += 1
         validation_report_sheet.autofit()
 

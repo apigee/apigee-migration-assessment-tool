@@ -69,7 +69,6 @@ class ApigeeValidator():
             obj = copy.copy(target_server_data)
             obj['importable'], obj['reason'] = self.validate_env_targetserver_resource(target_server_data)   # noqa pylint: disable=C0301
             validation_targetservers.append(obj)
-
         return validation_targetservers
 
     def validate_env_targetserver_resource(self, targetservers):
@@ -148,11 +147,19 @@ class ApigeeValidator():
             dict: Validation results for APIs and
                 sharedflows.
         """
+        apis = self.xorhybrid.list_org_objects('apis')
+        sharedflows = self.xorhybrid.list_org_objects('sharedflows')
+        apis_sf_list = {'apis': apis, 'sharedflows': sharedflows}
         validation = {'apis': [], 'sharedflows': []}
         for each_api_type in ['apis', 'sharedflows']:
             bundle_dir = f"{export_dir}/{each_api_type}"
             for proxy_bundle in list_dir(bundle_dir):
                 each_validation = self.validate_proxy(bundle_dir, each_api_type, proxy_bundle)    # noqa pylint: disable=C0301
+                api_name = proxy_bundle.split(".zip")[0]
+                if api_name in apis_sf_list[each_api_type]:
+                    each_validation['imported'] = True
+                else:
+                    each_validation['imported'] = False
                 validation[each_api_type].append(each_validation)
         return validation
 
