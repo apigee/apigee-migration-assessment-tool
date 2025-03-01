@@ -51,10 +51,21 @@ This repository and its contents are not an official Google product.
 
 To run the migration assessment tool, you need:
 
-1. an execution environment. You can run the tool directly in a shell using Python, or you can execute a Docker image.
-2. Credentials providing administrative (Readonly) access to the source Edge SaaS or Edge OPDK organization. 
-2. Credentials providing administrative (Readonly) access to the source Edge SaaS or Edge OPDK organization. 
-3. An OAuth token (credential) providing administrative (Readonly) access to an Apigee X organization or project. The tool uses this Apigee X organization for realtime validation.
+1. an execution environment. You can run the tool directly in a shell using
+   Python, or you can execute a Docker image.
+
+2. a user or account with appropriate administrative (Readonly) access to the
+   source Edge SaaS or Edge OPDK organization.
+
+3. a user or account with appropriate administrative (Readonly) access to an
+   Apigee X organization or project. The tool uses this Apigee X organization
+   for realtime validation.
+
+4. Credentials for each of the above accounts.
+
+4. An input.properties file specifying various options for execution.
+
+The sections below describe these in more detail.
 
 
 ## Prerequisites: Execution Environment
@@ -127,7 +138,7 @@ anything special on your workstation, other than the docker engine.
 
    Refer: [edge-built-roles](https://docs.apigee.com/api-platform/system-administration/edge-built-roles)
 
-2. * **Apigee X/Hybrid**
+2. **Apigee X/Hybrid**
 
    The tool requires readonly permissions to an Apigee X organization, env & env objects. The tool also requires permissions to validate apis. Hence assign the below permissions to relevant user or service account.
    * A built-in role `roles/apigee.readOnlyAdmin`
@@ -253,7 +264,7 @@ Refer the below table to set the required inputs in the `input` section of `inpu
 1. **Assessment Report:**
     `qualification_report.xlsx` in the TARGET_DIR (specified in input.properties).
 
-    Please find [sample assessment](sample/outputs/sample_qualification_report.xlsx) in the [sample/outputs](sample/outputs) folder
+    Please find [a sample assessment](sample/outputs/sample_qualification_report.xlsx) in the [sample/outputs](sample/outputs) folder
 
 2. **Visualization:**
     `visualization.html` in the `TARGET_DIR`. Open this file in a web browser.
