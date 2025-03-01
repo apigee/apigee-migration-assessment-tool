@@ -262,14 +262,16 @@ class RestClient(object):  # noqa pylint: disable=R0205
         """
         if not response.text:
             return EmptyResponse(response.status_code)
-        if response.headers['Content-Type'] == 'application/octet-stream':
-            return RawResponse(response)
         try:
-            return JsonResponse(response)
+            if response.headers['Content-Type'] == 'application/octet-stream':
+                return RawResponse(response)
+            if response.headers['Content-Type'].startswith('application/json'):
+                return JsonResponse(response)
+            return PlainResponse(response)
         except ValueError:
             logger.error('Unable to parse response as JSON',
                          exc_info=EXEC_INFO)
-            return PlainResponse(response)
+            return ""
 
 
 class Response(object):  # noqa pylint: disable=R0205,R0903
