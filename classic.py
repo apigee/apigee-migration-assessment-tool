@@ -344,9 +344,9 @@ class ApigeeClassic():
                               (e.g., '2weeks', '7days', '1month').
 
         Returns:
-            list: A list of dictionaries, each representing traffic data
-                  for an API proxy. Returns an empty list if no data
-                  or an error occurs.
+            dict: A dictionary of traffic data for API proxies, keyed by
+                  proxy name. Returns an empty dict if no data or an error
+                  occurs.
         """
         logger.info(f"Fetching API proxy traffic for environment '{env_name}' over '{time_range}'")
         # Using timeUnit=day to get aggregated message_count for the timeRange
@@ -355,7 +355,7 @@ class ApigeeClassic():
         try:
             traffic_data = self.client.get(url)
             if traffic_data and 'environments' in traffic_data and len(traffic_data['environments']) > 0:
-                proxy_traffic_list = []
+                proxy_traffic_dict = {}
                 for env_stats in traffic_data['environments']:
                     for dimension in env_stats.get('dimensions', []):
                         if dimension['name'] == 'apiproxy':
@@ -366,12 +366,12 @@ class ApigeeClassic():
                                     if metric['name'] == 'sum(message_count)':
                                         for value_entry in metric.get('values', []):
                                             total_message_count += value_entry['value']
-                                proxy_traffic_list.append({
+                                proxy_traffic_dict[proxy_name] = {
                                     'proxy_name': proxy_name,
                                     'total_traffic': total_message_count
-                                })
-                return proxy_traffic_list
-            return []
+                                }
+                return proxy_traffic_dict
+            return {}
         except Exception as e:
             logger.error(f"Error fetching API proxy traffic for {env_name}: {e}", exc_info=True)
-            return []
+            return {}

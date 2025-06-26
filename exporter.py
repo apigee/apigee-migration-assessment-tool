@@ -420,13 +420,21 @@ class ApigeeExporter():  # pylint: disable=R0902
         time_range = backend_cfg.get('inputs', 'ANALYTICS_TIME_RANGE', fallback='2weeks')
 
         for env in self.export_data.get('envConfig', {}):
-            if self.apigee_type == 'edge': # Only for classic Edge
-                traffic_data_list = self.apigee.get_api_proxy_traffic(env, time_range)
-                # Convert list to dict to match expected structure in create_export_state
-                traffic_data_dict = {
-                    item['proxy_name']: item for item in traffic_data_list
-                }
-                self.export_data['envConfig'][env]['api_traffic'] = traffic_data_dict
+            if self.apigee_type == 'edge':  # Only for classic Edge
+                # Get traffic data only for proxies that have traffic
+                traffic_data_with_hits = self.apigee.get_api_proxy_traffic(env, time_range)
+
+                # Get all proxies deployed in this environment to ensure we list all of them
+                deployed_proxies_in_env = self.export_data.get('envConfig', {}).get(env, {}).get('apis', {}).keys()
+
+                all_proxies_traffic_data = {}
+                for proxy_name in deployed_proxies_in_env:
+                    # Check if we have traffic data for this proxy, otherwise default to 0
+                    traffic_info = traffic_data_with_hits.get(proxy_name,
+                                                              {'proxy_name': proxy_name, 'total_traffic': 0})
+                    all_proxies_traffic_data[proxy_name] = traffic_info
+
+                self.export_data['envConfig'][env]['api_traffic'] = all_proxies_traffic_data
             else:
                 logger.info(f"Skipping API traffic export for Apigee X/Hybrid environment '{env}' as it's not directly supported via this tool's current analytics integration.")
 
