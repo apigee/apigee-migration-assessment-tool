@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="bulk-johnson-parker">
+    <Basepaths>/johnson-parker</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1684531174057</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName></DisplayName>
+    <LastModifiedAt>1684531174057</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:a11763803792c31c0e93aa7b6c50d9f4f96d40fbf3e9b6f1ca8fab0c43a854510d77722696484078d317fd0ab6d34560c9425f116f8adfbec847c06291f6c3a2:dc-1</ManifestVersion>
+    <Policies/>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

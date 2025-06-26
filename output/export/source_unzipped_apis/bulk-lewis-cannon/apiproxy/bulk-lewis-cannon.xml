@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="bulk-lewis-cannon">
+    <Basepaths>/lewis-cannon</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1684531429560</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName></DisplayName>
+    <LastModifiedAt>1684531429560</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:e2a6481062c323e824053917f677c276b610a3a84ed498fbf9011e00da612667f9037bf57f925600095e4260e1565519ac6b23312af94973e611efe6bb2f2e15:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>andrade-callout</Policy>
+        <Policy>avery-callout</Policy>
+        <Policy>blevins-callout</Policy>
+        <Policy>buchanan-arroyo-callout</Policy>
+        <Policy>cannon-callout</Policy>
+        <Policy>fitzgerald-callout</Policy>
+        <Policy>golden-carter-callout</Policy>
+        <Policy>hays-callout</Policy>
+        <Policy>hebert-anderson-callout</Policy>
+        <Policy>johnston-callout</Policy>
+        <Policy>lawson-callout</Policy>
+        <Policy>long-martinez-callout</Policy>
+        <Policy>nelson-smith-callout</Policy>
+        <Policy>newman-greene-callout</Policy>
+        <Policy>ramirez-miles-callout</Policy>
+        <Policy>smith-owens-callout</Policy>
+        <Policy>spencer-callout</Policy>
+        <Policy>thompson-hodges-callout</Policy>
+        <Policy>walker-king-callout</Policy>
+        <Policy>yoder-rocha-callout</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

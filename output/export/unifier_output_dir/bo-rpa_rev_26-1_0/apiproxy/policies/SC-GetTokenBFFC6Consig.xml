@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="SC-GetTokenBFFC6Consig">
+    <DisplayName>SC-GetTokenBFFC6Consig</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Request clearPayload="true" variable="funcao.request">
+        <Set>
+            <Headers>
+                <Header name="Content-Type">application/x-www-form-urlencoded</Header>
+            </Headers>
+            <FormParams>
+                <FormParam name="client_id">{private.bff-funcao-ura-client-id}</FormParam>
+                <FormParam name="client_secret">{private.bff-funcao-ura-client-secret}</FormParam>
+                <FormParam name="grant_type">client_credentials</FormParam>
+            </FormParams>
+            <Verb>POST</Verb>
+            <Path>/ura-funcao/token</Path>
+        </Set>
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>uraFuncaoResponse</Response>
+    <HTTPTargetConnection>
+        <LoadBalancer>
+            <MaxFailures>0</MaxFailures>
+            <RetryEnabled>true</RetryEnabled>
+            <Server name="c6consig-bff">
+                <IsEnabled>true</IsEnabled>
+                <IsFallback>false</IsFallback>
+                <Weight>1</Weight>
+            </Server>
+            <TargetDisableSecs>300</TargetDisableSecs>
+        </LoadBalancer>
+        <SSLInfo>
+            <Ciphers/>
+            <ClientAuthEnabled>false</ClientAuthEnabled>
+            <Enabled>true</Enabled>
+            <IgnoreValidationErrors>false</IgnoreValidationErrors>
+            <Protocols/>
+        </SSLInfo>
+        <Properties/>
+    </HTTPTargetConnection>
+</ServiceCallout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AssignMessage async="false" continueOnError="true" enabled="true" name="AM-AccountStatusCheckingAccount">
+	<DisplayName>AM-AccountStatusCheckingAccount</DisplayName>
+	<FaultRules></FaultRules>
+	<Properties></Properties>
+	<Set>
+		<Headers>
+			<Header name="Authorization">{private.Authorization.checking.account}</Header>
+			<Header name="Accept">application/vnd.c6bank_account_status_v4+json</Header>
+		</Headers>
+		<Verb>GET</Verb>
+		<Path>/person/{payload.person_id}/account-status</Path>
+	</Set>
+	<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+	<AssignTo type="request" transport="http" createNew="false">request</AssignTo>
+</AssignMessage>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="bulk-diaz-franklin">
+    <Basepaths>/diaz-franklin</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1684531456015</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName></DisplayName>
+    <LastModifiedAt>1684531456015</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:03c646ee8c694b6bb21245f24e17d82ad65fcd4751fe43b429f3391d86af7d5e537cdc4cdbd2401697abe3be4034a01d05c72097ea601a8c8876337115d454bb:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>avery-callout</Policy>
+        <Policy>black-callout</Policy>
+        <Policy>carroll-mcgee-callout</Policy>
+        <Policy>dalton-porter-callout</Policy>
+        <Policy>dunn-callout</Policy>
+        <Policy>edwards-wilkinson-callout</Policy>
+        <Policy>garcia-williams-callout</Policy>
+        <Policy>gay-wilson-callout</Policy>
+        <Policy>hays-callout</Policy>
+        <Policy>howard-dunlap-callout</Policy>
+        <Policy>johnston-callout</Policy>
+        <Policy>king-horne-callout</Policy>
+        <Policy>long-martinez-callout</Policy>
+        <Policy>lowery-johnson-callout</Policy>
+        <Policy>martin-townsend-callout</Policy>
+        <Policy>odom-hampton-callout</Policy>
+        <Policy>patrick-callout</Policy>
+        <Policy>powers-callout</Policy>
+        <Policy>shea-martinez-callout</Policy>
+        <Policy>smith-owens-callout</Policy>
+        <Policy>thompson-johnson-callout</Policy>
+        <Policy>ward-callout</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

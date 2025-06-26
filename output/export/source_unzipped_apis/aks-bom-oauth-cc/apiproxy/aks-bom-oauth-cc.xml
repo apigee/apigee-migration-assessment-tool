@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="aks-bom-oauth-cc">
+    <Basepaths>/aks-bom-oauth-cc</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1705487248916</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>aks-bom-oauth-cc</DisplayName>
+    <LastModifiedAt>1705487284776</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:ee505e044d23e7b77a6cc2248e8341734d02d2a550dd582b92d72ce72b5cff5c3414b32b00941460545402f314d57ba1961ab8c7a3537e25001ddf2abada49c6:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>SEC-OAuth-VerifyAccessToken</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

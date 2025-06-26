@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-StoreAndRemove" version="SHA-512:12419512f7964690b2dc5f048b6225ab2f5f133f8f4af803248eef96b49d87c1ab4c8952db60497e55b38381a237b6b8fea9a8b8e43f551715d213ab921a7cb9"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:c62f6370fe0e4cb8cdb895098b4fb6ef4fb09a3ea266da51e0b1c9926561d962d861efa4074a00e9cfc5b78ed2831ba051144ddfb30d0bfac415b991a2b1bdbb"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:08dd204624a779800734527c9d2fe766ad775151687cbd0d465d57f6113aaa2a2b0624786239bd87e49963a86bace147540b5b19490cf9c876d31d4223d9bcd4"/>
+    </TargetEndpoints>
+</Manifest>

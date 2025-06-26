@@ -1,0 +1,19 @@
+{
+  "apiResources": [
+    "/test"
+  ],
+  "approvalType": "auto",
+  "attributes": [],
+  "createdAt": 1745958579622,
+  "createdBy": "opdk@google.com",
+  "description": "",
+  "displayName": "new",
+  "environments": [],
+  "lastModifiedAt": 1745958579622,
+  "lastModifiedBy": "opdk@google.com",
+  "name": "new",
+  "proxies": [],
+  "scopes": [
+    ""
+  ]
+}

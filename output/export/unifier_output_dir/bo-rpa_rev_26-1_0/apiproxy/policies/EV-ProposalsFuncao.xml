@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-ProposalsFuncao">
+    <DisplayName>EV-ProposalsFuncao</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="cpf">
+            <JSONPath>$.cpf</JSONPath>
+        </Variable>
+        <Variable name="order">
+            <JSONPath>$.order</JSONPath>
+        </Variable>
+        <Variable name="order_by">
+            <JSONPath>$.order_by</JSONPath>
+        </Variable>
+        <Variable name="quantity">
+            <JSONPath>$.quantity</JSONPath>
+        </Variable>
+        <Variable name="page">
+            <JSONPath>$.page</JSONPath>
+        </Variable>
+        <Variable name="status">
+            <JSONPath>$.status</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source clearPayload="false">request</Source>
+    <VariablePrefix>payload</VariablePrefix>
+</ExtractVariables>

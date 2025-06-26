@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-PersonIdAndRequestBy">
+    <DisplayName>EV-PersonIdAndRequestBy</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="person_id">
+            <JSONPath>$.person_id</JSONPath>
+        </Variable>
+        <Variable name="request_by">
+            <JSONPath>$.request_by</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source clearPayload="false">request</Source>
+</ExtractVariables>

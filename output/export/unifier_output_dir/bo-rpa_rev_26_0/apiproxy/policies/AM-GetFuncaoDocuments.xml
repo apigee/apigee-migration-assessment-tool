@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-GetFuncaoDocuments">
+	<DisplayName>AM-GetFuncaoDocuments</DisplayName>
+	<FaultRules></FaultRules>
+	<Properties></Properties>
+	<Set>
+		<Headers>
+			<Header name="Authorization">Bearer {funcao-auth-token}</Header>
+			<Header name="Content-Type">application/json</Header>
+		</Headers>
+		<Payload contentType="application/json"></Payload>
+		<Verb>GET</Verb>
+		<Path>{private.funcao-document-path}{user.proposal_number}</Path>
+	</Set>
+	<IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+	<AssignTo type="request" transport="http" createNew="false">request</AssignTo>
+</AssignMessage>

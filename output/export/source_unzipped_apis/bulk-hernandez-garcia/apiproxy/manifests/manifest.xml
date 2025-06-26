@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="hill-gallagher-callout" version="SHA-512:fd7c6e4b06aec66886010a8d3dccd97736eded85e7cb8a650992ad901d699df1bf9170caa02cb84da987aa96385ef86b49915ce81030d1e3d99ad64b3b88ce65"/>
+        <VersionInfo resourceName="howard-dunlap-callout" version="SHA-512:0b49693aa1403f2c94b21ef4344a701c9f5c9a5c0980e977cfed073c506ed138cc275d33214d748c68ab19673a81b1d8a7a1df6ff508742de9d6ba4f40eb8976"/>
+        <VersionInfo resourceName="johnston-callout" version="SHA-512:514476bff0820b67db77a40bcd2ada439ab7e265b6943f26ffa550f6f1abaec5c35801fbd4a4995c10328605c2212685f5e97793a29212370c2c06f1665f69a3"/>
+        <VersionInfo resourceName="martin-shaw-callout" version="SHA-512:f1e2815ec238ed2d7aece829b2f4fcd43ca3330d6fd101ee784ae6698b242c95dbfdfa7356c3539282cbec5262fe7cccf628c55133f67be045abbcd5c511109c"/>
+        <VersionInfo resourceName="perez-hartman-callout" version="SHA-512:8bc69441bbd5239f584e803c62c7dc6c6e554bb4a987073cace3465768fc9284677d71a176d2bf193c6694e64e45f0993b191d06ae74b48316e3cb4d1eed08c9"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:7018711ccab8dd9e4c8e174c58184838d3851423c8381e64c624d47e4bf7dd8c4be7be11e7ab01cb7adc286457df53a73681a63e645dd3fcf48f5ad74d5f3e59"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:1a4ce186b04ea3d8fe24bec592ce0aab9f96d8ce80f2ee12c68f491800c10aeaffcef45786163511a08e5ccfc644af5acbed0633092f17bf2e823fd03c6822ce"/>
+    </TargetEndpoints>
+</Manifest>

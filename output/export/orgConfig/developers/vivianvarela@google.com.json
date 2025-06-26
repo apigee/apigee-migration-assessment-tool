@@ -1,0 +1,18 @@
+{
+  "apps": [
+    "authtest"
+  ],
+  "companies": [],
+  "email": "vivianvarela@google.com",
+  "developerId": "YlPVdCOSqLbfMOIX",
+  "firstName": "Vivian",
+  "lastName": "Varela",
+  "userName": "vivian",
+  "organizationName": "validate",
+  "status": "active",
+  "attributes": [],
+  "createdAt": 1749162434925,
+  "createdBy": "opdk@google.com",
+  "lastModifiedAt": 1749162434925,
+  "lastModifiedBy": "opdk@google.com"
+}

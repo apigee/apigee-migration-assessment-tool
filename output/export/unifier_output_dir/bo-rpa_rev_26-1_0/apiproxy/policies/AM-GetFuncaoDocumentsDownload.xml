@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-GetFuncaoDocumentsDownload">
+    <DisplayName>AM-GetFuncaoDocumentsDownload</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Authorization">Bearer {funcao-auth-token}</Header>
+            <Header name="Content-Type">application/json</Header>
+        </Headers>
+        <Payload contentType="application/json">
+            {
+                "NumeroProposta": "{user.proposal_number}",
+                "IdArmazenamento": "{user.storage_id}",
+                "IdUnico": "{user.unique_id}",
+                
+            }
+        </Payload>
+        <Verb>POST</Verb>
+        <Path>{private.funcao-documents-download-path}</Path>
+    </Set>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <AssignTo type="request" transport="http" createNew="false"></AssignTo>
+</AssignMessage>

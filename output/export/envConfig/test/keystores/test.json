@@ -1,0 +1,67 @@
+{
+  "aliases": [
+    {
+      "aliasName": "ks-alias1",
+      "cert": "ks-alias1-cert",
+      "key": ""
+    },
+    {
+      "aliasName": "alias2",
+      "cert": "alias2-cert",
+      "key": ""
+    }
+  ],
+  "certs": [
+    "alias2-cert",
+    "ks-alias1-cert"
+  ],
+  "keys": [
+    "",
+    ""
+  ],
+  "name": "test",
+  "alias_data": {
+    "ks-alias1": {
+      "alias": "ks-alias1",
+      "certsInfo": {
+        "certInfo": [
+          {
+            "basicConstraints": "CA:TRUE",
+            "expiryDate": 1699608763000,
+            "isValid": "No",
+            "issuer": "CN=*.payaljindal.com",
+            "publicKey": "RSA Public Key, 2048 bits",
+            "serialNumber": "3b:79:28:29:14:76:11:aa:17:86:7b:21:0a:39:2a:1c:46:de:5f:82",
+            "sigAlgName": "SHA256withRSA",
+            "subject": "CN=*.payaljindal.com",
+            "subjectAlternativeNames": [],
+            "validFrom": 1668072763000,
+            "version": 3
+          }
+        ],
+        "certName": "ks-alias1-cert"
+      }
+    },
+    "alias2": {
+      "alias": "alias2",
+      "certsInfo": {
+        "certInfo": [
+          {
+            "basicConstraints": "CA:TRUE",
+            "expiryDate": 1699608763000,
+            "isValid": "No",
+            "issuer": "CN=*.payaljindal.com",
+            "publicKey": "RSA Public Key, 2048 bits",
+            "serialNumber": "3b:79:28:29:14:76:11:aa:17:86:7b:21:0a:39:2a:1c:46:de:5f:82",
+            "sigAlgName": "SHA256withRSA",
+            "subject": "CN=*.payaljindal.com",
+            "subjectAlternativeNames": [],
+            "validFrom": 1668072763000,
+            "version": 3
+          }
+        ],
+        "certName": "alias2-cert"
+      }
+    }
+  }
+}

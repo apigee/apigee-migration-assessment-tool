@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="SEC-OAuth-VerifyAccessToken" version="SHA-512:d6fa402dec3a45df10509ee90a9f907c12446cb67a431406b1e76c4a8bf68284d17c4d652e6fd4aa44f386eb77b92d0c9a1947b7b3be64ab1980ecd38658d01b"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:9d09f31fbbe1c0f2d2977cd400280efbc0133e04fe690e5a46a8f23516b978b1aef1fba86318e5c45e5c4a8285b0be57b048800ce155df38edb2d8195595db98"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:43d08a58f2a7fddb415b15396ab338725eb90881f61e4540733ed8f4e65ce6ba06afd2be2be313eb1d2c775c399300d0aa9118b5f3d6ff95ea498e499b454115"/>
+    </TargetEndpoints>
+</Manifest>

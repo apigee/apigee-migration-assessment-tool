@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="bulk-perry-lang">
+    <Basepaths>/perry-lang</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1684531162225</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName></DisplayName>
+    <LastModifiedAt>1684531162225</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:15ff1d3e7803d7a1be84b40114e6558ae843600743ed8481d2c64081d65f65165653151105f3834933fed312f4905784354ddc6d26def9ac3b9c4c6d902910c6:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>andrade-callout</Policy>
+        <Policy>ayala-callout</Policy>
+        <Policy>beltran-callout</Policy>
+        <Policy>blevins-callout</Policy>
+        <Policy>carroll-mcgee-callout</Policy>
+        <Policy>edwards-wilkinson-callout</Policy>
+        <Policy>garcia-williams-callout</Policy>
+        <Policy>hampton-callout</Policy>
+        <Policy>hill-gallagher-callout</Policy>
+        <Policy>johnston-callout</Policy>
+        <Policy>king-horne-callout</Policy>
+        <Policy>long-martinez-callout</Policy>
+        <Policy>mckenzie-armstrong-callout</Policy>
+        <Policy>mueller-callout</Policy>
+        <Policy>nelson-smith-callout</Policy>
+        <Policy>newman-greene-callout</Policy>
+        <Policy>odom-hampton-callout</Policy>
+        <Policy>perez-hartman-callout</Policy>
+        <Policy>ponce-callout</Policy>
+        <Policy>ramirez-miles-callout</Policy>
+        <Policy>simon-brown-callout</Policy>
+        <Policy>simpson-callout</Policy>
+        <Policy>smith-owens-callout</Policy>
+        <Policy>stanley-lawson-callout</Policy>
+        <Policy>ward-callout</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

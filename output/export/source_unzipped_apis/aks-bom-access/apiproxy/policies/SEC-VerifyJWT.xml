@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VerifyJWT async="false" continueOnError="false" enabled="true" name="SEC-VerifyJWT">
+    <DisplayName>SEC-VerifyJWT</DisplayName>
+    <Algorithm>HS256</Algorithm>
+    <Source>request.header.jwt-token</Source>
+    <SecretKey>
+        <Value ref="private.upstreamKey"/>
+    </SecretKey>
+    <Subject>subject-subject</Subject>
+    <Issuer>urn://apigee-edge-JWT-policy-test</Issuer>
+    <Audience>audience1,audience2</Audience>
+</VerifyJWT>

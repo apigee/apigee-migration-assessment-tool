@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="basic-oauth-test">
+    <Basepaths>/basic-oauth-test</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1749166283085</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>basic-oauth-test</DisplayName>
+    <LastModifiedAt>1749166283085</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:3c617f725ce29700479346e0df17b5d2b7166363f0e5c9c9c9a951f4561050a75cc8c5547767a796e81c1c4b1fe69871d72c5cf68f15bdbb33b8f9abafb4d97a</ManifestVersion>
+    <Policies>
+        <Policy>AM-405WithAllowHeader</Policy>
+        <Policy>AM-Create-Mock-Response</Policy>
+        <Policy>AM-test-basic</Policy>
+        <Policy>OAuthV2-test</Policy>
+        <Policy>impose-quota</Policy>
+        <Policy>remove-header-authorization</Policy>
+        <Policy>verify-oauth-v2-access-token</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

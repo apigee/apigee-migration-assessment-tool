@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="tcs-bom-cbs-test-2">
+    <Basepaths>/tcs-bom-cbs-test-2</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1715165969417</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>tcs-bom-cbs-test-2</DisplayName>
+    <LastModifiedAt>1715167549131</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:44c03140d5a7aa99b2f289d7ba41030e8cc59c7a6b23e0bee86993230c376b69635c96a00767f72762eee3b978113f30a25110a75610ba3dfaf532666787ec9d:dc-1</ManifestVersion>
+    <Policies/>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="bulk-mccall-mitchell">
+    <Basepaths>/mccall-mitchell</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1684531035405</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName></DisplayName>
+    <LastModifiedAt>1684531035405</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:6219e2ed3f468edef07108bbd6920f7a6cef5a29f1b8712d3fc27739124dd215551b6b586abc9b64d20f64debd1e01705255e55ac19d01c74d9504919e0c5dec:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>avery-callout</Policy>
+        <Policy>black-callout</Policy>
+        <Policy>blevins-callout</Policy>
+        <Policy>cannon-callout</Policy>
+        <Policy>carroll-mcgee-callout</Policy>
+        <Policy>dunn-callout</Policy>
+        <Policy>edwards-wilkinson-callout</Policy>
+        <Policy>fitzgerald-callout</Policy>
+        <Policy>garcia-williams-callout</Policy>
+        <Policy>hampton-callout</Policy>
+        <Policy>hebert-anderson-callout</Policy>
+        <Policy>jenkins-callout</Policy>
+        <Policy>lawson-grant-callout</Policy>
+        <Policy>long-martinez-callout</Policy>
+        <Policy>mccann-callout</Policy>
+        <Policy>mckinney-callout</Policy>
+        <Policy>medina-callout</Policy>
+        <Policy>moore-farmer-callout</Policy>
+        <Policy>morris-callout</Policy>
+        <Policy>mueller-callout</Policy>
+        <Policy>nelson-smith-callout</Policy>
+        <Policy>newman-greene-callout</Policy>
+        <Policy>perez-hartman-callout</Policy>
+        <Policy>peterson-thornton-callout</Policy>
+        <Policy>ponce-callout</Policy>
+        <Policy>ramirez-miles-callout</Policy>
+        <Policy>stanley-lawson-callout</Policy>
+        <Policy>ward-callout</Policy>
+        <Policy>ward-thomas-callout</Policy>
+        <Policy>watson-liu-callout</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

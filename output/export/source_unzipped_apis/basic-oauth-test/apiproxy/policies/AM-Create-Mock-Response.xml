@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-Create-Mock-Response">
+    <DisplayName>AM-Create-Mock-Response</DisplayName>
+    <Set>
+        <StatusCode>200</StatusCode>
+        <ReasonPhrase>OK</ReasonPhrase>
+        <Payload contentType="application/json">
+            {
+                "status": "success",
+                "message": "OAuth token is valid. You reached the mock POST endpoint."
+            }
+        </Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

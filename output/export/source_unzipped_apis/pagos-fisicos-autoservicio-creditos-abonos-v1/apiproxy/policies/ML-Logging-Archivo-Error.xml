@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessageLogging async="false" continueOnError="false" enabled="true" name="ML-Logging-Archivo-Error">
+    <DisplayName>ML-Logging-Archivo-Error</DisplayName>
+    <File>
+        <Message>{flow.log.message.content}</Message>
+        <FileName>Api.log</FileName>
+        <FileRotationOptions rotateFileOnStartup="true">
+            <FileRotationType>SIZE</FileRotationType>
+            <MaxFileSizeInMB>10</MaxFileSizeInMB>
+            <MaxFilesToRetain>10</MaxFilesToRetain>
+        </FileRotationOptions>
+    </File>
+    <!-- INFO (default), ALERT, WARN, ERROR -->
+    <logLevel>ERROR</logLevel>
+</MessageLogging>

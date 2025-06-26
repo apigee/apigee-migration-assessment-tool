@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="bulk-mays-stewart">
+    <Basepaths>/mays-stewart</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1684531169321</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName></DisplayName>
+    <LastModifiedAt>1684531169321</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:66c7a9a6c53819e8a9b09c726da88d37a4fe5d875d8e4f72a2eecc9692f2267ce7830dec9a8817d3b4d74ac338985c08ce22be498d70b53467d65a984c5a1c4c:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>howard-dunlap-callout</Policy>
+        <Policy>jenkins-callout</Policy>
+        <Policy>johnston-callout</Policy>
+        <Policy>lowery-johnson-callout</Policy>
+        <Policy>medina-callout</Policy>
+        <Policy>odom-hampton-callout</Policy>
+        <Policy>walker-king-callout</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="Cards">
+    <Description></Description>
+    <FaultRules/>
+    <Flows>
+        <Flow name="CancelAccount">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadServicesCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-UserInformation</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-AccountCancellationInformation</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SC-GetPersonID</Name>
+                </Step>
+                <Step>
+                    <Condition>(personDataResponse.status.code == 404)</Condition>
+                    <FaultRules/>
+                    <Name>RF-PersonNotFound</Name>
+                </Step>
+                <Step>
+                    <Condition>(personDataResponse == null) or (personDataResponse.status.code != 200)</Condition>
+                    <FaultRules/>
+                    <Name>RF-CancelAccountError</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-PersonInformation</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadCardsServiceCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SC-GetAccounts</Name>
+                </Step>
+                <Step>
+                    <Condition>(accountDataResponse == null) or (accountDataResponse.status.code != 200)</Condition>
+                    <FaultRules/>
+                    <Name>RF-CancelAccountError</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>JS-VerifyElegibleAccount</Name>
+                </Step>
+                <Step>
+                    <Condition>(account == null) or (account.valid = false)</Condition>
+                    <FaultRules/>
+                    <Name>RF-AccountNotElegibleToCancel</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-AccountCancellation</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/account/cancel") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="CancelAccountV2">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-AccountCancellationInformation</Name>
+                </Step>
+                <Step>
+                    <Condition>(person.person_id = null or person.person_id = "")</Condition>
+                    <FaultRules/>
+                    <Name>RF-PersonIdRequired</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadCardsServiceCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SC-GetAccounts</Name>
+                </Step>
+                <Step>
+                    <Condition>(accountDataResponse == null) or (accountDataResponse.status.code != 200)</Condition>
+                    <FaultRules/>
+                    <Name>RF-CancelAccountError</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>JS-VerifyElegibleAccount</Name>
+                </Step>
+                <Step>
+                    <Condition>(account == null) or (account.valid = false)</Condition>
+                    <FaultRules/>
+                    <Name>RF-AccountNotElegibleToCancel</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-AccountCancellation</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/v2/account/cancel") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="ReactiveAccount">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadServicesCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-UserInformation</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SC-GetPersonID</Name>
+                </Step>
+                <Step>
+                    <Condition>(personDataResponse.status.code == 404)</Condition>
+                    <FaultRules/>
+                    <Name>RF-PersonNotFound</Name>
+                </Step>
+                <Step>
+                    <Condition>(personDataResponse == null) or (personDataResponse.status.code != 200)</Condition>
+                    <FaultRules/>
+                    <Name>RF-ReactiveAccountError</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-PersonInformation</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadCardsServiceCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SC-GetAccounts</Name>
+                </Step>
+                <Step>
+                    <Condition>(accountDataResponse == null) or (accountDataResponse.status.code != 200)</Condition>
+                    <FaultRules/>
+                    <Name>RF-ReactiveAccountError</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>JS-VerifyElegibleAccount</Name>
+                </Step>
+                <Step>
+                    <Condition>(account == null) or (account.valid = false)</Condition>
+                    <FaultRules/>
+                    <Name>RF-AccountNotEligibleToReactive</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-AccountReactivation</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/account/reactive") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="ReactiveAccountV2">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-PersonIdRequest</Name>
+                </Step>
+                <Step>
+                    <Condition>(person.person_id = null or person.person_id = "")</Condition>
+                    <FaultRules/>
+                    <Name>RF-PersonIdRequired</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadCardsServiceCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SC-GetAccounts</Name>
+                </Step>
+                <Step>
+                    <Condition>(accountDataResponse == null) or (accountDataResponse.status.code != 200)</Condition>
+                    <FaultRules/>
+                    <Name>RF-ReactiveAccountError</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>JS-VerifyElegibleAccount</Name>
+                </Step>
+                <Step>
+                    <Condition>(account == null) or (account.valid = false)</Condition>
+                    <FaultRules/>
+                    <Name>RF-AccountNotEligibleToReactive</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-CardReactivation</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/v2/account/reactive") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="NotifyInvoiceCardPayment">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-CardInvoicePaymentData</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.account_id = null or payload.account_id = "" or payload.value = null or payload.reference = null or payload.reference = "")</Condition>
+                    <FaultRules/>
+                    <Name>RF-CardInvoicePaymentFieldsRequired</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadCardsServiceCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-NotifyCardInvoicePayment</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/invoices/payment" or proxy.pathsuffix MatchesPath "/account/financial-adjustment") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="AccountInternal">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-AccountId</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.account_id = null or payload.account_id = "")</Condition>
+                    <FaultRules/>
+                    <Name>RF-AccountIdRequired</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadCardsServiceCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-AccountInternal</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/internal/account") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="AccountExternal">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-ExternalId</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.external_id = null)</Condition>
+                    <FaultRules/>
+                    <Name>RF-ExternalIdRequired</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadCardsServiceCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-AccountExternal</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/external/account") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="AdjustInvoice">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-AdjustInvoice</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.account_id = null or payload.account_id = "" or payload.adjustment_date = null or payload.adjustment_date = "" or payload.adjustment_value = null)</Condition>
+                    <FaultRules/>
+                    <Name>RF-AdjustInvoiceRequiredFields</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadCardsServiceCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-AdjustInvoice</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/invoices/adjustment") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="HolderCard">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-PersonId</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.person_id = null or payload.person_id = "")</Condition>
+                    <FaultRules/>
+                    <Name>RF-PersonIdRequired</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadCardsServiceCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-HolderCard</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-AdjustInvoice</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>JS-ExtractLastNumbersCard</Name>
+                </Step>
+                <Step>
+                    <Condition>(card.last_number_card = null or card.last_number_card = "")</Condition>
+                    <FaultRules/>
+                    <Name>RF-CardNotFound</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-GetLastNumbersCardResponse</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/holder/details") and (request.verb = "POST" or request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="RequestInvoiceCardPayment">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-CardInvoiceRequestPayment</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.person_id = null or payload.person_id = "" or payload.amount = null or payload.due_date = null or payload.due_date = "" or payload.payment_date = null or payload.payment_date = "")</Condition>
+                    <FaultRules/>
+                    <Name>RF-CardInvoiceRequestPaymentFieldsRequired</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadCardsServiceCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SC-GetAccounts</Name>
+                </Step>
+                <Step>
+                    <Condition>(accountDataResponse == null) or (accountDataResponse.status.code != 200)</Condition>
+                    <FaultRules/>
+                    <Name>RF-GetCardAccountError</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>JS-VerifyElegibleAccount</Name>
+                </Step>
+                <Step>
+                    <Condition>(account == null) or (account.valid = false)</Condition>
+                    <FaultRules/>
+                    <Name>RF-CardAccountNotEligibleToRequestPayment</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-RequestCardInvoicePayment</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/invoices/request-payment") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="UnblockCard">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadServicesCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-CardIdTaxIdentifierRequest</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.personId = null or payload.personId = "") or (payload.cardId = null or payload.cardId = "") or (payload.taxIdentifier = null or payload.taxIdentifier = "")</Condition>
+                    <FaultRules/>
+                    <Name>RF-BadRequestUnblockCardRequest</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SC-GetImpersonateTokenPersonId</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-GetAccessTokenImpersonate</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>FC-Correlation-Tracker</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-CardUnlock</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/unblock") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="CardsStatus">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadCardsServiceCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-PersonId</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.person_id = null or payload.person_id = "")</Condition>
+                    <FaultRules/>
+                    <Name>RF-PersonIdRequired</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-HolderCard</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/status") and (request.verb = "POST" or request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="RecurrenceStatus">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-PersonId</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.person_id = null or payload.person_id = "")</Condition>
+                    <FaultRules/>
+                    <Name>RF-PersonIdRequired</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadCardsServiceCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-RecurrenceStatus</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/invoices/recurrence/status") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="RegisterRecurrence">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-PersonId</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.person_id = null or payload.person_id = "")</Condition>
+                    <FaultRules/>
+                    <Name>RF-PersonIdRequired</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadCardsServiceCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-RegisterRecurrence</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/invoices/recurrence/register") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="DeregisterRecurrence">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-PersonId</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.person_id = null or payload.person_id = "")</Condition>
+                    <FaultRules/>
+                    <Name>RF-PersonIdRequired</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadCardsServiceCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-DeregisterRecurrence</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/invoices/recurrence/deregister") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="SendInvoice">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-SendInvoice</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.person_id = null or payload.person_id = "" or payload.period = null)</Condition>
+                    <FaultRules/>
+                    <Name>RF-SendInvoiceRequiredFields</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadCardsServiceCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-SendInvoice</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/invoices/send") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="RegenerateCard">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadServicesCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-CardIdTaxIdentifierRequest</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-ExtractRegenerateCard</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.personId = null or payload.personId = "") or (payload.cardId = null or payload.cardId = "") or (payload.taxIdentifier = null or payload.taxIdentifier = "")</Condition>
+                    <FaultRules/>
+                    <Name>RF-BadRequestCardImpersonateRequest</Name>
+                </Step>
+                <Step>
+                    <Condition>(RegenerateCardPayload.reason = null or RegenerateCardPayload.reason = "")</Condition>
+                    <FaultRules/>
+                    <Name>RF-BadRequestRegenerateCardRequest</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadBackofficeRegenerateCardReasons</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>JS-VerifyRegenerateCardReason</Name>
+                </Step>
+                <Step>
+                    <Condition>(isValidReason is false)</Condition>
+                    <FaultRules/>
+                    <Name>RF-BadRequestRegenerateCardReason</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SC-GetImpersonateTokenPersonId</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-GetAccessTokenImpersonate</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>FC-Correlation-Tracker</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-RegenerateCard</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/regenerate") and (request.verb = "POST")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <FaultRules/>
+                <Name>OA-VerifyAccessToken</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <BasePath>/bo-rpa/cards</BasePath>
+        <Properties/>
+        <VirtualHost>vhost-backoffice</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="CoreCardsInvoiceSenderService">
+        <Condition>(proxy.pathsuffix MatchesPath "/invoices/recurrence/*" or proxy.pathsuffix MatchesPath "/invoices/send")</Condition>
+        <TargetEndpoint>CoreCardsInvoiceSenderService</TargetEndpoint>
+    </RouteRule>
+    <RouteRule name="CardsPaymentsService">
+        <Condition>(proxy.pathsuffix MatchesPath "/invoices/adjustment") 
+            or (proxy.pathsuffix MatchesPath "/invoices/payment") 
+            or (proxy.pathsuffix MatchesPath "/account/financial-adjustment") 
+            or (proxy.pathsuffix MatchesPath "/invoices/request-payment")</Condition>
+        <TargetEndpoint>CardsPaymentsService</TargetEndpoint>
+    </RouteRule>
+    <RouteRule name="CardsService">
+        <TargetEndpoint>CardsService</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

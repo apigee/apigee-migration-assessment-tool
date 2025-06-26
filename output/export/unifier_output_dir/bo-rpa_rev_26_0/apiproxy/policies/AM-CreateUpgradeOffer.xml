@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-CreateUpgradeOffer">
+    <DisplayName>AM-CreateUpgradeOffer - create upgrade offer</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Authorization">{private.Authorization.offer.manager}</Header>
+        </Headers>
+        <Payload contentType="application/json">
+            {
+	            "product_id" : "{offer.product_id}"
+	        }
+        </Payload>
+        <Verb>POST</Verb>
+        <Path>/persons/{person.person_id}/offers</Path>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo type="request" transport="http" createNew="true">request</AssignTo>
+</AssignMessage>

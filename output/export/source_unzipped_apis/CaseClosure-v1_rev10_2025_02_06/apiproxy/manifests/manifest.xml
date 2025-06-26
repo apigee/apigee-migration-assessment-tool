@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-404_Not_Found" version="SHA-512:2d427b8b8cadba5d892568c348e05261d9da033c5cd59e9d14038c14aeb8248380326fa9fad4cffe68710698f9f0ccfabed9ab0567bc57f6c80cd6753f59d77c"/>
+        <VersionInfo resourceName="AM-Add_CORS" version="SHA-512:c211678378792a44ea504b0e7b8bd8b9b5c25e7948d279b3c075dd3d5bb22893fb0b46e51a2df82d830a153ffdca8fe5a14f6eae4e18dfa9becae587d0efd5c8"/>
+        <VersionInfo resourceName="AM-Set_Host_Header" version="SHA-512:7bf5b524805028450f6c157312f335b45ead511d6a6a45fb140dba04dc291220d2158c858cc65a7e1116a0f743e11744b0de0df58516340380f1696c71ccb1d3"/>
+        <VersionInfo resourceName="BA-Add_Credentials_Backend" version="SHA-512:3a0a35b35f6652bf21de66cb0dbf848ca1dbe8584bb8d9b810822f8404efa8311859a4c6b0a172293a815cba50f4dab6c718965b0ef94f6177b51177c3d79364"/>
+        <VersionInfo resourceName="FC-ExceptionHandling" version="SHA-512:f350e997fee78bc937da4400bf349f413bdb9ed7a7f81f71c65b19cd73109f480d4016e8f8b48f7d1637dec7fd47d437978e6acb1eaa15ba576ade9b74bae3da"/>
+        <VersionInfo resourceName="KVM-Get_Backend_Credentials" version="SHA-512:23b899e03767e79adddf796a7eeb1a97f18db7fd8083d4a3bf85ea432606ede210760d87f8a276a8752f34c7c4f192ac69353eb2f7b755802063f673390b37b0"/>
+        <VersionInfo resourceName="KVM-Get_Target_Host" version="SHA-512:5a20706f27a274befaf3ac3c0b022f5ba724758cd45fd15f5f0f85f0f16580336e3f699c89e5c5477f60be911c0143afdcf3b38d2db18cd2a08d65df637ac44b"/>
+        <VersionInfo resourceName="RF-Custom_Errors" version="SHA-512:b2a7d21ef108275affa53f4a9f5a4d936a3810115b6e25bcaa560234a3c460b4cedc98ef24bf170d7698633cab6f2ecdbc2993b2ca0a22e792d912e59b1a2dc9"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:d020f62467de1a6679162e4be9825ed8b297fe4c2e0893fa9880182cc0fe97016d5c1a596dbc192c6a08eec86fa91f957908e6b049632a7cb3aecb151240bebe"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:9d059afbcb7affa89ef575802117e550f87c683ee9ae16d4306f9551badee758d7febd36f45af62e87ccd5a31859fa88c1d1eb69703aab78a523a896aebd2309"/>
+    </TargetEndpoints>
+</Manifest>

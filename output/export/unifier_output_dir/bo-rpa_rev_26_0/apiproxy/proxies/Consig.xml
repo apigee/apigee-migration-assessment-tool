@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="Consig">
+    <Description></Description>
+    <FaultRules/>
+    <Flows>
+        <Flow name="ProposalsFuncao">
+            <Description>List proposals from funcao</Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadServicesCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadBackofficeConfig</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-ProposalsFuncao</Name>
+                </Step>
+                <Step>
+                    <Condition>
+                        (payload.cpf = null or payload.cpf = ""
+                        or payload.order = null or payload.order = ""
+                        or payload.order_by = null or payload.order_by = ""
+                        or payload.quantity = null 
+                        or payload.page = null 
+                        or payload.status = null or payload.status = "")
+                    </Condition>
+                    <FaultRules/>
+                    <Name>RF-ProposalsFuncaoFieldRequired</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.status != "CanceladasIntegradas" and payload.status != "Andamento")</Condition>
+                    <FaultRules/>
+                    <Name>RF-ProposalFuncaoInvalidStatus</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.order != "Ascendente" and payload.order != "Descendente")</Condition>
+                    <FaultRules/>
+                    <Name>RF-ProposalsFuncaoInvalidOrder</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>JS-ExtractCpf</Name>
+                </Step>
+                <Step>
+                    <Condition>(validCpf = false)</Condition>
+                    <FaultRules/>
+                    <Name>RF-ProposalsFuncaoInvalidCpf</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadBffFuncaoUraSecret</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SC-GetTokenBFFC6Consig</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-GetBffFuncaoUraAccessToken</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-ProposalsFuncao</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/proposals") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="GetPaymentHistory">
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-GetProposalPaymentHistory</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-ConsigPaymentHistory</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-GetConsigPaymentHistoryResponse</Name>
+                </Step>
+                <Step>
+                    <Condition>(proposal.payment_history = null)</Condition>
+                    <FaultRules/>
+                    <Name>RF-PaymentHistoryNotFound</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-GetConsigPaymentHistoryResponse</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/proposals/*/payment-history") and (request.verb = "GET" or request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="ProposalDocumentsDownload">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-ExtractDownloadDocParams</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadFuncaoDocumentConfig</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadFuncaoSecret</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SC-GetFuncaoToken</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-ExtractFuncaoBearerToken</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadFuncaoDocumentDownloadPath</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-GetFuncaoDocumentsDownload</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/proposal/documents/download") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="ProposalDocuments">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-ExtractProposalNumber</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadFuncaoDocumentConfig</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadFuncaoSecret</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SC-GetFuncaoToken</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-ExtractFuncaoBearerToken</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadFuncaoDocumentPath</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-GetFuncaoDocuments</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/proposal/documents") and (request.verb = "POST")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <FaultRules/>
+                <Name>OA-VerifyAccessToken</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <BasePath>/bo-rpa/consig</BasePath>
+        <Properties/>
+        <VirtualHost>vhost-backoffice</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="FuncaoConsigService">
+        <Condition>(proxy.pathsuffix MatchesPath "/proposal/documents" or proxy.pathsuffix MatchesPath "/proposal/documents/*" )</Condition>
+        <TargetEndpoint>FuncaoConsigService</TargetEndpoint>
+    </RouteRule>
+    <RouteRule name="C6ConsigBff">
+        <Condition>(proxy.pathsuffix MatchesPath "/proposals") and (request.verb = "POST")</Condition>
+        <TargetEndpoint>C6ConsigBff</TargetEndpoint>
+    </RouteRule>
+    <RouteRule name="LocalBffRpaDatalake">
+        <TargetEndpoint>LocalBffRpaDatalake</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

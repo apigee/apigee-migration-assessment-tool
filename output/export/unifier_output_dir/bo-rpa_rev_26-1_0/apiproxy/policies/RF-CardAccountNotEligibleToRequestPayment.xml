@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-CardAccountNotEligibleToRequestPayment">
+    <DisplayName>RF-CardAccountNotEligibleToRequestPayment</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Payload contentType="application/json">
+{
+    "type": "ACCOUNT_NOT_ELEGIBLE", 
+    "message": "Person not has an account(card) elegible to request payment."
+}
+            </Payload>
+            <StatusCode>406</StatusCode>
+            <ReasonPhrase>Not Acceptable</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <ShortFaultReason>false</ShortFaultReason>
+</RaiseFault>

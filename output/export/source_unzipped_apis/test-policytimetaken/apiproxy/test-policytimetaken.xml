@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="test-policytimetaken">
+    <Basepaths>/test-policytimetaken</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1717072185473</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>test-policytimetaken</DisplayName>
+    <LastModifiedAt>1717072268593</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:6844ca1f7fe18257d0ad3e11f18d395bebe95e2be0979faef75296887ccbfc559050116c93004f185defe414b109c3c8c4e5ef567e7316de8b763174de8ef41c:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-1</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

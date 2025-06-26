@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="dev-bom-regex">
+    <Basepaths>/dev-bom-regex</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1707484521362</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>dev-bom-regex</DisplayName>
+    <LastModifiedAt>1707484521362</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:0fef565eb6618e0ba84f731711876adcd592dc41b92be195a4fc14072eebb96338458fff5c4a2b1f0dcbf1f480250e8a536cccec9205febe97be781841d8e18d:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>EV-FetchVendorName</Policy>
+        <Policy>RF-InvalidVendor</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

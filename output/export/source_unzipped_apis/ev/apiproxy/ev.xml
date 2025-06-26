@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="ev">
+    <Basepaths>/ev</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1746652035227</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>ev</DisplayName>
+    <LastModifiedAt>1746652085139</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:0e03184415747388fb6847060356be4a256edbc8b00a362a80a554ff3d1c09e2da24ff493eaedc414e22c2a4602efe0c89fbd34d31d8d22f643089b19eeb38ed:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>ExtractVariables-3</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

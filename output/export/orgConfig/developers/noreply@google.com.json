@@ -1,0 +1,19 @@
+{
+  "apps": [
+    "withproduct",
+    "tcs-oauth-2"
+  ],
+  "companies": [],
+  "email": "noreply@google.com",
+  "developerId": "7misFVRWiM8bH2QG",
+  "firstName": "noreply",
+  "lastName": "user",
+  "userName": "noreply",
+  "organizationName": "validate",
+  "status": "active",
+  "attributes": [],
+  "createdAt": 1692866662769,
+  "createdBy": "opdk@google.com",
+  "lastModifiedAt": 1692866662769,
+  "lastModifiedBy": "opdk@google.com"
+}

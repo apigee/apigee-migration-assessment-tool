@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-GetPersonIdByCpfRequest">
+    <DisplayName>AM-GetPersonIdByCpfRequest</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Content-Type">application/json</Header>
+            <Header name="Authorization">{private.Authorization.single.registry}</Header>
+        </Headers>
+        <Payload contentType="application/json"/>
+        <Verb>GET</Verb>
+        <Path>/individuals/cpf/{payload.tax_identifier}</Path>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo type="request" transport="http" createNew="true">request</AssignTo>
+</AssignMessage>

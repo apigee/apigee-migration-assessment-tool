@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-GetLoanResponse">
+    <DisplayName>AM-GetLoanResponse</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">
+        {
+            "id_cliente": "{id_pessoa}",
+            "loans": {id_loans}
+        }
+        </Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo type="response" transport="http" createNew="false">response</AssignTo>
+</AssignMessage>

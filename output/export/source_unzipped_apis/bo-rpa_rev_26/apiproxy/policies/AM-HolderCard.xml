@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-HolderCard">
+	<DisplayName>AM-HolderCard</DisplayName>
+	<FaultRules></FaultRules>
+	<Properties></Properties>
+	<Set>
+		<Headers>
+			<Header name="Authorization">{private.Authorization.cards.manager}</Header>
+			<Header name="Accept">application/vnd.c6bank+json; version=2</Header>
+		</Headers>
+		<Verb>GET</Verb>
+		<Path>/person-account/{payload.person_id}/cards/grouped</Path>
+	</Set>
+	<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+	<AssignTo type="request" transport="http" createNew="false">request</AssignTo>
+</AssignMessage>

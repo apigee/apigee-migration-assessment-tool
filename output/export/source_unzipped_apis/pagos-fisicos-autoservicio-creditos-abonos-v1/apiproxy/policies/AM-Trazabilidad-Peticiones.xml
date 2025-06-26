@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="true" enabled="true" name="AM-Trazabilidad-Peticiones">
+    <DisplayName>AM-Trazabilidad-Peticiones</DisplayName>
+    <AssignTo createNew="false" type="request"/>
+    <Set>
+        <Headers>
+            <Header name="x-request-id">{flow.trazabilidad.request.id}</Header>
+            <Header name="x-ip">{flow.trazabilidad.ip}</Header>
+        </Headers>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

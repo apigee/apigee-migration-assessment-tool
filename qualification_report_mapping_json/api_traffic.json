@@ -1,0 +1,21 @@
+{
+    "headers": [
+        "Org Name",
+        "Environment",
+        "API Proxy Name",
+        "Total Traffic (Message Count)"
+    ],
+    "info_block": {
+        "text": "<b>API Traffic Assessment</b>\n\n<iu>Purpose:</iu> This sheet provides an overview of the API proxy traffic for each environment over the last two weeks. It helps in understanding the usage patterns and identifying high-traffic proxies.\n\n<bu>Note:</bu> Traffic data is fetched from Apigee Analytics APIs. The time range can be configured in `backend.properties`.",
+        "start_row": 1,
+        "end_row": 10,
+        "col_merge": 3,
+        "text_line_no_for_col_count": 2,
+        "link": [
+            {
+                "link": "https://docs.apigee.com/api-platform/analytics/analytics-api-reference",
+                "link_text": "Apigee Analytics API Reference"
+            }
+        ]
+    }
+}

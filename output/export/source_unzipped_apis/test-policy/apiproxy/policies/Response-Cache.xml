@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ResponseCache async="false" continueOnError="false" enabled="true" name="Response-Cache">
+    <DisplayName>Response Cache</DisplayName>
+    <Properties/>
+    <CacheKey>
+        <Prefix/>
+        <KeyFragment ref="request.uri" type="string"/>
+    </CacheKey>
+    <Scope>Exclusive</Scope>
+    <SkipCacheLookup/>
+    <SkipCachePopulation/>
+</ResponseCache>

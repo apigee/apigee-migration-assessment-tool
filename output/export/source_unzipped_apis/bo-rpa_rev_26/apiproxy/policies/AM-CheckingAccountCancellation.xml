@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AssignMessage async="false" continueOnError="true" enabled="true" name="AM-CheckingAccountCancellation">
+	<DisplayName>AM-CheckingAccountCancellation</DisplayName>
+	<FaultRules></FaultRules>
+	<Properties></Properties>
+	<Set>
+		<Headers>
+			<Header name="Authorization">{private.Authorization.checking.manager}</Header>
+		</Headers>
+		<Payload contentType="application/json">{
+                "person_id": "{person.person_id}",
+                "request_by": "{cancelCheckingAccountPayload.request_by}",
+                "reason": "{cancelCheckingAccountPayload.reason}",
+                "balance_withdraw": {cancelCheckingAccountPayload.balance_withdraw}
+            }</Payload>
+		<Verb>POST</Verb>
+		<Path>/person/account/cancel</Path>
+	</Set>
+	<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+	<AssignTo type="request" transport="http" createNew="false">request</AssignTo>
+</AssignMessage>

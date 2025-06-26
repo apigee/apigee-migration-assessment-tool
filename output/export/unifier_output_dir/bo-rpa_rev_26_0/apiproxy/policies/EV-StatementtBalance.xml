@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-StatementtBalance">
+    <DisplayName>EV-StatementtBalance - extracts the account and branch number</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <URIPath>
+        <Pattern ignoreCase="false">/branches/{branch_number}/accounts/{account_number}/balance</Pattern>
+    </URIPath>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <Source clearPayload="false">request</Source>
+    <VariablePrefix>payload</VariablePrefix>
+</ExtractVariables>

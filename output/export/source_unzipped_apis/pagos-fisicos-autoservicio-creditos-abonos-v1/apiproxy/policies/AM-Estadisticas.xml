@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-Estadisticas">
+    <DisplayName>AM-Estadisticas</DisplayName>
+    <Properties/>
+    <AssignVariable>
+        <Name>flow.statistics.area</Name>
+        <Value>Pagos Fisicos</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.statistics.latencia.proxy</Name>
+        <Ref>log.proxy.latency</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.statistics.latencia.target</Name>
+        <Ref>log.target.latency</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.statistics.latencia.total</Name>
+        <Ref>log.latency</Ref>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

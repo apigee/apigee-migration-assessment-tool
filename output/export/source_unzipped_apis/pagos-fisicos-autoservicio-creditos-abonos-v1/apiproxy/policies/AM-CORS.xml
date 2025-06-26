@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-CORS">
+    <DisplayName>AM-CORS</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Content-Type">application/json</Header>
+            <Header name="Access-Control-Allow-Origin">{request.header.origin}</Header>
+            <Header name="Access-Control-Allow-Headers">x-apikey, origin, x-requested-with, accept, Content-Type, Authorization, ucsb-api-key, ucsb-api-version, x-custom-header, x-ismock, x-id-acceso</Header>
+            <Header name="Access-Control-Max-Age">3628800</Header>
+            <Header name="Access-Control-Allow-Methods">GET, PUT, POST, DELETE</Header>
+        </Headers>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

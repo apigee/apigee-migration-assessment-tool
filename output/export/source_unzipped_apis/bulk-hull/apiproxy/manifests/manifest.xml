@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="hill-gallagher-callout" version="SHA-512:fd7c6e4b06aec66886010a8d3dccd97736eded85e7cb8a650992ad901d699df1bf9170caa02cb84da987aa96385ef86b49915ce81030d1e3d99ad64b3b88ce65"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:b3b94b4a31851fc36a19b3e3a48593e1ac8139667922a66ac742a3e4f2f04205cef0a220216183be00e68c2e17b44579fa2d00f804eaadba0f891092c0fa7dc7"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:14954f6344e92ed813364d5acbe3c59217e6c453e9563e95f68771d14fcd107e460912eb9f976a0341fd57403806edc0111c1f4b7afcc9429367686c1b102fee"/>
+    </TargetEndpoints>
+</Manifest>

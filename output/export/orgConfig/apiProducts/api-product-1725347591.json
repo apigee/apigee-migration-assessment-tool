@@ -1,0 +1,27 @@
+{
+  "apiResources": [
+    "/"
+  ],
+  "approvalType": "auto",
+  "attributes": [
+    {
+      "name": "access",
+      "value": "public"
+    }
+  ],
+  "createdAt": 1725347591257,
+  "createdBy": "opdk@google.com",
+  "description": "My API product 1725347591",
+  "displayName": "My API product 1725347591",
+  "environments": [
+    "test"
+  ],
+  "lastModifiedAt": 1725347591257,
+  "lastModifiedBy": "opdk@google.com",
+  "name": "api-product-1725347591",
+  "proxies": [
+    "google",
+    "git"
+  ],
+  "scopes": []
+}

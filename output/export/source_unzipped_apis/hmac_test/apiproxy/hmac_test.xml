@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="hmac_test">
+    <Basepaths>/hmac_test</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1745550790259</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>hmac_test</DisplayName>
+    <LastModifiedAt>1745550809427</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:b403f9cd08ffaa32b6ba9db09ec7c702671c48efb9d41e014a50402de9ca77a2f9d2cad5bb2a41c213c21bc0ee8752044741ac0fdd0ca1ec4fba366aab6df1d1:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>HMAC-1</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

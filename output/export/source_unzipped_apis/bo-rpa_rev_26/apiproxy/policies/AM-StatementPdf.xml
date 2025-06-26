@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-StatementPdf">
+    <DisplayName>AM-StatementPdf</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Authorization">{private.Authorization.checking.document}</Header>
+        </Headers>
+        <Verb>GET</Verb>
+        <Path>{proxy.pathsuffix}</Path>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo type="request" transport="http" createNew="false">request</AssignTo>
+</AssignMessage>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-Error-Mock">
+    <DisplayName>AM-Error-Mock</DisplayName>
+    <Properties/>
+    <AssignVariable>
+        <Name>flow.error.http.code</Name>
+        <Ref>message.status.code</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>flow.error.http.reason</Name>
+        <Ref>message.reason.phrase</Ref>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

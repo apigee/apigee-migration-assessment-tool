@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="chain">
+    <Basepaths>/chain</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1692698591070</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>chain</DisplayName>
+    <LastModifiedAt>1692701121823</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:f6fc3744bc66c6809019daa01c04d0d73e0e785f03703a24be74f369c5597c8e390286ffcf473a986c7b7b81d6035e1d61e55d7890b73e7d2bffd6f3fa21a05f:dc-1</ManifestVersion>
+    <Policies/>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>chain-2</TargetEndpoint>
+        <TargetEndpoint>chain1</TargetEndpoint>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

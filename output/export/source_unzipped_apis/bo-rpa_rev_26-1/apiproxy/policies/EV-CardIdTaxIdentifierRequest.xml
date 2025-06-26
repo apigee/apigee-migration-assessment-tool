@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-CardIdTaxIdentifierRequest">
+    <DisplayName>EV-CardIdTaxIdentifierRequest</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="cardId">
+            <JSONPath>$.card_id</JSONPath>
+        </Variable>
+        <Variable name="taxIdentifier">
+            <JSONPath>$.tax_identifier</JSONPath>
+        </Variable>
+        <Variable name="personId">
+            <JSONPath>$.person_id</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source clearPayload="false">request</Source>
+    <VariablePrefix>payload</VariablePrefix>
+</ExtractVariables>

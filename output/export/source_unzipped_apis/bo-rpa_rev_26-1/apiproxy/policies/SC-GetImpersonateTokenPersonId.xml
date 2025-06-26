@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="SC-GetImpersonateTokenPersonId">
+    <DisplayName>SC-GetImpersonateTokenPersonId</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Request clearPayload="false" variable="servicecallout.request">
+        <Set>
+            <Headers>
+                <Header name="Authorization">{private.Authorization.authorization.service}</Header>
+            </Headers>
+            <FormParams>
+                <FormParam name="username">{payload.taxIdentifier}</FormParam>
+                <FormParam name="person_id">{payload.personId}</FormParam>
+            </FormParams>
+            <Verb>POST</Verb>
+            <Path>/oauth/impersonate/token</Path>
+        </Set>
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>impersonateResponse</Response>
+    <HTTPTargetConnection>
+        <LoadBalancer>
+            <MaxFailures>0</MaxFailures>
+            <RetryEnabled>true</RetryEnabled>
+            <Server name="authorization-service">
+                <IsEnabled>true</IsEnabled>
+                <IsFallback>false</IsFallback>
+                <Weight>1</Weight>
+            </Server>
+            <TargetDisableSecs>300</TargetDisableSecs>
+        </LoadBalancer>
+        <SSLInfo>
+            <Ciphers/>
+            <ClientAuthEnabled>false</ClientAuthEnabled>
+            <Enabled>true</Enabled>
+            <IgnoreValidationErrors>false</IgnoreValidationErrors>
+            <Protocols/>
+        </SSLInfo>
+        <Properties/>
+    </HTTPTargetConnection>
+</ServiceCallout>

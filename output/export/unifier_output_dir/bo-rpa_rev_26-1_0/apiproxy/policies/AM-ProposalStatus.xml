@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-ProposalStatus">
+    <DisplayName>AM-ProposalStatus</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Accept">application/vnd.c6bank+json</Header>
+            <Header name="x-apikey">{private.x.apikey.proposal.status.service}</Header>
+        </Headers>
+        <Verb>GET</Verb>
+        <Path>/sf/proposal-status/{cpf}</Path>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo type="request" transport="http" createNew="false">request</AssignTo>
+</AssignMessage>

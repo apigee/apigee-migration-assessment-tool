@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="true" enabled="true" name="EV-Estadisticas-Error-Response">
+    <DisplayName>EV-Estadisticas-Error-Response</DisplayName>
+    <Source clearPayload="false">message.content</Source>
+    <VariablePrefix>flow.statistics.error.response</VariablePrefix>
+    <JSONPayload>
+        <Variable name="codigo">
+            <JSONPath>$.codigo</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

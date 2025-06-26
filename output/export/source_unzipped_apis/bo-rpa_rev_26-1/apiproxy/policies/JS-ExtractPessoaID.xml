@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript timeLimit="200" async="false" continueOnError="false" enabled="true" name="JS-ExtractPessoaID">
+    <DisplayName>JS-ExtractPessoaID</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <ResourceURL>jsc://ExtractPessoaID.js</ResourceURL>
+</Javascript>

@@ -36,6 +36,7 @@ offers methods to fetch dependency data, such as references.
 import os
 import json
 from classic import ApigeeClassic
+from utils import parse_config # Added for backend.properties access
 from nextgen import ApigeeNewGen
 from utils import create_dir, run_parallel, write_file, write_json
 from base_logger import logger
@@ -85,7 +86,8 @@ class ApigeeExporter():  # pylint: disable=R0902
             'keystores': 'keystores',
             'flowhooks': 'flowhooks',
             'caches': 'caches'
-        }
+        } # Note: 'api_traffic' will be handled separately, not as a generic env_object_type
+          # as it requires specific analytics API calls.
         self.org_object_types = {
             'org_keyvaluemaps': 'kvms',
             'developers': 'developers',
@@ -404,7 +406,29 @@ class ApigeeExporter():  # pylint: disable=R0902
         if len(org_objects) != 0:
             self.export_org_objects(org_objects)
 
+        # --- NEW: Handle API Traffic Export ---
+        if 'all' in resources_list or 'api_traffic' in resources_list:
+            self.export_api_traffic_data()
+        # --- END NEW ---
+
         return self.export_data
+
+    def export_api_traffic_data(self):
+        """Exports API proxy traffic data for all environments."""
+        logger.info("--Exporting API Proxy Traffic Data--")
+        backend_cfg = parse_config('backend.properties')
+        time_range = backend_cfg.get('inputs', 'ANALYTICS_TIME_RANGE', fallback='2weeks')
+
+        for env in self.export_data.get('envConfig', {}):
+            if self.apigee_type == 'edge': # Only for classic Edge
+                traffic_data_list = self.apigee.get_api_proxy_traffic(env, time_range)
+                # Convert list to dict to match expected structure in create_export_state
+                traffic_data_dict = {
+                    item['proxy_name']: item for item in traffic_data_list
+                }
+                self.export_data['envConfig'][env]['api_traffic'] = traffic_data_dict
+            else:
+                logger.info(f"Skipping API traffic export for Apigee X/Hybrid environment '{env}' as it's not directly supported via this tool's current analytics integration.")
 
     def create_export_state(self, export_dir):
         """Creates the export state by writing data to JSON files.

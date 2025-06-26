@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="CarTag">
+    <Description></Description>
+    <FaultRules/>
+    <Flows>
+        <Flow name="GetTagsByPersonId">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-PersonIdFromURI</Name>
+                </Step>
+                <Step>
+                    <Condition> (payload.person_id = "" or payload.person_id = null) </Condition>
+                    <FaultRules/>
+                    <Name>RF-PersonIdRequired</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadServicesCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SC-GetPersons</Name>
+                </Step>
+                <Step>
+                    <Condition>(personsResponse.status.code == 404)</Condition>
+                    <FaultRules/>
+                    <Name>RF-PersonNotFound</Name>
+                </Step>
+                <Step>
+                    <Condition>(personsResponse == null) or (personsResponse.status.code != 200)</Condition>
+                    <FaultRules/>
+                    <Name>RF-PersonsInfoFailed</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-PersonsInfo</Name>
+                </Step>
+                <Step>
+                    <Condition>(person_type = "PF")</Condition>
+                    <FaultRules/>
+                    <Name>AM-GetTagsByCpf</Name>
+                </Step>
+                <Step>
+                    <Condition>(person_type = "PJ")</Condition>
+                    <FaultRules/>
+                    <Name>AM-GetTagsByCnpj</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/person/*/tags") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="CancelTag">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-TagCancelRequest</Name>
+                </Step>
+                <Step>
+                    <Condition> (payload.person_id = "" or payload.person_id = null or payload.reason = "" or payload.reason = null) </Condition>
+                    <FaultRules/>
+                    <Name>RF-CarTagCancelFieldsRequired</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadServicesCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-CancelTag</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/tags/*/cancel") and (request.verb = "POST")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <FaultRules/>
+                <Name>OA-VerifyAccessToken</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <BasePath>/bo-rpa/car-tag</BasePath>
+        <Properties/>
+        <VirtualHost>vhost-backoffice</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="default">
+        <TargetEndpoint>CartagService</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

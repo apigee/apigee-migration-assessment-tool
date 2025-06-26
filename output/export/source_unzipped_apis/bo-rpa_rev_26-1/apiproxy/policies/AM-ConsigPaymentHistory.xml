@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-ConsigPaymentHistory">
+    <DisplayName>AM-ConsigPaymentHistory</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">
+	        {
+                "query_parameters" : {
+                    "proposal_number" : "{payload.proposal_number}"
+                }
+            }
+        </Payload>
+        <Verb>POST</Verb>
+        <Path>/data/c6-rpa-api</Path>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo type="request" transport="http" createNew="true">request</AssignTo>
+</AssignMessage>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-GetBoletosByPayer">
+    <DisplayName>EV-GetBoletosByPayer</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <URIPath>
+        <Pattern ignoreCase="false">**/{tax_identifier}/search</Pattern>
+    </URIPath>
+    <QueryParam name="external_number">
+        <Pattern ignoreCase="true">{external_number}</Pattern>
+    </QueryParam>
+    <QueryParam name="limit">
+        <Pattern ignoreCase="true">{limit}</Pattern>
+    </QueryParam>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <Source clearPayload="false">request</Source>
+    <VariablePrefix>Boleto</VariablePrefix>
+</ExtractVariables>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GenerateJWT async="false" continueOnError="false" enabled="true" name="SEC-GenerateJWT">
+    <DisplayName>SEC-GenerateJWT</DisplayName>
+    <Algorithm>HS256</Algorithm>
+    <SecretKey>
+        <Value ref="private.upstreamKey"/>
+    </SecretKey>
+    <Subject>subject-subject</Subject>
+    <Issuer>urn://apigee-edge-JWT-policy-test</Issuer>
+    <Audience>audience1,audience2</Audience>
+    <ExpiresIn>8h</ExpiresIn>
+    <AdditionalClaims>
+        <Claim name="userId" type="string" ref="request.formparam.username"/>
+    </AdditionalClaims>
+    <OutputVariable>jwt-variable</OutputVariable>
+</GenerateJWT>

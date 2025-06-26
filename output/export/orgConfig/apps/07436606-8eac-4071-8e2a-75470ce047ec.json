@@ -1,0 +1,43 @@
+{
+  "accessType": "",
+  "apiProducts": [],
+  "appFamily": "default",
+  "appId": "07436606-8eac-4071-8e2a-75470ce047ec",
+  "attributes": [
+    {
+      "name": "DisplayName",
+      "value": "testapp"
+    },
+    {
+      "name": "Notes",
+      "value": ""
+    }
+  ],
+  "callbackUrl": "",
+  "createdAt": 1690101260333,
+  "createdBy": "opdk@google.com",
+  "credentials": [
+    {
+      "apiProducts": [
+        {
+          "apiproduct": "testprdo",
+          "status": "approved"
+        }
+      ],
+      "attributes": [],
+      "consumerKey": "WSA9DzktfkxEEXGPTdSPJGSr0jAHNzGp",
+      "consumerSecret": "I9x1rAJhss5sT23G",
+      "expiresAt": -1,
+      "issuedAt": 1690101260354,
+      "scopes": [],
+      "status": "approved"
+    }
+  ],
+  "credentialsLoaded": true,
+  "developerId": "1Ze8wPNJq1jpu977",
+  "lastModifiedAt": 1690101260333,
+  "lastModifiedBy": "opdk@google.com",
+  "name": "testapp",
+  "scopes": [],
+  "status": "approved"
+}

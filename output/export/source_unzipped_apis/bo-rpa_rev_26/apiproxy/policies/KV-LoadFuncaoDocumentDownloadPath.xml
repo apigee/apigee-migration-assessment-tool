@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations encrypted="false" mapIdentifier="funcao-config-documents-path" async="false" continueOnError="false" enabled="true" name="KV-LoadFuncaoDocumentDownloadPath">
+    <DisplayName>KV-LoadFuncaoDocumentDownloadPath</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <ExclusiveCache>false</ExclusiveCache>
+    <ExpiryTimeInSecs>86400</ExpiryTimeInSecs>
+    <InitialEntries/>
+    <Get assignTo="private.funcao-documents-download-path">
+        <Key>
+            <Parameter>funcao-documents-download-path</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

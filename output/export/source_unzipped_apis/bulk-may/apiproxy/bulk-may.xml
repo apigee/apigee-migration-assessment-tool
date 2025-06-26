@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="bulk-may">
+    <Basepaths>/may</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1684531193988</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName></DisplayName>
+    <LastModifiedAt>1684531193988</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:92346690ae8de2d5112e70c9c7df4c42410f0fdce017c0503e23d4e03cdc7915402c45f6e3780c5c244237444e8b25df79bbc1b5d9df2ba098657caa99831d50:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>jenkins-callout</Policy>
+        <Policy>larson-callout</Policy>
+        <Policy>long-martinez-callout</Policy>
+        <Policy>mccann-callout</Policy>
+        <Policy>morgan-morgan-callout</Policy>
+        <Policy>morris-callout</Policy>
+        <Policy>simon-brown-callout</Policy>
+        <Policy>smith-owens-callout</Policy>
+        <Policy>thompson-johnson-callout</Policy>
+        <Policy>ward-callout</Policy>
+        <Policy>warner-callout</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-TransUnionCPFRequest">
+    <DisplayName>AM-TransUnionCPFRequest</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">
+{
+    "Token": "{private.Authorization.transunion.service}",
+    "CPF": "{payload.tax_identifier}"
+}
+        </Payload>
+        <Verb>POST</Verb>
+        <Path>/api/TransUnion/SRF/PF/SituacaoCadastralCPF</Path>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo type="request" transport="http" createNew="false">request</AssignTo>
+</AssignMessage>

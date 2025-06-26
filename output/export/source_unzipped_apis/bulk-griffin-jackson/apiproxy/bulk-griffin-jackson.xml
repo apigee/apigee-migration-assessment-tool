@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="bulk-griffin-jackson">
+    <Basepaths>/griffin-jackson</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1684530913894</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName></DisplayName>
+    <LastModifiedAt>1684530913894</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:f6311e5bbe20f848183ace8f50dd91416f28fc895fb540e74f5be9104e78754b7cfcad5bb285f8873f219277b9f644dba98559481c3513db18a54319de370de1:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>edwards-henry-callout</Policy>
+        <Policy>edwards-wilkinson-callout</Policy>
+        <Policy>huynh-callout</Policy>
+        <Policy>jenkins-callout</Policy>
+        <Policy>king-horne-callout</Policy>
+        <Policy>larson-callout</Policy>
+        <Policy>lawson-callout</Policy>
+        <Policy>mcclure-callout</Policy>
+        <Policy>mckinney-callout</Policy>
+        <Policy>mosley-callout</Policy>
+        <Policy>newman-greene-callout</Policy>
+        <Policy>odom-hampton-callout</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="true" enabled="true" name="AM-BalanceAvailableStatement">
+    <DisplayName>AM-BalanceAvailableStatement</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">
+            {
+                "available": "{available}",
+                "total_available": "{total_available}"
+            }
+        </Payload>
+        <StatusCode>200</StatusCode>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

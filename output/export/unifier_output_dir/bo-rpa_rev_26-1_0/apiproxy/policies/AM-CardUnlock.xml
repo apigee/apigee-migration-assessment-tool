@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-CardUnlock">
+    <DisplayName>AM-CardUnblock</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="correlation-id">{Context.correlationId}</Header>
+            <Header name="x-correlation-id">{Context.correlationId}</Header>
+            <Header name="person-id">{payload.personId}</Header>
+            <Header name="Authorization">Bearer {impersonateAccessToken}</Header>
+        </Headers>
+        <Verb>POST</Verb>
+        <Path>/card/{payload.cardId}/unblock</Path>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo type="request" transport="http" createNew="true">request</AssignTo>
+</AssignMessage>

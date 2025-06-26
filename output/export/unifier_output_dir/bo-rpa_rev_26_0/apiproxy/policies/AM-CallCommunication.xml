@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-CallCommunication">
+    <DisplayName>AM-CallCommunication</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Authorization">{private.Authorization.communication}</Header>
+        </Headers>
+        <Path>{proxy.pathsuffix}</Path>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo type="request" transport="http" createNew="false">request</AssignTo>
+</AssignMessage>

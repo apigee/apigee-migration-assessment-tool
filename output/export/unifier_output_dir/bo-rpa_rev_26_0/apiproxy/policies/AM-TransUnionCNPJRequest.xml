@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-TransUnionCNPJRequest">
+    <DisplayName>AM-TransUnionCNPJRequest</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">
+{
+    "Token": "{private.Authorization.transunion.service}",
+    "CNPJ": "{payload.tax_identifier}"
+}
+        </Payload>
+        <Verb>POST</Verb>
+        <Path>/api/TransUnion/SRF/PJ/SituacaoCadastralCNPJ</Path>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo type="request" transport="http" createNew="false">request</AssignTo>
+</AssignMessage>

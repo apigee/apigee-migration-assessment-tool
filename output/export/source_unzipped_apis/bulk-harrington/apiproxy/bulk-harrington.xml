@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="bulk-harrington">
+    <Basepaths>/harrington</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1684531239326</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName></DisplayName>
+    <LastModifiedAt>1684531239326</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:1038fd1ba68f995bf3d645f3216cee0f53ebcc6712a026e9cbc76b85ee6f68df63a86161378092d3d4c0b98090c2a759135b58d6fa7593599bba3a07f89b41e7:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>andrade-callout</Policy>
+        <Policy>avery-callout</Policy>
+        <Policy>ayala-callout</Policy>
+        <Policy>buchanan-arroyo-callout</Policy>
+        <Policy>carroll-mcgee-callout</Policy>
+        <Policy>hampton-callout</Policy>
+        <Policy>hays-callout</Policy>
+        <Policy>huynh-callout</Policy>
+        <Policy>jenkins-callout</Policy>
+        <Policy>johnston-callout</Policy>
+        <Policy>levine-callout</Policy>
+        <Policy>lowery-johnson-callout</Policy>
+        <Policy>mann-callout</Policy>
+        <Policy>martin-shaw-callout</Policy>
+        <Policy>mcclure-callout</Policy>
+        <Policy>mckinney-callout</Policy>
+        <Policy>medina-callout</Policy>
+        <Policy>parsons-perkins-callout</Policy>
+        <Policy>powers-callout</Policy>
+        <Policy>shea-martinez-callout</Policy>
+        <Policy>simpson-callout</Policy>
+        <Policy>spencer-callout</Policy>
+        <Policy>walker-king-callout</Policy>
+        <Policy>ward-thomas-callout</Policy>
+        <Policy>warner-callout</Policy>
+        <Policy>yu-callout</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

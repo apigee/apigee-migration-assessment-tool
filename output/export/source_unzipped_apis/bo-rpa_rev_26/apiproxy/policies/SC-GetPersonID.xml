@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="true" enabled="true" name="SC-GetPersonID">
+    <DisplayName>SC-GetPersonID</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Request clearPayload="true" variable="servicecallout.request">
+        <Set>
+            <Headers>
+                <Header name="Authorization">{private.Authorization.single.registry}</Header>
+            </Headers>
+            <Verb>GET</Verb>
+            <Path>/individuals/cpf/{user.cpf}</Path>
+        </Set>
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>personDataResponse</Response>
+    <HTTPTargetConnection>
+        <LoadBalancer>
+            <MaxFailures>0</MaxFailures>
+            <RetryEnabled>true</RetryEnabled>
+            <Server name="single-register-service">
+                <IsEnabled>true</IsEnabled>
+                <IsFallback>false</IsFallback>
+                <Weight>1</Weight>
+            </Server>
+            <TargetDisableSecs>300</TargetDisableSecs>
+        </LoadBalancer>
+        <SSLInfo>
+            <Ciphers/>
+            <ClientAuthEnabled>false</ClientAuthEnabled>
+            <Enabled>true</Enabled>
+            <IgnoreValidationErrors>false</IgnoreValidationErrors>
+            <Protocols/>
+        </SSLInfo>
+        <Properties/>
+    </HTTPTargetConnection>
+</ServiceCallout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="true" enabled="true" name="SC-GetAccounts">
+    <DisplayName>SC-GetAccounts</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Request clearPayload="true" variable="servicecallout.request">
+        <Set>
+            <Headers>
+                <Header name="Authorization">{private.Authorization.cards.manager}</Header>
+                <Header name="Accept">application/vnd.c6bank+json; version=2</Header>
+            </Headers>
+            <Verb>GET</Verb>
+            <Path>/person/{person.person_id}/account-status</Path>
+        </Set>
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>accountDataResponse</Response>
+    <HTTPTargetConnection>
+        <LoadBalancer>
+            <MaxFailures>0</MaxFailures>
+            <RetryEnabled>true</RetryEnabled>
+            <Server name="cards-service">
+                <IsEnabled>true</IsEnabled>
+                <IsFallback>false</IsFallback>
+                <Weight>1</Weight>
+            </Server>
+            <TargetDisableSecs>300</TargetDisableSecs>
+        </LoadBalancer>
+        <SSLInfo>
+            <Ciphers/>
+            <ClientAuthEnabled>false</ClientAuthEnabled>
+            <Enabled>true</Enabled>
+            <IgnoreValidationErrors>false</IgnoreValidationErrors>
+            <Protocols/>
+        </SSLInfo>
+        <Properties/>
+    </HTTPTargetConnection>
+</ServiceCallout>

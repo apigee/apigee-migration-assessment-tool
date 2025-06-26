@@ -541,6 +541,7 @@ def qualification_report(cfg, backend_cfg, export_data, topology_mapping):
     qualification_report_obj.report_alias_keycert()
     qualification_report_obj.sharded_proxies()
     qualification_report_obj.report_org_resourcefiles()
+    qualification_report_obj.report_api_traffic() # NEW: Call the new report method
     qualification_report_obj.validation_report()
     qualification_report_obj.qualification_report_summary()
 

@@ -26,6 +26,7 @@ entity types and allows exporting API proxy bundles.
 
 from requests.utils import quote as urlencode  # pylint: disable=E0401
 from rest import RestClient
+from base_logger import logger
 
 
 class ApigeeClassic():
@@ -333,3 +334,44 @@ class ApigeeClassic():
         url = f"{self.baseurl}/servers?pod={pod}"
         view_pod_response = self.client.get(url)
         return view_pod_response
+
+    def get_api_proxy_traffic(self, env_name, time_range):
+        """Retrieves API proxy traffic data for a specific environment.
+
+        Args:
+            env_name (str): The name of the environment.
+            time_range (str): The time range for the analytics query
+                              (e.g., '2weeks', '7days', '1month').
+
+        Returns:
+            list: A list of dictionaries, each representing traffic data
+                  for an API proxy. Returns an empty list if no data
+                  or an error occurs.
+        """
+        logger.info(f"Fetching API proxy traffic for environment '{env_name}' over '{time_range}'")
+        # Using timeUnit=day to get aggregated message_count for the timeRange
+        url = (f"{self.baseurl}/organizations/{self.org}/environments/{env_name}/stats?"
+               f"select=sum(message_count)&timeRange={time_range}&timeUnit=day&groupBy=apiproxy")
+        try:
+            traffic_data = self.client.get(url)
+            if traffic_data and 'environments' in traffic_data and len(traffic_data['environments']) > 0:
+                proxy_traffic_list = []
+                for env_stats in traffic_data['environments']:
+                    for dimension in env_stats.get('dimensions', []):
+                        if dimension['name'] == 'apiproxy':
+                            for proxy_entry in dimension.get('values', []):
+                                proxy_name = proxy_entry['name']
+                                total_message_count = 0
+                                for metric in proxy_entry.get('metrics', []):
+                                    if metric['name'] == 'sum(message_count)':
+                                        for value_entry in metric.get('values', []):
+                                            total_message_count += value_entry['value']
+                                proxy_traffic_list.append({
+                                    'proxy_name': proxy_name,
+                                    'total_traffic': total_message_count
+                                })
+                return proxy_traffic_list
+            return []
+        except Exception as e:
+            logger.error(f"Error fetching API proxy traffic for {env_name}: {e}", exc_info=True)
+            return []
