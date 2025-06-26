@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<FlowCallout async="false" continueOnError="false" enabled="true" name="perez-hartman-callout">
-    <DisplayName>perez-hartman-callout</DisplayName>
-    <FaultRules/>
-    <Properties/>
-    <SharedFlowBundle>shared-perez-hartman</SharedFlowBundle>
-</FlowCallout>

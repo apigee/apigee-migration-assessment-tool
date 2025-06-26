@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<FlowCallout async="false" continueOnError="false" enabled="true" name="larson-callout">
-    <DisplayName>larson-callout</DisplayName>
-    <FaultRules/>
-    <Properties/>
-    <SharedFlowBundle>shared-larson</SharedFlowBundle>
-</FlowCallout>

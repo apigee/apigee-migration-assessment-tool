@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<FlowCallout async="false" continueOnError="false" enabled="true" name="odom-hampton-callout">
-    <DisplayName>odom-hampton-callout</DisplayName>
-    <FaultRules/>
-    <Properties/>
-    <SharedFlowBundle>shared-odom-hampton</SharedFlowBundle>
-</FlowCallout>

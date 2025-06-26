@@ -1,5 +1,0 @@
-{
-  "continueOnError": "true",
-  "name": "myFlowHook2",
-  "sharedFlow": "shared-armstrong"
-}

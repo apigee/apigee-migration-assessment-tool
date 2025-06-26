@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<FlowCallout async="false" continueOnError="false" enabled="true" name="mckenzie-armstrong-callout">
-    <DisplayName>mckenzie-armstrong-callout</DisplayName>
-    <FaultRules/>
-    <Properties/>
-    <SharedFlowBundle>shared-mckenzie-armstrong</SharedFlowBundle>
-</FlowCallout>

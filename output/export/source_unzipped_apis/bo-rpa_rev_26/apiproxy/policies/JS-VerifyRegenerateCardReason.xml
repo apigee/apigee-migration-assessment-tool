@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Javascript timeLimit="200" async="false" continueOnError="false" enabled="true" name="JS-VerifyRegenerateCardReason">
-    <DisplayName>JS-VerifyRegenerateCardReason</DisplayName>
-    <FaultRules/>
-    <Properties/>
-    <ResourceURL>jsc://VerifyRegenerateCardReason.js</ResourceURL>
-</Javascript>

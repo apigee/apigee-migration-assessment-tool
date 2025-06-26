@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<FlowCallout async="false" continueOnError="false" enabled="true" name="FC-Seguridad-Valida-Access-Token">
-    <DisplayName>FC-Seguridad-Valida-Access-Token</DisplayName>
-    <FaultRules/>
-    <Properties/>
-    <SharedFlowBundle>sf-seguridad-oauth2-proxies</SharedFlowBundle>
-</FlowCallout>

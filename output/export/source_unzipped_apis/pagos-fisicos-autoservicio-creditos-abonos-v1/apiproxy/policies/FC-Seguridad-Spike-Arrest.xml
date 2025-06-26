@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<FlowCallout async="false" continueOnError="false" enabled="true" name="FC-Seguridad-Spike-Arrest">
-    <DisplayName>FC-Seguridad-Spike-Arrest</DisplayName>
-    <FaultRules/>
-    <Properties/>
-    <SharedFlowBundle>sf-seguridad-spikearrest</SharedFlowBundle>
-</FlowCallout>

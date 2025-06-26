@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<FlowCallout async="false" continueOnError="false" enabled="true" name="thompson-johnson-callout">
-    <DisplayName>thompson-johnson-callout</DisplayName>
-    <FaultRules/>
-    <Properties/>
-    <SharedFlowBundle>shared-thompson-johnson</SharedFlowBundle>
-</FlowCallout>

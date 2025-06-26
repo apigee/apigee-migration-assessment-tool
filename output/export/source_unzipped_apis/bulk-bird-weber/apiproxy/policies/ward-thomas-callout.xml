@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<FlowCallout async="false" continueOnError="false" enabled="true" name="ward-thomas-callout">
-    <DisplayName>ward-thomas-callout</DisplayName>
-    <FaultRules/>
-    <Properties/>
-    <SharedFlowBundle>shared-ward-thomas</SharedFlowBundle>
-</FlowCallout>

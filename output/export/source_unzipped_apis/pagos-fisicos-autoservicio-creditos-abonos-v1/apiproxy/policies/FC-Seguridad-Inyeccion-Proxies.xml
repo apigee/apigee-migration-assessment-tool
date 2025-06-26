@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<FlowCallout async="false" continueOnError="false" enabled="true" name="FC-Seguridad-Inyeccion-Proxies">
-    <DisplayName>FC-Seguridad-Inyeccion-Proxies</DisplayName>
-    <FaultRules/>
-    <Properties/>
-    <SharedFlowBundle>sf-seguridad-inyeccion-proxies</SharedFlowBundle>
-</FlowCallout>

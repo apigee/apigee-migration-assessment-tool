@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-TargetEndPoint">
-    <DisplayName>AM-TargetEndPoint</DisplayName>
-    <Properties/>
-    <AssignVariable>
-        <Name>endpoint.value</Name>
-        <Value>target</Value>
-    </AssignVariable>
-</AssignMessage>

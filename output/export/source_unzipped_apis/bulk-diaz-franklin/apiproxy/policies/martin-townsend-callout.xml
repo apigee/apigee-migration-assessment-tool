@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<FlowCallout async="false" continueOnError="false" enabled="true" name="martin-townsend-callout">
-    <DisplayName>martin-townsend-callout</DisplayName>
-    <FaultRules/>
-    <Properties/>
-    <SharedFlowBundle>shared-martin-townsend</SharedFlowBundle>
-</FlowCallout>

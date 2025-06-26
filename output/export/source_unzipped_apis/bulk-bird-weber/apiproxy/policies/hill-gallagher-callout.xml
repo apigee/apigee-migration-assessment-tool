@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<FlowCallout async="false" continueOnError="false" enabled="true" name="hill-gallagher-callout">
-    <DisplayName>hill-gallagher-callout</DisplayName>
-    <FaultRules/>
-    <Properties/>
-    <SharedFlowBundle>shared-hill-gallagher</SharedFlowBundle>
-</FlowCallout>

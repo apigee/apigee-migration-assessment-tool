@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<FlowCallout async="false" continueOnError="false" enabled="true" name="edwards-henry-callout">
-    <DisplayName>edwards-henry-callout</DisplayName>
-    <FaultRules/>
-    <Properties/>
-    <SharedFlowBundle>shared-edwards-henry</SharedFlowBundle>
-</FlowCallout>
