@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="TransUnion">
+    <Description></Description>
+    <FaultRules/>
+    <Flows>
+        <Flow name="Situation">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadServicesCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-GetTaxIdentifierAndType</Name>
+                </Step>
+                <Step>
+                    <Condition> (payload.tax_identifier = "" or payload.tax_identifier = null or payload.person_type = "" or payload.person_type = null ) </Condition>
+                    <FaultRules/>
+                    <Name>RF-BadRequestTaxIdentifierAndTypeRequired</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.person_type !~~ "(?i)^pf$" and payload.person_type !~~ "(?i)^pj$")</Condition>
+                    <FaultRules/>
+                    <Name>RF-BadRequestPersonType</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.person_type ~~ "(?i)^pf$")</Condition>
+                    <FaultRules/>
+                    <Name>AM-TransUnionCPFRequest</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.person_type ~~ "(?i)^pj$")</Condition>
+                    <FaultRules/>
+                    <Name>AM-TransUnionCNPJRequest</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/situation") and (request.verb = "POST")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <FaultRules/>
+                <Name>OA-VerifyAccessToken</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <BasePath>/bo-rpa/transunion</BasePath>
+        <Properties/>
+        <VirtualHost>vhost-backoffice</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="TransUnionService">
+        <TargetEndpoint>TransUnionService</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

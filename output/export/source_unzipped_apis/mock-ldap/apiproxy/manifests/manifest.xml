@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="LDAPAuthentication" version="SHA-512:1ff95028f267f7a2a8fbaa5dd3ab67deeb9ef3e7375c80044be343aa7fd66361be4417451ccae6eadb77ad7c08531074df8fae6b45c1ea4d69c135f79b1275c2"/>
+        <VersionInfo resourceName="SetLDAPFlowVariables" version="SHA-512:1dbdad9b03c6d42cbdea6b49e433f2e55912474fd7049080e7cb4575cc3a020977ffa19aaf0755610553aff78228ec2ba46b9f9e5023e7391538792045c0824f"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:38adeac066a179eae4ebb569319c17a97980e2af1ce7756cf9391eef8193ad60857658c2a89eb1bcfd89e5c3a24e9902cfdca3d91ad4f9f614876e80fe442291"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:43d08a58f2a7fddb415b15396ab338725eb90881f61e4540733ed8f4e65ce6ba06afd2be2be313eb1d2c775c399300d0aa9118b5f3d6ff95ea498e499b454115"/>
+    </TargetEndpoints>
+</Manifest>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AssignMessage async="false" continueOnError="true" enabled="true" name="AM-RequestCardInvoicePayment">
+	<DisplayName>AM-RequestCardInvoicePayment</DisplayName>
+	<FaultRules></FaultRules>
+	<Properties></Properties>
+	<Set>
+		<Headers>
+			<Header name="Authorization">{private.Authorization.cards.payments}</Header>
+			<Header name="Accept">application/json</Header>
+		</Headers>
+		<Payload contentType="application/json">{
+             "person_id": "{payload.person_id}",
+             "amount": {payload.amount},
+             "payment_date": "{payload.payment_date}"
+            }</Payload>
+		<Verb>POST</Verb>
+		<Path>/internal/account/{account.id}/invoices/{payload.due_date}/request-payment</Path>
+	</Set>
+	<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+	<AssignTo type="request" transport="http" createNew="false">request</AssignTo>
+</AssignMessage>

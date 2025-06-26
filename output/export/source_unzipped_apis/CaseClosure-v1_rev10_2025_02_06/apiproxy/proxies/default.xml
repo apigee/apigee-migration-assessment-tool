@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProxyEndpoint name="default">
+    <Description>eip-sc-grlrfc-case-closure-api</Description>
+    <DefaultFaultRule name="default-fault">
+        <Step>
+            <Name>FC-ExceptionHandling</Name>
+        </Step>
+    </DefaultFaultRule>
+    <PreFlow name="PreFlow">
+        <Request>
+        </Request>
+        <Response>
+        </Response>
+    </PreFlow>
+    <Flows>
+        <Flow>
+        </Flow>
+        <Flow name="OptionsPreFlight">
+            <Request>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AM-Add_CORS</Name>
+                </Step>
+            </Response>
+            <Condition>request.verb == "OPTIONS" AND request.header.origin != null AND request.header.Access-Control-Request-Method != null</Condition>
+        </Flow>
+        <Flow name="GET /v1/case-closure">
+            <Condition>(proxy.pathsuffix MatchesPath "/v1/case-closure") and (request.verb = "GET")</Condition>
+            <Description>
+            </Description>
+            <Request>
+            </Request>
+            <Response>
+            </Response>
+        </Flow>
+        <Flow name="UnmatchedPaths">
+            <Description>
+            </Description>
+            <Request>
+                <Step>
+                    <Name>AM-404_Not_Found</Name>
+                </Step>
+                <Step>
+                    <Name>RF-Custom_Errors</Name>
+                </Step>
+            </Request>
+            <Response>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "**")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request>
+        </Request>
+        <Response>
+        </Response>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/v1/juc</BasePath>
+        <VirtualHost>https-external-apis</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="NoRoute">
+        <Condition>request.verb == "OPTIONS" AND request.header.origin != null AND request.header.Access-Control-Request-Method != null</Condition>
+    </RouteRule>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

@@ -1,0 +1,10 @@
+{
+  "encrypted": false,
+  "entry": [
+    {
+      "name": "28f97657-0a1a-4df2-a8f2-a4c6f9bddb6f",
+      "value": "{\"createdBy\":\"opdk@google.com\",\"lastModifiedBy\":\"opdk@google.com\",\"displayName\":\"test\",\"sortbyCols\":[],\"timeUnit\":\"hour\",\"dimensions\":[\"apiproxy\"],\"chartType\":\"column\",\"tags\":[],\"comments\":[],\"metrics\":[{\"function\":\"sum\",\"name\":\"is_error\"},{\"function\":\"sum\",\"name\":\"target_error\"},{\"function\":\"sum\",\"name\":\"message_count\"}],\"properties\":{\"__ui__\":[{\"name\":\"description\"},{\"name\":\"accuracy\"}]},\"org\":\"validate\",\"env\":\"test\",\"createdAt\":1710233341601,\"lastViewedAt\":1710233342260,\"lastModifiedAt\":1710233341601,\"name\":\"28f97657-0a1a-4df2-a8f2-a4c6f9bddb6f\"}"
+    }
+  ],
+  "name": "CustomReportsvalidate#28f97657-0a1a-4df2-a8f2-a4c6f9bddb6f"
+}

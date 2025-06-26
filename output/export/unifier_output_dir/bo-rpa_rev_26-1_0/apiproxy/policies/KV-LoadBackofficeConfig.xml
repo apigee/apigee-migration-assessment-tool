@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations encrypted="false" mapIdentifier="backoffice-rpa-config" async="false" continueOnError="true" enabled="true" name="KV-LoadBackofficeConfig">
+    <DisplayName>KV-LoadBackofficeConfig</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <ExclusiveCache>false</ExclusiveCache>
+    <ExpiryTimeInSecs>300</ExpiryTimeInSecs>
+    <InitialEntries/>
+    <Get assignTo="path.c6consig-bff-funcao">
+        <Key>
+            <Parameter>c6consig-bff-funcao-path</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

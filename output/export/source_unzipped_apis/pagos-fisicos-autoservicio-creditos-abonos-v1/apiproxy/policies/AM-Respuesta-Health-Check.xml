@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-Respuesta-Health-Check">
+    <DisplayName>AM-Respuesta-Health-Check</DisplayName>
+    <Set>
+        <Headers>
+            <Header name="Content-Type">application/json</Header>
+            <Header name="Access-Control-Allow-Origin">{request.header.origin}</Header>
+        </Headers>
+        <Payload contentType="application/json">
+            {
+                "mensaje": "Informe del procesador de mensajes {system.uuid}: ¡ESTOY FUNCIONANDO!",
+                "folio": "{messageid}",
+                "resultado": {
+                    "ambiente": "{environment.name}",
+                    "api": "{apiproxy.name}",
+                    "ip": "{request.header.X-Forwarded-For}",
+                    "latencia": {
+                        "total": "{flow.healthcheck.latency}"
+                    }		
+                }
+            }            
+        </Payload>
+        <StatusCode>200</StatusCode>
+        <ReasonPhrase>OK</ReasonPhrase>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

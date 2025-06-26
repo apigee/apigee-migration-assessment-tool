@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="access-roman" version="SHA-512:cd2e768534e6d8b6418a971f0edf96641e7f137a40d5520aba5945181c81dc08c2996f01e75a94647d9fcb6708c8b913dd3b373d2a7c7062a28f608d7d470fc2"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:73becde6c8473ddf107405061b1f6a30f76a0bcb3eeb0667f1eee70a20bceda4aab26779987d1d143d870020440f016dba4995e38c5f1db6aedb6d488037c71c"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:29532c70f1628d2c7c46fad5e6bd8b536c0b1adbd3dabd27cc69b5656289df9c32ba9e7f91dc35d716bf4b4e512f047e3d1c68794dd6347a6052dd2b31397a50"/>
+    </TargetEndpoints>
+</Manifest>

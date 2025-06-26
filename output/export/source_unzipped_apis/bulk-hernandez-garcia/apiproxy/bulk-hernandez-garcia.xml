@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="bulk-hernandez-garcia">
+    <Basepaths>/hernandez-garcia</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1684531157357</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName></DisplayName>
+    <LastModifiedAt>1684531157357</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:1dc276b41118f7ac2591df5bf6fe734458f2829f290153e3d6702ad0d02007af501578ccc50868a96ed3e5c939ab447fbe70d31a7db8b61a1a114cff52c3d71f:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>hill-gallagher-callout</Policy>
+        <Policy>howard-dunlap-callout</Policy>
+        <Policy>johnston-callout</Policy>
+        <Policy>martin-shaw-callout</Policy>
+        <Policy>perez-hartman-callout</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

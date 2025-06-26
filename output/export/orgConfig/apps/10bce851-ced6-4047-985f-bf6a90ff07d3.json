@@ -1,0 +1,43 @@
+{
+  "accessType": "",
+  "apiProducts": [],
+  "appFamily": "default",
+  "appId": "10bce851-ced6-4047-985f-bf6a90ff07d3",
+  "attributes": [
+    {
+      "name": "DisplayName",
+      "value": "Mock App"
+    },
+    {
+      "name": "Notes",
+      "value": ""
+    }
+  ],
+  "callbackUrl": "",
+  "createdAt": 1705487611936,
+  "createdBy": "opdk@google.com",
+  "credentials": [
+    {
+      "apiProducts": [
+        {
+          "apiproduct": "OAuthDemo",
+          "status": "approved"
+        }
+      ],
+      "attributes": [],
+      "consumerKey": "GZOBCAU2I0695tT8wApgyEPt51w7ZNRm",
+      "consumerSecret": "Zv5XAoS0XBdGutxV",
+      "expiresAt": -1,
+      "issuedAt": 1705487611940,
+      "scopes": [],
+      "status": "approved"
+    }
+  ],
+  "credentialsLoaded": true,
+  "developerId": "pgvXsu9mv3tGHbfB",
+  "lastModifiedAt": 1705487611936,
+  "lastModifiedBy": "opdk@google.com",
+  "name": "Mock App",
+  "scopes": [],
+  "status": "approved"
+}

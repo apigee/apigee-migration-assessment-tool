@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="Credit-Manager">
+    <Description></Description>
+    <FaultRules/>
+    <Flows>
+        <Flow name="GetCreditLimitsByPersonIdAndProductType">
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-PersonIdFromURI</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>EV-GetProductTypeFromURI</Name>
+                </Step>
+                <Step>
+                    <Condition>(payload.product_type = null or payload.product_type = "")</Condition>
+                    <FaultRules/>
+                    <Name>RF-BadRequestProductType</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadServicesCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-GetProductsCredit</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>JS-ExtractCardProductCreditTree</Name>
+                </Step>
+                <Step>
+                    <Condition>(credit.product = null)</Condition>
+                    <FaultRules/>
+                    <Name>RF-ProductCreditTreeNotFound</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-GetProductsCreditResponse</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/credit-limits/*") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="Credit-Manager">
+            <Description></Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>KV-LoadServicesCredentials</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AM-CreditManagerRequest</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/**")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <FaultRules/>
+                <Name>OA-VerifyAccessToken</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <BasePath>/bo-rpa/credit-manager</BasePath>
+        <Properties/>
+        <VirtualHost>vhost-backoffice</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="CreditManagerService">
+        <TargetEndpoint>CreditManagerService</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

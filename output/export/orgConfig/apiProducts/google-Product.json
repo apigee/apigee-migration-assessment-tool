@@ -1,0 +1,47 @@
+{
+  "apiResources": [
+    "/**",
+    "/"
+  ],
+  "approvalType": "auto",
+  "attributes": [
+    {
+      "name": "description",
+      "value": "google Product"
+    },
+    {
+      "name": "developer.quota.limit",
+      "value": "10000"
+    },
+    {
+      "name": "developer.quota.interval",
+      "value": "1"
+    },
+    {
+      "name": "developer.quota.timeunit",
+      "value": "month"
+    },
+    {
+      "name": "access",
+      "value": "public"
+    }
+  ],
+  "createdAt": 1725248152263,
+  "createdBy": "opdk@google.com",
+  "description": "google Product",
+  "displayName": "google Product",
+  "environments": [
+    "test",
+    "dev"
+  ],
+  "lastModifiedAt": 1725248152263,
+  "lastModifiedBy": "opdk@google.com",
+  "name": "google-Product",
+  "proxies": [
+    "google"
+  ],
+  "quota": "10000",
+  "quotaInterval": "1",
+  "quotaTimeUnit": "month",
+  "scopes": []
+}

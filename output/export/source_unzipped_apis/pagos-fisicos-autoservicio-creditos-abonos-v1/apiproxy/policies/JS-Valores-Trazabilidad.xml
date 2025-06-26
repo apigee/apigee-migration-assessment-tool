@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="JS-Valores-Trazabilidad">
+    <DisplayName>JS-Valores-Trazabilidad</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://JS-Valores-Trazabilidad.js</ResourceURL>
+</Javascript>

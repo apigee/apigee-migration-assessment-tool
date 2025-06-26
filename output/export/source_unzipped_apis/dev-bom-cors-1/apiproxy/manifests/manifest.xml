@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="add-cors" version="SHA-512:32b92d760f31b4efb77393b405f5f5eb16119691cf5dce4f5b4307c7b1092ee4042472773e0c110bb1f3f2b9824b9d869bf42315f875e453ca9e9d96d4204c17"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:8076153ee8131363e85dcfd15b0bb428197faa33f36d155ef8443a0e72e682dcec96d134306a5a9baf41555525de97e9b904de2e6bba8ab5834bd3ca35d9c258"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints/>
+</Manifest>

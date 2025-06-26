@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="remove-query-param-apikey" version="SHA-512:fedac28ff50d0bca86015a692d1b6e093718a7c700308eebb8b74c4b95a71815a7bc9dd92d2809176c881a6affe89177a87205bb9ae618083036394d199b3d05"/>
+        <VersionInfo resourceName="verify-api-key" version="SHA-512:6595defb9a0b6d7fce111a9fe959f5e8a7aa03ffb301373c4c4e20e814648b42d5858631e95e4a8d698b5fe2139390c252e9011d9f1be8c3a35de73c1c269f97"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="ProxyEndpoint-2-ProxyEndpoint-3-ProxyEndpoint-4-ProxyEndpoint-5-default" version="SHA-512:214177fee8deaa2a75c78e25d7b2f690d87d7c48f4e4dfdf131645f4ed72f4178a2dd52f97e61377788939a1b60b328d87da1ea76360eed21445a36a2d7f3f17"/>
+        <VersionInfo resourceName="ProxyEndpoint-6" version="SHA-512:1b61080802cba46a5b5bc3b364609b9189aafc8bb43e21983743f088fd958cefc6342c6878259969fc04d2a3e630ae1284bbcb5e37a6c7a384915a9fff4efda3"/>
+        <VersionInfo resourceName="ProxyEndpoint-7" version="SHA-512:ed7a206d95c1ef1644d0e85c06bc43f4c52043576c40e9b3bed79ad8c24fe8a2838373f8ca589bbfede663a5f230baf5ac3d3b8f02512566d007382d7f2e9dff"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:08dd204624a779800734527c9d2fe766ad775151687cbd0d465d57f6113aaa2a2b0624786239bd87e49963a86bace147540b5b19490cf9c876d31d4223d9bcd4"/>
+    </TargetEndpoints>
+</Manifest>

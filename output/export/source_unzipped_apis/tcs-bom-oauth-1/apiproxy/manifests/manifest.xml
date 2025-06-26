@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="VAK-VerifyAPIKey" version="SHA-512:a3ecfca27309bf6f97e898f18a93cf2502b4ba700cc015428ff9e75d61cde94e45d82fdebc4090b1313b44a7cfd75a1afe52acf76a69763ef6af625e8a4f7171"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:f3ec35e783d1a0906e35fbe6228e1e00f4c29ad2f12791c6a303d0f9155a99f5724125c0953cf8ac5bc30fe5d1988b97f3c8d46169fbe568937a68a6e87f0f14"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints/>
+</Manifest>

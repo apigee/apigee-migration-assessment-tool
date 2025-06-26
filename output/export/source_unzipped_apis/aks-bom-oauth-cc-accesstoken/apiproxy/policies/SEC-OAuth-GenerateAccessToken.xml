@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="SEC-OAuth-GenerateAccessToken">
+    <DisplayName>SEC-OAuth-GenerateAccessToken</DisplayName>
+    <Properties/>
+    <ExpiresIn>1800000</ExpiresIn>
+    <Operation>GenerateAccessToken</Operation>
+    <SupportedGrantTypes>
+        <GrantType>client_credentials</GrantType>
+    </SupportedGrantTypes>
+    <GenerateResponse enabled="true"/>
+    <Tokens/>
+</OAuthV2>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-ExtractPersonIdDocumentId">
+    <DisplayName>EV-ExtractPersonIdDocumentId</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="person_id">
+            <JSONPath>$.person_id</JSONPath>
+        </Variable>
+        <Variable name="document_id">
+            <JSONPath>$.document_id</JSONPath>
+        </Variable>
+        <Variable name="resource_id">
+            <JSONPath>$.resource_id</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source clearPayload="false">request</Source>
+    <VariablePrefix>payload</VariablePrefix>
+</ExtractVariables>

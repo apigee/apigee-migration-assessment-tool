@@ -1,0 +1,19 @@
+{
+  "apps": [
+    "withandwithout",
+    "aargh"
+  ],
+  "companies": [],
+  "email": "charlie-cicd@example.com",
+  "developerId": "HKNOJWIJMn08iEWh",
+  "firstName": "Charlie",
+  "lastName": "CICD",
+  "userName": "charlie",
+  "organizationName": "validate",
+  "status": "active",
+  "attributes": [],
+  "createdAt": 1706849067077,
+  "createdBy": "opdk@google.com",
+  "lastModifiedAt": 1706852955211,
+  "lastModifiedBy": "opdk@google.com"
+}

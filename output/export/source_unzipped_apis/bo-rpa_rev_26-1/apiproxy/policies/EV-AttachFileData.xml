@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-AttachFileData">
+    <DisplayName>EV-AttachFileData</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="parent_record_id">
+            <JSONPath>$.parent_record_id</JSONPath>
+        </Variable>
+        <Variable name="content_name">
+            <JSONPath>$.content_name</JSONPath>
+        </Variable>
+        <Variable name="file_base64">
+            <JSONPath>$.file_base64</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source clearPayload="false">request</Source>
+    <VariablePrefix>payload</VariablePrefix>
+</ExtractVariables>

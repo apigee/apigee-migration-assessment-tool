@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-GetBffFuncaoUraAccessToken">
+    <DisplayName>EV-GetBffFuncaoUraAccessToken</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="access_token">
+            <JSONPath>$.access_token</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source clearPayload="false">uraFuncaoResponse</Source>
+    <VariablePrefix>bffToken</VariablePrefix>
+</ExtractVariables>

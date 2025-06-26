@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-GetAddressByZipCode">
+    <DisplayName>AM-GetAddressByZipCode</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Authorization">{private.Authorization.location}</Header>
+        </Headers>
+        <Verb>GET</Verb>
+        <Path>/locations/{Location.zip_code}</Path>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo type="request" transport="http" createNew="true">request</AssignTo>
+</AssignMessage>

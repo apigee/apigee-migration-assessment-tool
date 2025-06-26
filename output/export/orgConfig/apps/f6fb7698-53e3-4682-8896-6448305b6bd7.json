@@ -1,0 +1,43 @@
+{
+  "accessType": "",
+  "apiProducts": [],
+  "appFamily": "default",
+  "appId": "f6fb7698-53e3-4682-8896-6448305b6bd7",
+  "attributes": [
+    {
+      "name": "ADMIN_EMAIL",
+      "value": "ashwinknaik@google.com"
+    },
+    {
+      "name": "DisplayName",
+      "value": "My App 1725298158"
+    }
+  ],
+  "callbackUrl": "example.com",
+  "createdAt": 1725298158742,
+  "createdBy": "opdk@google.com",
+  "credentials": [
+    {
+      "apiProducts": [
+        {
+          "apiproduct": "OAuth",
+          "status": "approved"
+        }
+      ],
+      "attributes": [],
+      "consumerKey": "KfuCUOPw09q8GkdLYT3iSMneWf08DK1A",
+      "consumerSecret": "N2L4JRbWAkEDA45h",
+      "expiresAt": -1,
+      "issuedAt": 1725298158764,
+      "scopes": [],
+      "status": "approved"
+    }
+  ],
+  "credentialsLoaded": true,
+  "developerId": "yAPY8uvd9ero03U6",
+  "lastModifiedAt": 1725298158742,
+  "lastModifiedBy": "opdk@google.com",
+  "name": "app-1725298158",
+  "scopes": [],
+  "status": "approved"
+}

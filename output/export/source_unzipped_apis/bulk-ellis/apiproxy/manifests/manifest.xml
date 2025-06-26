@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="access-estrada" version="SHA-512:7ed8ca42be99ceb4fac06398dd05ef9f19c746ae25359e18de853cdee44053733f0a03e33d3887785eeb70a1d899452c5eabf5bbe76388f86cc41988ab335c69"/>
+        <VersionInfo resourceName="access-jones-robinson" version="SHA-512:e37c90db71a49f77fdcb1d7dd9c6253516f8927a21f18f5a7835dea81cbf439af8657f6ba84e6c1185a7e72f5189499817d9800a94264ed9367a23c06b2baa9e"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:ac2295ab4e48daa0933febe3f5cff33949c674acce9d36212aafba1e4c8dd4302ea4148bf37ca13e3fbf01a32302a60da1f301ccc709ca8290b2a8113551bf87"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:e364e0c7e0aacc3cfe954854a5b8dbfbbfa58b3a68538635f630987347b33373d76ae5fd737afbb31e50eff79279a11db7e734a7bf1d196fcc37d1e50e13ed99"/>
+    </TargetEndpoints>
+</Manifest>

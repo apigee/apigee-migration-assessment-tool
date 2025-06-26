@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<BasicAuthentication async="false" continueOnError="false" enabled="true" name="SEC-BasicAuthDecode">
+    <DisplayName>SEC-BasicAuthDecode</DisplayName>
+    <Operation>Decode</Operation>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <User ref="request.queryparam.userbom"/>
+    <Password ref="request.queryparam.password"/>
+    <Source>request.header.Authorization</Source>
+</BasicAuthentication>

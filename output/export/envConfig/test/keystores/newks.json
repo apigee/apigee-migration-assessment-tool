@@ -1,0 +1,68 @@
+{
+  "aliases": [
+    {
+      "aliasName": "key-cert alias",
+      "cert": "key-cert alias-cert",
+      "key": "key-cert alias-key"
+    },
+    {
+      "aliasName": "only-cert",
+      "cert": "only-cert-cert",
+      "key": ""
+    }
+  ],
+  "certs": [
+    "key-cert alias-cert",
+    "only-cert-cert"
+  ],
+  "keys": [
+    "key-cert alias",
+    ""
+  ],
+  "name": "newks",
+  "alias_data": {
+    "key-cert alias": {
+      "alias": "key-cert alias",
+      "certsInfo": {
+        "certInfo": [
+          {
+            "basicConstraints": "CA:FALSE",
+            "expiryDate": 1733848654000,
+            "isValid": "No",
+            "issuer": "CN=Test Server CA",
+            "publicKey": "RSA Public Key, 2048 bits",
+            "serialNumber": "64",
+            "sigAlgName": "SHA256withRSA",
+            "subject": "CN=test.api.example.com",
+            "subjectAlternativeNames": [],
+            "validFrom": 1702312654000,
+            "version": 1
+          }
+        ],
+        "certName": "key-cert alias-cert"
+      },
+      "keyName": "key-cert alias"
+    },
+    "only-cert": {
+      "alias": "only-cert",
+      "certsInfo": {
+        "certInfo": [
+          {
+            "basicConstraints": "CA:FALSE",
+            "expiryDate": 1733848654000,
+            "isValid": "No",
+            "issuer": "CN=Test Server CA",
+            "publicKey": "RSA Public Key, 2048 bits",
+            "serialNumber": "64",
+            "sigAlgName": "SHA256withRSA",
+            "subject": "CN=test.api.example.com",
+            "subjectAlternativeNames": [],
+            "validFrom": 1702312654000,
+            "version": 1
+          }
+        ],
+        "certName": "only-cert-cert"
+      }
+    }
+  }
+}

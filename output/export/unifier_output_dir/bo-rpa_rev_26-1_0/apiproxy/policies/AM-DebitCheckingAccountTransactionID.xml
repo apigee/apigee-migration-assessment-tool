@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-DebitCheckingAccountTransactionID">
+	<DisplayName>AM-DebitCheckingAccountTransactionID</DisplayName>
+	<FaultRules></FaultRules>
+	<Properties></Properties>
+	<Set>
+		<Headers>
+			<Header name="TRANSACTIONAL-ID">{request.header.TRANSACTIONAL-ID}</Header>
+			<Header name="Authorization">{private.Authorization.checking.account}</Header>
+		</Headers>
+		<Payload contentType="application/json">{
+             "amount": {payload.amount},
+             "historic": {payload.historic},
+             "historic_complement": "{payload.historic_complement}",
+             "details": "{payload.details}",
+             "reference": "{payload.reference}"
+            }</Payload>
+		<Verb>POST</Verb>
+		<Path>/branches/{payload.branch_number}/accounts/{payload.account_number}/debit</Path>
+	</Set>
+	<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+	<AssignTo type="request" transport="http" createNew="false">request</AssignTo>
+</AssignMessage>

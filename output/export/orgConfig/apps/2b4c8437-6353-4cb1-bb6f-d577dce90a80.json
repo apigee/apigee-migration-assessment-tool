@@ -1,0 +1,53 @@
+{
+  "accessType": "",
+  "apiProducts": [],
+  "appFamily": "default",
+  "appId": "2b4c8437-6353-4cb1-bb6f-d577dce90a80",
+  "attributes": [
+    {
+      "name": "DisplayName",
+      "value": "withandwithout"
+    },
+    {
+      "name": "Notes",
+      "value": ""
+    }
+  ],
+  "callbackUrl": "",
+  "createdAt": 1746029748798,
+  "createdBy": "opdk@google.com",
+  "credentials": [
+    {
+      "apiProducts": [
+        {
+          "apiproduct": "withapi",
+          "status": "approved"
+        }
+      ],
+      "attributes": [],
+      "consumerKey": "pBgExUFUOCW7EO4QAIBW4xK4u3Uf3oaV",
+      "consumerSecret": "uYDkbsKgOAi1Ip8V",
+      "expiresAt": -1,
+      "issuedAt": 1746029748805,
+      "scopes": [],
+      "status": "approved"
+    },
+    {
+      "apiProducts": [],
+      "attributes": [],
+      "consumerKey": "M9rrw4pDXR2OH96SsYIYpf2G1I848CbW",
+      "consumerSecret": "ASmgsMpVMSfU3huJ",
+      "expiresAt": -1,
+      "issuedAt": 1746030056253,
+      "scopes": [],
+      "status": "approved"
+    }
+  ],
+  "credentialsLoaded": true,
+  "developerId": "HKNOJWIJMn08iEWh",
+  "lastModifiedAt": 1746030174711,
+  "lastModifiedBy": "opdk@google.com",
+  "name": "withandwithout",
+  "scopes": [],
+  "status": "approved"
+}

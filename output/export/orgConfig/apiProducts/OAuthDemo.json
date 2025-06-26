@@ -1,0 +1,32 @@
+{
+  "apiResources": [
+    "/**",
+    "/"
+  ],
+  "approvalType": "auto",
+  "attributes": [
+    {
+      "name": "access",
+      "value": "public"
+    }
+  ],
+  "createdAt": 1705487532758,
+  "createdBy": "opdk@google.com",
+  "description": "",
+  "displayName": "OAuthDemo",
+  "environments": [
+    "test",
+    "dev"
+  ],
+  "lastModifiedAt": 1705580254455,
+  "lastModifiedBy": "opdk@google.com",
+  "name": "OAuthDemo",
+  "proxies": [
+    "aks-bom-oauth-cc",
+    "aks-bom-oauth-cc-accesstoken",
+    "aks-bom-login"
+  ],
+  "scopes": [
+    ""
+  ]
+}

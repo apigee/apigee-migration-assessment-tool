@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="andrade-callout" version="SHA-512:4a5a88a61f9fc48710bfb6134fba36b5e290884d613fed151e5d7d8d4f1e958d4e4f83de94ccdfb4cce4ab5b45d5649335f6a8df9bdb890bf7485a4270a30646"/>
+        <VersionInfo resourceName="avery-callout" version="SHA-512:c0846dec3eefee77b80be0cdb72dce28f68dc377fb30a91a0cf059847d7d703afa4efcaba6f422969eeb74f65cdcfc80d53ffc5072c18b0261ef41e74241550a"/>
+        <VersionInfo resourceName="ayala-callout" version="SHA-512:2b13d092cc2ba67a08dc2d951314fcbbac3b4109417771d07ffaadaa398cc57432b99747acb9384eb16b99bdebf7d066d8ce606a2b03e3524f81093eaea95568"/>
+        <VersionInfo resourceName="beltran-callout" version="SHA-512:8aa94deb04bf7529e081cbf3c10a58d3418fb50de59e921e8655a8a87c685ff3d623a119451cd159a57789401baadd1c7dc1d2047d5a9f3a7854774f8b977755"/>
+        <VersionInfo resourceName="black-callout" version="SHA-512:ebafce41355dcc61651710ec0205d585eef6f78601a72ae583054298fc33a999c84af7098fe3fa84f5b4331d88d788a3fa53cf199272dd52bc82d42b2977c6b4"/>
+        <VersionInfo resourceName="buchanan-arroyo-callout" version="SHA-512:3ecb974802ab7e877a985cd223d6e9ad432fd61ffa73db6b855ad9345498eb69fd3e70c950b830fd2772351903d8e1b990e5cf2de32ac8a7a5af664184650627"/>
+        <VersionInfo resourceName="cannon-callout" version="SHA-512:8ab1da2b615e12e277a6c0bd3c80c3015647a2c664ae65c5a5b3a3368c6d0a6e8e92e0ae2c6c5bc5e8696c8ad0c146f6d13b0025e6fad3c200e527a3d49a47de"/>
+        <VersionInfo resourceName="dalton-porter-callout" version="SHA-512:e534fc8150dbc5046db98170922f1cb318a25550f453f9320fb66b3b80f340e00593a9fcf5c99d42834e581488a70dda75f8482d829d51f485e4e75ba3bf882a"/>
+        <VersionInfo resourceName="downs-callout" version="SHA-512:29d98c2e6dd8de20e76dd22f6a702345b5b8168eb10b295c3efd58b34d8ab43e11d34de02b0582f1dca938959754d0aaacae39bb3a9cb4493d0eb117b9c20e0e"/>
+        <VersionInfo resourceName="dunn-callout" version="SHA-512:8456b179d366eadc4f5353b882dca0191721b19da5a889d006faabf9c10a808811550c1daccc39397def862fefbb815b7156a3a5ec94ffc98bc014d6c9c1194b"/>
+        <VersionInfo resourceName="edwards-henry-callout" version="SHA-512:eb541144c1b97999342c49612ada50870a31c780d3dab75f906f72d35681b891b4644dd3d62baa94dab2fff858455da54d701926b12b92cbf8d81eb8654677c5"/>
+        <VersionInfo resourceName="edwards-wilkinson-callout" version="SHA-512:965c7734826655f8664f8824998b4ee6d2c58d3948c1f2c9c999efbae78017a5f6b7ffc2539729ca4ace1a3f414dc084319cd93ac0995faa274b09622cbd2d6d"/>
+        <VersionInfo resourceName="escobar-callout" version="SHA-512:e1b742ac58c0d36875416478f063073d13ddd17538d09237ea5ab9c14135b3dc248fda757321648b9c3516ec6dafc1ec6361fade4ee83b2709026590f9429cca"/>
+        <VersionInfo resourceName="garcia-williams-callout" version="SHA-512:083c3db3fc6255d251164bccc1218712bf106494040929feae98e8f5c1f867df11979ba749e6e22c5bd0ee5eeefa7001c7234da36b0231c5a8239d5d25b722f1"/>
+        <VersionInfo resourceName="hampton-callout" version="SHA-512:6be3893b581b3066fc6aea79375968e31d40214dda28688c12791ba02d46ecf937d239b7246a4906399aae0bdadc64a54e3101cb33be16addb98eaeff9374697"/>
+        <VersionInfo resourceName="hebert-anderson-callout" version="SHA-512:eff33b52a273d1574e90729016b48a132f2b632615d67c62fbce5c80a203d7d3026f2b2c8ab8b08c6ed3ff1e7e50237f73749b49f6604a6a05421517d4b2c230"/>
+        <VersionInfo resourceName="huynh-callout" version="SHA-512:8a16d40bc4637a508db2a2b712ef463dff67bb4cafdbd5d6bf35567c624b4bb34f02e7b8814f10051da6471c691cef130de2a2daf868c53f33ca953b0ac9df44"/>
+        <VersionInfo resourceName="johnston-callout" version="SHA-512:514476bff0820b67db77a40bcd2ada439ab7e265b6943f26ffa550f6f1abaec5c35801fbd4a4995c10328605c2212685f5e97793a29212370c2c06f1665f69a3"/>
+        <VersionInfo resourceName="king-horne-callout" version="SHA-512:f26831808cd8d64d55d66a000b07042db52a3acce1c050593249147ea2d5e9fe8ac55270b63eaa2ec7d709fe0cd184be81876cca49ce07cc1e1411db873b1400"/>
+        <VersionInfo resourceName="larson-callout" version="SHA-512:f7f33bfdcf384bd5b4bec4c145d1b1ca789a816b7828b2ccd1b37eae0e732094460397936946b5c1fdfbfb6f1157cf9cab23022ecd80a8bc3aa558f3bffd24f1"/>
+        <VersionInfo resourceName="lawson-grant-callout" version="SHA-512:0abd4d61bdbbfe55078e3409df4d815bbed25d6f6494f2a2d32bc30a18c757b02fb6b748bc844f0eec328053d201fad6acc43cc05291e8efd862f1d19a5c2a1c"/>
+        <VersionInfo resourceName="levine-callout" version="SHA-512:6676905c62f33e0eb7db6eed324edf802d7d52a07c955c48f9095c294025010352deb93cf2349154365de6780a9db5612ad3f375a5e243a4e664f418b693f15b"/>
+        <VersionInfo resourceName="lowery-johnson-callout" version="SHA-512:7d8a5ff3979d2532f82455b163705b473aa0ca6c5ca8a367f6908efbd7ae5472b13e4fd56c6d5b68a444aa0ab31fda74bdc4cb277860cdc15a13e5c20f1fb368"/>
+        <VersionInfo resourceName="morgan-morgan-callout" version="SHA-512:fe682649e889d8090ec92a3430e781ed9d19c367a068a93fe0ae5ad31a413ea02bfa6ccee647a41cf819ef5d49f57433d1048ee5ba3c718f2fbf7a612b9800f4"/>
+        <VersionInfo resourceName="morris-callout" version="SHA-512:0aca34389ceba0c103836ad4d1b995ad245f9f55837a4788fe4fbabe89093fd465d393dd25bdab098602db370c1eda5dca92864722406172693956329a8e9ee8"/>
+        <VersionInfo resourceName="mueller-callout" version="SHA-512:05a6ce0072a1ccc4cfcbad9ccedfb5195252fc3e0191df84ddbaa53679c3c80652205d73624d8ee9530b276d933ddde510869a45d51571952692610f501acd41"/>
+        <VersionInfo resourceName="odom-hampton-callout" version="SHA-512:4d1f98ed359afe9d579d274b9f33c39900433bbd233281ba86461fff30d3c92e6aada13c9db8194dfe8fe254b7f3307338336ec84bd10be8657ecca1520e58d6"/>
+        <VersionInfo resourceName="ortiz-harris-callout" version="SHA-512:a7ef6690df7a796f14aabb7f93517a8fc9d56b091f28e312429c2d5ca4cb5cc489273158fb66f3491cc5107339ed813b45a245f92370c84a5daa46494684a3fc"/>
+        <VersionInfo resourceName="parsons-perkins-callout" version="SHA-512:c9002b70e2f49512348b3af00b791c95ca8cad37c74b41247c300de69ceac72ddaf40b2b64353638933c42fad769c79d58bfeb2276d4b4641927e13637d280e4"/>
+        <VersionInfo resourceName="perez-hartman-callout" version="SHA-512:8bc69441bbd5239f584e803c62c7dc6c6e554bb4a987073cace3465768fc9284677d71a176d2bf193c6694e64e45f0993b191d06ae74b48316e3cb4d1eed08c9"/>
+        <VersionInfo resourceName="ponce-callout" version="SHA-512:f1dbc41381f472a28adc42da3cfdc035be297602c4c10e18addb3cfd8d2fe986b11efbacd71e9dba8b21e976aa716d4d978b9afb48b9044594d1024f92cf20e7"/>
+        <VersionInfo resourceName="shea-martinez-callout" version="SHA-512:1a14aea8f8d2c6d3ecca80c57519c6c652873ebf6374bfaa0fa0ae061f216feab263b70d37dfa1d081ea72269635ed215c3dc20183dde8b15ae1a64eb2b439a2"/>
+        <VersionInfo resourceName="simon-brown-callout" version="SHA-512:58bac0bade958c070aa2a3c6b98ff85e610561773618bea55016c343718cd3177331700f2ce765cf7a4035ca6b6036b20d2455ae08818e7823078c33114454d3"/>
+        <VersionInfo resourceName="smith-owens-callout" version="SHA-512:dee8645c6b9af1d10865fcb074a0eb3a0a9aada94737e2653434dffe08e62aaef79c5d7a283d4db5ab6b6326aec78b9b3c90a4c3802460385cd9c3af060cfbd1"/>
+        <VersionInfo resourceName="stanley-lawson-callout" version="SHA-512:2d6d79a35edaa023a5b4af679075dbdcc910301597b04f42719f4c50ddaaa436c44caccc012182dc2ca5cc186b9f180e2ee7f3fa94be100aa06434d869561a74"/>
+        <VersionInfo resourceName="thompson-johnson-callout" version="SHA-512:b37bc90d28f3e1b2c9391dce343fd8d1ec7bc7b5903b812c4f4c4bb4c1817b2e82b1a3fe27bda166275bd82995ddd7464c3a7f44cee397733037e1c10fe50bda"/>
+        <VersionInfo resourceName="ward-callout" version="SHA-512:2d69090b34cc3ddd35cd8dfb23d84634f218da71efe35a36a1d5b7c3072d759acd973b6e91f29d36c8d3880c42a015088ac00fd63161e0c6b4d9c7b7cce5664c"/>
+        <VersionInfo resourceName="yoder-rocha-callout" version="SHA-512:e41019fe73958912df8b6baf98dcf04fbeefdf1affac07483250937d5882443f808d73c249b21d7da81b857c94c9f11cbccf80009b96e39387730d8c3f1fb3a4"/>
+        <VersionInfo resourceName="yu-callout" version="SHA-512:f1b41ccf850fd5f6d63aad7bd41ff28a76c905f2006640149ec2fb9e1a5c908e00f76d5b762dba9832922ea54ef92978ac1402da42badf7c93a1d70d9a13de69"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:b19beb4f5db0a40f38b7fde8ab66e78aa618bbf460cd95a050b85cbc0e8b0342394224d3d5b5a4a57fe560646d94c262f680551b4544140b76fb144049714076"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:ffe816fc8454a3b3ed0381e1e01d354276c32763349c10467193de91d1ab5704225030c676da943060cf7a7b84d2c5102f8a537d5ab0fc9287cad26aadda5af2"/>
+    </TargetEndpoints>
+</Manifest>

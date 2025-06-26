@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="bulk-bowers-barton">
+    <Basepaths>/bowers-barton</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1684531178003</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName></DisplayName>
+    <LastModifiedAt>1684531178003</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:ccdd9feeb3d9bef3c0337db5f7296bf18cbc8e914c4ebcd1f4fde640c8006f96220554c783f69a0264174440190781a499b07d46463f3b1c305b549e9b0d47e0:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>ayala-callout</Policy>
+        <Policy>blevins-callout</Policy>
+        <Policy>cannon-callout</Policy>
+        <Policy>carroll-mcgee-callout</Policy>
+        <Policy>castillo-callout</Policy>
+        <Policy>downs-callout</Policy>
+        <Policy>escobar-callout</Policy>
+        <Policy>garcia-williams-callout</Policy>
+        <Policy>hampton-callout</Policy>
+        <Policy>hays-callout</Policy>
+        <Policy>howard-dunlap-callout</Policy>
+        <Policy>johnston-callout</Policy>
+        <Policy>larson-callout</Policy>
+        <Policy>levine-callout</Policy>
+        <Policy>lowery-johnson-callout</Policy>
+        <Policy>mann-callout</Policy>
+        <Policy>martin-townsend-callout</Policy>
+        <Policy>mckinney-callout</Policy>
+        <Policy>morgan-morgan-callout</Policy>
+        <Policy>morris-callout</Policy>
+        <Policy>nelson-smith-callout</Policy>
+        <Policy>ponce-callout</Policy>
+        <Policy>simpson-callout</Policy>
+        <Policy>smith-owens-callout</Policy>
+        <Policy>thompson-hodges-callout</Policy>
+        <Policy>ward-thomas-callout</Policy>
+        <Policy>warner-callout</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

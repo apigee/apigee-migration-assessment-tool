@@ -1,0 +1,47 @@
+{
+  "accessType": "",
+  "apiProducts": [],
+  "appFamily": "default",
+  "appId": "272f81fc-8eeb-493a-807f-fe287e2f6fc3",
+  "attributes": [
+    {
+      "name": "DisplayName",
+      "value": "authtest"
+    },
+    {
+      "name": "Notes",
+      "value": ""
+    }
+  ],
+  "callbackUrl": "",
+  "createdAt": 1749162489773,
+  "createdBy": "opdk@google.com",
+  "credentials": [
+    {
+      "apiProducts": [
+        {
+          "apiproduct": "aaa2",
+          "status": "approved"
+        },
+        {
+          "apiproduct": "basic-oauth-test-Product",
+          "status": "approved"
+        }
+      ],
+      "attributes": [],
+      "consumerKey": "O34dALGGcq9P56ZIqKuqzLmjCAkHkcK9",
+      "consumerSecret": "Eeiz1uFxkUpyRZ8J",
+      "expiresAt": -1,
+      "issuedAt": 1749162489779,
+      "scopes": [],
+      "status": "approved"
+    }
+  ],
+  "credentialsLoaded": true,
+  "developerId": "YlPVdCOSqLbfMOIX",
+  "lastModifiedAt": 1749162489773,
+  "lastModifiedBy": "opdk@google.com",
+  "name": "authtest",
+  "scopes": [],
+  "status": "approved"
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-StoreAndRemove">
+    <DisplayName>AM-1</DisplayName>
+    <AssignVariable>
+        <Name>var_grant_type</Name>
+        <Ref>request.formparam.grant_type</Ref>
+    </AssignVariable>
+    <Remove>
+        <Headers/>
+        <FormParams/>
+        <Payload/>
+    </Remove>
+    <Set>
+        <Headers>
+            <Header name="Content-Type">application/x-www-form-urlencoded</Header>
+            <Header name="Accept">application/json</Header>
+            <Header name="Grant-Type">{var_grant_type}</Header>
+        </Headers>
+    </Set>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="https" type="request"/>
+</AssignMessage>

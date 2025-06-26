@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-405WithAllowHeader">
+    <DisplayName>AM-405WithAllowHeader</DisplayName>
+    <Set>
+        <Payload contentType="application/json">{"Specified method is not allowed. Please use one of the methods mentioned in the Allow header."}</Payload>
+        <StatusCode>405</StatusCode>
+        <ReasonPhrase>Method Not Allowed</ReasonPhrase>
+    </Set>
+    <Add>
+        <Headers>
+            <Header name="Allow">GET, POST, HEAD</Header>
+        </Headers>
+    </Add>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

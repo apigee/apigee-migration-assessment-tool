@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-Respuesta-Health-Check-Backend">
+    <DisplayName>AM-Respuesta-Health-Check-Backend</DisplayName>
+    <Set>
+        <Headers>
+            <Header name="Content-Type">application/json</Header>
+            <Header name="Access-Control-Allow-Origin">{request.header.origin}</Header>
+        </Headers>
+        <Payload contentType="application/json">
+            {
+                "mensaje": "{flow.healthcheck.response.mensaje}",
+                "folio": "{messageid}",
+                "resultado": {
+                    "ambiente": "{environment.name}",
+                    "api": "{apiproxy.name}",
+                    "ip": "{request.header.X-Forwarded-For}",
+                    "latencia": {
+                        "proxy": "{flow.healthcheck.proxy.latency}",
+                        "target": "{flow.healthcheck.target.latency}",
+                        "total": "{flow.healthcheck.latency}"
+                    }
+                }
+            }   
+        </Payload>
+        <StatusCode>200</StatusCode>
+        <ReasonPhrase>OK</ReasonPhrase>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

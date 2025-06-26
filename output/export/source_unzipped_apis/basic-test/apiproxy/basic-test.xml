@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="4" name="basic-test">
+    <Basepaths>/basic-test</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1749166314937</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>basic-test</DisplayName>
+    <LastModifiedAt>1749490035036</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:b388df5d85eac44390a39d407fb0b33d9825ab9d0135d6caf9ee60abfa7bbc35983f7430f0c4e167661c03bc6afbb228feb6d24829ad863268381f44a715d68d:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-Create-Mock-Response</Policy>
+        <Policy>OAuthV2-test</Policy>
+        <Policy>remove-header-authorization</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints/>
+</APIProxy>

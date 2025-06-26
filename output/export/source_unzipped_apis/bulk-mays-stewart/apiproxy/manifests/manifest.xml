@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="howard-dunlap-callout" version="SHA-512:0b49693aa1403f2c94b21ef4344a701c9f5c9a5c0980e977cfed073c506ed138cc275d33214d748c68ab19673a81b1d8a7a1df6ff508742de9d6ba4f40eb8976"/>
+        <VersionInfo resourceName="jenkins-callout" version="SHA-512:297ad5d5a90d07a4ba9303634c7afecc91d12a556dfe65675cc601a01ab48da4cf112a461629ab2265bcdc587982185d2c19ff7516e7a83f32bac2c832e04416"/>
+        <VersionInfo resourceName="johnston-callout" version="SHA-512:514476bff0820b67db77a40bcd2ada439ab7e265b6943f26ffa550f6f1abaec5c35801fbd4a4995c10328605c2212685f5e97793a29212370c2c06f1665f69a3"/>
+        <VersionInfo resourceName="lowery-johnson-callout" version="SHA-512:7d8a5ff3979d2532f82455b163705b473aa0ca6c5ca8a367f6908efbd7ae5472b13e4fd56c6d5b68a444aa0ab31fda74bdc4cb277860cdc15a13e5c20f1fb368"/>
+        <VersionInfo resourceName="medina-callout" version="SHA-512:1ab9a9ebff1a2ff4bbf86549299cf495e38d69b50057f1bbbf6138fd9f5b99be20053d53498c718dfa8eac3bbffa83ff87a1b536f047fecd2425776972ee56c7"/>
+        <VersionInfo resourceName="odom-hampton-callout" version="SHA-512:4d1f98ed359afe9d579d274b9f33c39900433bbd233281ba86461fff30d3c92e6aada13c9db8194dfe8fe254b7f3307338336ec84bd10be8657ecca1520e58d6"/>
+        <VersionInfo resourceName="walker-king-callout" version="SHA-512:14531d740171645d485f7ce40091ac81c214fc31d0ca5630add6391f5db906e235fc71de4cfdc9692749c1fc98808bb29ef4ebe317c08fc52fc44ec581cc7390"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:10ad4554f8bf682817e70ab98b174c130d4feea7ce4481185e93a2b6ba4970261e2758deaf97e47fdc7c126bb7eaf7ff10610ab542e0230acc4590dca85abc41"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:dd4defbc8aa7023d50ef9ea17d285639fde1c89110847b2535e664efab634a8b6758e5f92a9065684874d5f54c21dcaac85601c81871a56b13dd8f86053e338d"/>
+    </TargetEndpoints>
+</Manifest>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-PersonIdFromURI">
+    <DisplayName>EV-PersonIdFromURI</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <URIPath>
+        <Pattern ignoreCase="false">/person/{person_id}/**</Pattern>
+        <Pattern ignoreCase="false">**/**/{person_id}/**/**</Pattern>
+        <Pattern ignoreCase="false">**/{person_id}</Pattern>
+    </URIPath>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <Source clearPayload="false">request</Source>
+    <VariablePrefix>payload</VariablePrefix>
+</ExtractVariables>

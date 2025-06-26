@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-Respuesta-No-Encontrado">
+	<DisplayName>RF-Respuesta-No-Encontrado</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers>
+                <Header name="Content-Type">application/json</Header>
+            </Headers>
+            <Payload contentType="application/json">{"codigo": "steps.raisefault.RaiseFault"}</Payload>
+            <StatusCode>500</StatusCode>
+            <ReasonPhrase>Internal Server Error</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+</RaiseFault>

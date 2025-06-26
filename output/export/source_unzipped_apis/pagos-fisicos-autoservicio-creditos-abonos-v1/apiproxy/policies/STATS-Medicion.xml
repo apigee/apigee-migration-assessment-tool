@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<StatisticsCollector async="false" continueOnError="false" enabled="true" name="STATS-Medicion">
+    <DisplayName>STATS-Medicion</DisplayName>
+    <Properties/>
+    <!-- 
+        Nota: Los tipos de datos soportados son: string, integer, float, long, double y boolean 
+    -->
+    <Statistics>
+        <!-- 
+            Variables a nivel general 
+        -->        
+        <Statistic name="area" ref="flow.statistics.area" type="String"/>        
+        <Statistic name="latencia_proxy" ref="flow.statistics.latencia.proxy" type="Float"/>
+        <Statistic name="latencia_target" ref="flow.statistics.latencia.target" type="Float"/>
+        <Statistic name="latencia_total" ref="flow.statistics.latencia.total" type="Float"/>        
+        <!-- 
+            Variables a nivel general de respuestas de error
+        -->
+        <Statistic name="codigo" ref="flow.statistics.error.response.codigo" type="String"/>
+    </Statistics>
+</StatisticsCollector>

@@ -1,0 +1,18 @@
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="KVM-Get_Target_Host" mapIdentifier="CaseClosure-Config">
+    <DisplayName>KVM-Get_Target_Host</DisplayName>
+    <Properties>
+    </Properties>
+    <ExclusiveCache>false</ExclusiveCache>
+    <ExpiryTimeInSecs>60</ExpiryTimeInSecs>
+    <Get assignTo="targetHost">
+        <Key>
+            <Parameter>targetHost</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="targetPath">
+        <Key>
+            <Parameter>targetPath</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="EV-FetchVendorName" version="SHA-512:b71373ba77b377287a1f824bf9819d07a2d6a5483996a4277f8c2ee15a06f916bac18f1589a2fe53446714485e7c4649aaab9a6c57de9119c75d52f6f4d253c0"/>
+        <VersionInfo resourceName="RF-InvalidVendor" version="SHA-512:49a44a85f8a913cdda8d0ef5e728e2c666dfded795441daf2484546fd468a0475ed4507db4d50126fbf8c9dbe36f459a197f397d3b960349ea0467c20449ae59"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:f38ad9f86d65d81e15d520b9f110d61c593657e84d186013c37b3b214bfc9796eb46fe501a7d96323ff44a0ba9da16d19a7d0aea7b22c135519182e9787475f7"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:cdee7a8ea8b81444ad80f3d85f4a245bfd6e7cbcf8708f58df845a2d0159455023cb9218d2110cb48074cfcf12539b5ba3e6be2398014298081bcc8cd3396b64"/>
+    </TargetEndpoints>
+</Manifest>

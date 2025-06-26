@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-CardInvoicePaymentData">
+    <DisplayName>EV-CardInvoicePaymentData</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="account_id">
+            <JSONPath>$.account_id</JSONPath>
+        </Variable>
+        <Variable name="value">
+            <JSONPath>$.value</JSONPath>
+        </Variable>
+        <Variable name="reference">
+            <JSONPath>$.reference</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source clearPayload="false">request</Source>
+    <VariablePrefix>payload</VariablePrefix>
+</ExtractVariables>

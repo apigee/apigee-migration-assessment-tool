@@ -1,0 +1,47 @@
+{
+  "accessType": "",
+  "apiProducts": [],
+  "appFamily": "default",
+  "appId": "6512bcac-270f-44f1-b566-b0fb9f8d8d5f",
+  "attributes": [
+    {
+      "name": "grant_type",
+      "value": "auth_code"
+    },
+    {
+      "name": "DisplayName",
+      "value": "tcs-oauth-2"
+    },
+    {
+      "name": "Notes",
+      "value": ""
+    }
+  ],
+  "callbackUrl": "",
+  "createdAt": 1710147826744,
+  "createdBy": "opdk@google.com",
+  "credentials": [
+    {
+      "apiProducts": [
+        {
+          "apiproduct": "tcs-bom-oauth-1-Product",
+          "status": "approved"
+        }
+      ],
+      "attributes": [],
+      "consumerKey": "mAc3jAgeSGsxDw4bLugS0w3xjIySh49A",
+      "consumerSecret": "teht6T91pHTh8Fdp",
+      "expiresAt": -1,
+      "issuedAt": 1710147826747,
+      "scopes": [],
+      "status": "approved"
+    }
+  ],
+  "credentialsLoaded": true,
+  "developerId": "7misFVRWiM8bH2QG",
+  "lastModifiedAt": 1710147826744,
+  "lastModifiedBy": "opdk@google.com",
+  "name": "tcs-oauth-2",
+  "scopes": [],
+  "status": "approved"
+}

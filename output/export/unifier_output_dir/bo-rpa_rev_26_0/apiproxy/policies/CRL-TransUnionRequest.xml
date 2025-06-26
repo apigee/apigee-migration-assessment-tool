@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ConcurrentRatelimit async="false" continueOnError="false" enabled="true" name="CRL-TransUnionRequest">
+    <DisplayName>CRL-TransUnionRequest</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <AllowConnections count="20" ttl="5"/>
+    <Distributed>true</Distributed>
+    <TargetIdentifier name=""/>
+    <StrictOnTtl>false</StrictOnTtl>
+    <Synchronous>true</Synchronous>
+</ConcurrentRatelimit>

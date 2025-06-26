@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-BadRequestTaxIdentifierAndTypeRequired">
+    <DisplayName>RF-BadRequestTaxIdentifierAndTypeRequired</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Payload contentType="application/json">
+{
+    "type": "BAD_REQUEST", 
+    "message": "Field tax_identifier and person_type are required"
+}
+            </Payload>
+            <StatusCode>400</StatusCode>
+            <ReasonPhrase>Bad request</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <ShortFaultReason>false</ShortFaultReason>
+</RaiseFault>

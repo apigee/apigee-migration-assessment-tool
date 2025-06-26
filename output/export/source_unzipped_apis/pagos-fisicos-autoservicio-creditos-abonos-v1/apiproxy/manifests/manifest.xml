@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-CORS" version="SHA-512:ce542ea1522caf9b47f63cd26f84ab901705277596ea50b29bd85cf425bb6ba012c6e584e8e14ddac08dce70d67c8446d5dad35894ca9664e88bb9cb1a535707"/>
+        <VersionInfo resourceName="AM-Eliminar-Headers-Mock" version="SHA-512:9522dd056cdf618101b41a505c231865c1f7afb921fbe36526cf358f13f4d986f4379f2ffe6b674cf51dacb78dee54a010ce47afa0d212792f7ecf1fc62e71d3"/>
+        <VersionInfo resourceName="AM-Error-Mock" version="SHA-512:cf65c3282a61862ff7ee6e2ba79276f2de10b54612ca68e7bd865b644412fc05d65f36fa56d454ae7488e9b47154674f0df001d8105ff86f368886f65a9f776b"/>
+        <VersionInfo resourceName="AM-Estadisticas" version="SHA-512:731267e09898cefaa1413c9a2f1118de952de44e86767f8a0b120f22c4c49b0a9eb56222f319e16442edf9f000e2413355a9b7d7cd765b5832f3006c46b88b2c"/>
+        <VersionInfo resourceName="AM-ProxyEndPoint" version="SHA-512:96064e677c5681ccb1f44c301fdb863d0b465783c8167f820d5e80ac48c7b57e1d9578c7167ddb747a486c330b2d269d7efc3a8e05d74d0d0bbe353b168c0dfc"/>
+        <VersionInfo resourceName="AM-Respuesta-Health-Check" version="SHA-512:a1e2df416f3a1b612b7433f85235870158dccf88b5a4a15fb6a1562c651c3c2d3cc579ecf3263217f739b6a29c2efc94e57816450429fe208f01537b542f2a90"/>
+        <VersionInfo resourceName="AM-Respuesta-Health-Check-Backend" version="SHA-512:f6740e0c93173882826d3c1b3725b22a603ee106cff2f25ee27ba706567ed6fc50c2612dc53683fdb55587dc4b8c5446082742f623bf38ad6ec69440204bc507"/>
+        <VersionInfo resourceName="AM-TargetEndPoint" version="SHA-512:e6dc5f6724f4d35f718d7cc58f426df0690afde9086595dc4c032af47193c14b0ef7cebb980ac499b443db3ff4a0761ba9f4f2da0e0ae1f0539d5a277c1a11eb"/>
+        <VersionInfo resourceName="AM-Trazabilidad-Peticiones" version="SHA-512:18aa2d40a060b7851f5ed441c2d2442fb1dce493ad7fad68bc5402c2712ef419424be011bde464c30bb0aa507a4c18b3fd2cad938aab0e0a783d80b909d56e07"/>
+        <VersionInfo resourceName="EV-Estadisticas-Error-Response" version="SHA-512:ec31e64e3abafd65744c781e1204f41b98c3b5c05cb147445ffc489bbf5b7df3380811d58c8a7b4f01913757b2099a9b8a32b633207e4f1249da1ccf73e204da"/>
+        <VersionInfo resourceName="EV-Estatus-Response" version="SHA-512:d8e4c551997bb3243bc1930e299dc7c965724a55534d5731627eba041d450394a7e1229edb352c0a53c9be657e8255d1136bad0cf9b8b85d61ca14a3adea161b"/>
+        <VersionInfo resourceName="FC-Cifrado-Acceso" version="SHA-512:64c89015936a77a6488cfc19ca9af6a8e9825ced223157d712b9c4b8bb2b4de043e152021840ed24b36eb903c8eea91d568aa3edc67ac462141c5bc307c21f29"/>
+        <VersionInfo resourceName="FC-Config-Log-Proxies" version="SHA-512:9ac254847f08a1eb0d5c7676c63fd170ceee07249bf1118fc832634c3d4ba0282e3862085b68a77ad6a9f23ceff4a5729574b4b94dee3bb1514eb1ab61e4b0c7"/>
+        <VersionInfo resourceName="FC-Control-Errores-Proxies" version="SHA-512:00d7e0ef46a928af61aefb62f6aaf3ade5b2360b56d6148faa7523156a084ad328783a53657c6eb97054d77de198469264995bfbd11e03fbb703381f9cbe09ad"/>
+        <VersionInfo resourceName="FC-Logging" version="SHA-512:ce72833cae6f7c44433d6fe39029708561dfb29651b255ddbb2d398a089af80a8764063b804f5148d31e340b85e5ea842d46dc80132843b2e5724bc9d6ee240a"/>
+        <VersionInfo resourceName="FC-Seguridad-Inyeccion-Proxies" version="SHA-512:f68fe5e819273425c8e9c33e439c88f9871a20c44c76f879923424022b0c840ac731ca4292d9cc1992cf205e1665d5c8245f16517b4fe8ae0727d346c65b9fbc"/>
+        <VersionInfo resourceName="FC-Seguridad-Jwt-Proxies" version="SHA-512:a33e7748ac5ed8101b56c6058469736db1fc364bc90ff420879874969afd717553420cf922e98efc3a8cf7b70fcdc5cc82a5687c1ada3d1e38abe6b3d7c4e191"/>
+        <VersionInfo resourceName="FC-Seguridad-Spike-Arrest" version="SHA-512:e58f194b2c2e0b75ab88df6a7cb54d4e83fcd499492f303e2076db4544c1a0b6fa4eea8727bfa135cdc0f1bc6bbaa73bb9f8725175f4f1a5c4b531d5209b3c31"/>
+        <VersionInfo resourceName="FC-Seguridad-Valida-Access-Token" version="SHA-512:611a7453032ebae07d2f13c007f2f5a07ce69549e071f8ff0915f3850f26adaed9b9897fd7062409fe153915e8d4ecc710a191f79a9d15fdf016337a87c5df3f"/>
+        <VersionInfo resourceName="JS-Calculo-Latencias" version="SHA-512:c17034c04c3f43ead047adc21ca062f138dd966ca4b4ae3309ec315b78e8187d8382689cfd0578ea45e70642d11d406d2317ca70184a3223edf5de6790576d9f"/>
+        <VersionInfo resourceName="JS-ContextFlow" version="SHA-512:0bc007a48bec3db16354c88c668c00cfa02e33b1f79a7ca9a407aaa3803a036a7e9de225ce4af82022ea9151fa5e5a574088baf0d5af3bf42e349adb24baac2f"/>
+        <VersionInfo resourceName="JS-Valores-Trazabilidad" version="SHA-512:808d8d88174503d319dc19594fbd0e2e3711af0d0039a74bc1441b7d46531d14b1bafa38b6a1f3092b5b43a71fbaa5930192a3ba38f0611e6e7ce846ed8d2ae2"/>
+        <VersionInfo resourceName="ML-Logging-Archivo-Error" version="SHA-512:ab332387c2e6fa36cf49d9da3a53f86b62e642f20465579602b1a8d9515ab324a98d83e3b6fbe76a429aea3deb5173792a9436400f1370f3481e00fd0affca0c"/>
+        <VersionInfo resourceName="ML-Logging-Archivo-Info" version="SHA-512:ba4df4731b97b6222ee09eb8630eb6bc7dfddcb2217e830a093aa4cfa7caaf57fc1af0cf429ed69bf7a8ded6cd69b53843bc44b0bf49c2d61c3990bc6e19b212"/>
+        <VersionInfo resourceName="ML-Logging-Loggly-Error" version="SHA-512:fa97f7a13a44bc9ba7f347dc0720b333c38b2d0b1d1ddce4fde20539318a874b46751f4b9d775f3813cd5b6433f324ce14a549eb27ca4ef1727e94ef1f5a02d5"/>
+        <VersionInfo resourceName="ML-Logging-Loggly-Info" version="SHA-512:52c56e25a3d71ca00bfffa9611004b1c5ef431365f48fcae58c152135ec5b6b22ffca32cd7be202ae7f9c86638b14555b67243031ad71f26d76bede6d9317bf1"/>
+        <VersionInfo resourceName="RF-Error-Mock" version="SHA-512:5ca2ef769915efeb15a4e487883a3ae8f1319f78ba09313731e8df892a7ee0a4ee47569a28b61082cc17b307ce4bb14ab1e0b5ddc3008471ed43d9c7f4f67a37"/>
+        <VersionInfo resourceName="RF-Respuesta-No-Encontrado" version="SHA-512:96fe82b228205d712a77a1f176890ca580478b9a8885c2dee189993bc4f248612a85c290878f4c724f99531cba2340685311d6ecf6a4b3751f0adecc5a1bb4d8"/>
+        <VersionInfo resourceName="STATS-Medicion" version="SHA-512:71f89760fb18dfacdd65b22691f46901129c1ee1eaf30ef16c48d8c36f8db0429bacb7c657aad121241e537d7bc5a62909651963e1d7cfc63cef8e148b25fb83"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:5e31a02b124fc4b13b60a3da8f453be80797a39fe146fb4df7b11879c6ee89d6ec8aadd95ca8ec1e6c58cac214ac1586a5bc292986de56020530a28def6e56ee"/>
+    </ProxyEndpoints>
+    <Resources>
+        <VersionInfo resourceName="jsc://JS-Calculo-Latencias.js" version="SHA-512:7faf24bfdb41fa21a06518563ca8a48ce801b9318214b153a32dab8bbe53c9d1cfe1fa8260891772f55819cbd5b3c064e2496de2a0229cd235604bbaa4da3285"/>
+        <VersionInfo resourceName="jsc://JS-ContextFlow.js" version="SHA-512:06091f8f981f13eee8bd0f20e487d4058c0dc9c95937e33e32d8dc0b50ae4542c60bd3502e304c0fdfb5c3a1be5ab7142a86c79bb3b03f170642b7a9329024ae"/>
+        <VersionInfo resourceName="jsc://JS-Valores-Trazabilidad.js" version="SHA-512:4641727a5e31974b15f0790e46868e4e953d47d0c9ab6de88b6707214f1014e6c569766fe8e5ba6e29bac901fe96fe63d63754ce7a7c52acd03313a8755294f4"/>
+    </Resources>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:1f7af642dbd95a58a0c993c70b07a07d850e9200a6561e72ea6041568a506e85e42300c35684e2a534effc9d5de768231019dfb02b5f2de4b071c73c013cde33"/>
+        <VersionInfo resourceName="mock" version="SHA-512:311d2f359e89cbe081099ddc8c81399b0c332f6548e07c8a8e3a5c970bedf0be73043c47a5057e85b01f322aea22abfe62f56f8e661e22682800faa413f89916"/>
+        <VersionInfo resourceName="status" version="SHA-512:aaba9e3f279e8d38c027192e6a88b6b88b7bec13fa55f9fcea8316a7aaa0a6aba75ab37f3040e462b3dc0d8f5f6b2a46f8501cc99a15392b627eecbbe191c539"/>
+    </TargetEndpoints>
+</Manifest>

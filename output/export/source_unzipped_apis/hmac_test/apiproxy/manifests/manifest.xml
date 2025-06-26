@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="HMAC-1" version="SHA-512:97850709a131e27f86114b348a970b53c8f361f1773809cfd64cfebff934523959f1c25652c825e89f6f2d636399df95692db61229e00bf82c2b4ef21b6cbb59"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:7201d4b475e57d23cd93d2b0e6f55e5579f7a60d084d6d95d5c13c2fc1de8fb1ed935fe1573a82be90f914758bba49e80e08289c4c6c2e53b31cf02a0af53cc7"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:996ef507c90e9e2f7bd743b6a33b0e8d47943d16a10b46d87f541294db69cfe60511eac5997d317cc74b6b4fbc42144a020f63750a0300d695bbc959d863217c"/>
+    </TargetEndpoints>
+</Manifest>

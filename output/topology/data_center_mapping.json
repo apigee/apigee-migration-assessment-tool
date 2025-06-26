@@ -1,0 +1,276 @@
+{
+  "dc-1": {
+    "gateway": [
+      {
+        "externalHostName": "apigee-instance-1",
+        "externalIP": "10.0.0.4",
+        "internalHostName": "apigee-instance-1",
+        "internalIP": "10.0.0.4",
+        "isUp": true,
+        "pod": "gateway",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "cache-datastore",
+          "router",
+          "kms-datastore",
+          "dc-datastore",
+          "keyvaluemap-datastore",
+          "counter-datastore"
+        ]
+      },
+      {
+        "externalHostName": "apigee-instance-1.asia-east1-b.c.apigee-hybrid-378710.internal",
+        "externalIP": "10.0.0.4",
+        "internalHostName": "apigee-instance-1.asia-east1-b.c.apigee-hybrid-378710.internal",
+        "internalIP": "10.0.0.4",
+        "isUp": true,
+        "pod": "gateway",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "message-processor"
+        ]
+      },
+      {
+        "externalHostName": "",
+        "externalIP": "",
+        "internalHostName": "",
+        "internalIP": "10.0.0.4",
+        "isUp": true,
+        "pod": "gateway",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "cache-datastore",
+          "dc-datastore",
+          "kms-datastore",
+          "keyvaluemap-datastore",
+          "counter-datastore"
+        ]
+      },
+      {
+        "externalHostName": "",
+        "externalIP": "",
+        "internalHostName": "",
+        "internalIP": "10.0.0.3",
+        "isUp": true,
+        "pod": "gateway",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "cache-datastore",
+          "dc-datastore",
+          "kms-datastore",
+          "keyvaluemap-datastore",
+          "counter-datastore"
+        ]
+      },
+      {
+        "externalHostName": "",
+        "externalIP": "",
+        "internalHostName": "",
+        "internalIP": "10.0.0.7",
+        "isUp": true,
+        "pod": "gateway",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "cache-datastore",
+          "dc-datastore",
+          "kms-datastore",
+          "keyvaluemap-datastore",
+          "counter-datastore"
+        ]
+      },
+      {
+        "externalHostName": "apigee-instance-2.asia-east1-b.c.apigee-hybrid-378710.internal",
+        "externalIP": "10.0.0.7",
+        "internalHostName": "apigee-instance-2.asia-east1-b.c.apigee-hybrid-378710.internal",
+        "internalIP": "10.0.0.7",
+        "isUp": true,
+        "pod": "gateway",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "message-processor"
+        ]
+      },
+      {
+        "externalHostName": "apigee-instance-2",
+        "externalIP": "10.0.0.7",
+        "internalHostName": "apigee-instance-2",
+        "internalIP": "10.0.0.7",
+        "isUp": true,
+        "pod": "gateway",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "router"
+        ]
+      }
+    ],
+    "central": [
+      {
+        "externalHostName": "apigee-instance-3",
+        "externalIP": "10.0.0.6",
+        "internalHostName": "apigee-instance-3",
+        "internalIP": "10.0.0.6",
+        "isUp": true,
+        "pod": "central",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "qpid-server"
+        ]
+      },
+      {
+        "externalHostName": "apigee-instance-0",
+        "externalIP": "10.0.0.3",
+        "internalHostName": "apigee-instance-0",
+        "internalIP": "10.0.0.3",
+        "isUp": true,
+        "pod": "central",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "dek-datastore",
+          "scheduler-datastore",
+          "audit-datastore",
+          "apimodel-datastore",
+          "management-server",
+          "application-datastore",
+          "edgenotification-datastore",
+          "identityzone-datastore",
+          "user-settings-datastore",
+          "auth-datastore"
+        ]
+      },
+      {
+        "externalHostName": "",
+        "externalIP": "",
+        "internalHostName": "",
+        "internalIP": "10.0.0.7",
+        "isUp": true,
+        "pod": "central",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "dek-datastore",
+          "scheduler-datastore",
+          "audit-datastore",
+          "apimodel-datastore",
+          "application-datastore",
+          "edgenotification-datastore",
+          "identityzone-datastore",
+          "user-settings-datastore",
+          "auth-datastore"
+        ]
+      },
+      {
+        "externalHostName": "apigee-instance-4",
+        "externalIP": "10.0.0.2",
+        "internalHostName": "apigee-instance-4",
+        "internalIP": "10.0.0.2",
+        "isUp": true,
+        "pod": "central",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "qpid-server"
+        ]
+      },
+      {
+        "externalHostName": "",
+        "externalIP": "",
+        "internalHostName": "",
+        "internalIP": "10.0.0.4",
+        "isUp": true,
+        "pod": "central",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "dek-datastore",
+          "scheduler-datastore",
+          "audit-datastore",
+          "apimodel-datastore",
+          "application-datastore",
+          "edgenotification-datastore",
+          "identityzone-datastore",
+          "user-settings-datastore",
+          "auth-datastore"
+        ]
+      }
+    ],
+    "analytics": [
+      {
+        "externalHostName": "",
+        "externalIP": "",
+        "internalHostName": "",
+        "internalIP": "10.0.0.7",
+        "isUp": true,
+        "pod": "analytics",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "analytics-datastore",
+          "reportcrud-datastore"
+        ]
+      },
+      {
+        "externalHostName": "apigee-instance-3",
+        "externalIP": "10.0.0.6",
+        "internalHostName": "apigee-instance-3",
+        "internalIP": "10.0.0.6",
+        "isUp": true,
+        "pod": "analytics",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "postgres-server"
+        ]
+      },
+      {
+        "externalHostName": "",
+        "externalIP": "",
+        "internalHostName": "",
+        "internalIP": "10.0.0.4",
+        "isUp": true,
+        "pod": "analytics",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "analytics-datastore",
+          "reportcrud-datastore"
+        ]
+      },
+      {
+        "externalHostName": "apigee-instance-4",
+        "externalIP": "10.0.0.2",
+        "internalHostName": "apigee-instance-4",
+        "internalIP": "10.0.0.2",
+        "isUp": true,
+        "pod": "analytics",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "postgres-server"
+        ]
+      },
+      {
+        "externalHostName": "",
+        "externalIP": "",
+        "internalHostName": "",
+        "internalIP": "10.0.0.3",
+        "isUp": true,
+        "pod": "analytics",
+        "reachable": true,
+        "region": "dc-1",
+        "type": [
+          "analytics-datastore",
+          "reportcrud-datastore"
+        ]
+      }
+    ]
+  }
+}

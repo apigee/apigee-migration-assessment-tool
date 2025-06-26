@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="MED-AM-JWTResponseHeader" version="SHA-512:560148f7da4d6be3f8e07d242ee175a7b54dbad057b29634fce96fb838024426df510a3a9404cfdf9476b13f6c345730ec3e79f69bb0d63c4b32a40024447721"/>
+        <VersionInfo resourceName="MED-AM-SecretKey" version="SHA-512:0e2c79e18e33e454bea5f2ac53739905b066dd480df04ebdecdcfb90ae318be8a17b6412ae2431c7641d08046513b2b4bfba36f6a133cb629f0cda4eefd33c4a"/>
+        <VersionInfo resourceName="SEC-GenerateJWT" version="SHA-512:7d13bad782c0c079cfccbb299fa53c78558dbeeaa8959ea81d95f8ccac49072398d936ffee1048fd3996a9f35bb6f6b7b8a63cfe300e122a6ace74ad99d238e5"/>
+        <VersionInfo resourceName="SEC-VerifyAPIKey" version="SHA-512:1d7dfaae5bb7fe11e9ba6cdc3fc325beadb3525738565d65bc41edcfc6b56d7e4be0562deb4a526515d694ff8a0369c67a53c0707c701f3efa9a47c599069242"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:d9837bf810cd92b83ab25897b1272eed7e6ab40014a176b59536820fe07679b6df5b21cf044b67bc9fd2928ed46707cee26a1f8f032300d69b2e8774cde05835"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:ecbb3272d9a608543bf7704dbf059fd5d81c8c0d2b285ddb74e83e47ee4ab8f13693975971c6ebb0f6555fe46b76465372d4a6fd164b606a453b0234d023517f"/>
+    </TargetEndpoints>
+</Manifest>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-DebitCreditCheckingAccount">
+    <DisplayName>EV-DebitCreditCheckingAccount</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="branch_number">
+            <JSONPath>$.branch_number</JSONPath>
+        </Variable>
+        <Variable name="account_number">
+            <JSONPath>$.account_number</JSONPath>
+        </Variable>
+        <Variable name="amount">
+            <JSONPath>$.amount</JSONPath>
+        </Variable>
+        <Variable name="historic">
+            <JSONPath>$.historic</JSONPath>
+        </Variable>
+        <Variable name="historic_complement">
+            <JSONPath>$.historic_complement</JSONPath>
+        </Variable>
+        <Variable name="details">
+            <JSONPath>$.details</JSONPath>
+        </Variable>
+        <Variable name="reference">
+            <JSONPath>$.reference</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source clearPayload="false">request</Source>
+    <VariablePrefix>payload</VariablePrefix>
+</ExtractVariables>

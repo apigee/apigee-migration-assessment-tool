@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="pagos-fisicos-autoservicio-creditos-abonos-v1">
+    <Basepaths>/pagos-fisicos/autoservicio/creditos/abonos/v1</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1722591902037</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description>API Creditos Abonos</Description>
+    <DisplayName>pagos-fisicos-autoservicio-creditos-abonos-v1</DisplayName>
+    <LastModifiedAt>1722591902037</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:965617e1bac90a9637d8796af97fd16ead2a732bdc5ed085f17e802f3070a065531998afa6fb07a46bcbb4b4b6cd1574d639fb85d2301f786c4ed47620551838</ManifestVersion>
+    <Policies>
+        <Policy>AM-CORS</Policy>
+        <Policy>AM-Eliminar-Headers-Mock</Policy>
+        <Policy>AM-Error-Mock</Policy>
+        <Policy>AM-Estadisticas</Policy>
+        <Policy>AM-ProxyEndPoint</Policy>
+        <Policy>AM-Respuesta-Health-Check-Backend</Policy>
+        <Policy>AM-Respuesta-Health-Check</Policy>
+        <Policy>AM-TargetEndPoint</Policy>
+        <Policy>AM-Trazabilidad-Peticiones</Policy>
+        <Policy>EV-Estadisticas-Error-Response</Policy>
+        <Policy>EV-Estatus-Response</Policy>
+        <Policy>FC-Cifrado-Acceso</Policy>
+        <Policy>FC-Config-Log-Proxies</Policy>
+        <Policy>FC-Control-Errores-Proxies</Policy>
+        <Policy>FC-Logging</Policy>
+        <Policy>FC-Seguridad-Inyeccion-Proxies</Policy>
+        <Policy>FC-Seguridad-Jwt-Proxies</Policy>
+        <Policy>FC-Seguridad-Spike-Arrest</Policy>
+        <Policy>FC-Seguridad-Valida-Access-Token</Policy>
+        <Policy>JS-Calculo-Latencias</Policy>
+        <Policy>JS-ContextFlow</Policy>
+        <Policy>JS-Valores-Trazabilidad</Policy>
+        <Policy>ML-Logging-Archivo-Error</Policy>
+        <Policy>ML-Logging-Archivo-Info</Policy>
+        <Policy>ML-Logging-Loggly-Error</Policy>
+        <Policy>ML-Logging-Loggly-Info</Policy>
+        <Policy>RF-Error-Mock</Policy>
+        <Policy>RF-Respuesta-No-Encontrado</Policy>
+        <Policy>STATS-Medicion</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://JS-Calculo-Latencias.js</Resource>
+        <Resource>jsc://JS-ContextFlow.js</Resource>
+        <Resource>jsc://JS-Valores-Trazabilidad.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+        <TargetEndpoint>mock</TargetEndpoint>
+        <TargetEndpoint>status</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

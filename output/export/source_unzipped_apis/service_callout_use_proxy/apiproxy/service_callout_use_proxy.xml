@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="service_callout_use_proxy">
+    <Basepaths>/service_callout_use_proxy</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1745544128556</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>service_callout_use_proxy</DisplayName>
+    <LastModifiedAt>1745549017528</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:2252b443ccc91de58770c2676e8359c0a70553c2a2a771365bda19b11ecb61f2163fc4ea6fca9c62b56a0d4f57d8e317b21035a44853202b869eba649e567432:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>SC-1</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

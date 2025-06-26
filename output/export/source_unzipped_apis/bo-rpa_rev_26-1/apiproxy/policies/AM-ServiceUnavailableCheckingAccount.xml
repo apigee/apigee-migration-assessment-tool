@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-ServiceUnavailableCheckingAccount">
+    <DisplayName>AM-ServiceUnavailableCheckingAccount</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">
+{
+    "type": "SERVICE_UNAVAILABLE", 
+    "message": "Concurrent Rate Limit Reached"
+} 
+        </Payload>
+        <StatusCode>503</StatusCode>
+        <ReasonPhrase>Service Unavailable</ReasonPhrase>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

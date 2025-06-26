@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="SetLDAPFlowVariables">
+    <DisplayName>SetLDAPFlowVariables</DisplayName>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="sn">{ldap.LDAPAuthentication.search.result.attribute.sn}</Header>
+            <Header name="displayName">{ldap.LDAPAuthentication.search.result.attribute.displayName}</Header>
+            <Header name="uidNumber">{ldap.LDAPAuthentication.search.result.attribute.uidNumber}</Header>
+            <Header name="gidNumber">{ldap.LDAPAuthentication.search.result.attribute.gidNumber}</Header>
+        </Headers>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

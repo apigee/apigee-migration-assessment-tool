@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="bulk-padilla-torres">
+    <Basepaths>/padilla-torres</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1684531324175</CreatedAt>
+    <CreatedBy>opdk@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName></DisplayName>
+    <LastModifiedAt>1684531324175</LastModifiedAt>
+    <LastModifiedBy>opdk@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:46053ece8cef17ca16eba220c00bc7b27496e1367e4776d413873beb40f7c4641be62a8da1a1823713c14737a46bda4202bcd17eb8a9d6972aa64c7afdb924d9:dc-1</ManifestVersion>
+    <Policies>
+        <Policy>buchanan-arroyo-callout</Policy>
+        <Policy>dalton-porter-callout</Policy>
+        <Policy>downs-callout</Policy>
+        <Policy>dunn-callout</Policy>
+        <Policy>gay-wilson-callout</Policy>
+        <Policy>hays-callout</Policy>
+        <Policy>johnston-callout</Policy>
+        <Policy>larson-callout</Policy>
+        <Policy>long-martinez-callout</Policy>
+        <Policy>lowery-johnson-callout</Policy>
+        <Policy>mann-callout</Policy>
+        <Policy>martin-townsend-callout</Policy>
+        <Policy>mccann-callout</Policy>
+        <Policy>mckenzie-armstrong-callout</Policy>
+        <Policy>moore-farmer-callout</Policy>
+        <Policy>morgan-morgan-callout</Policy>
+        <Policy>mosley-callout</Policy>
+        <Policy>nelson-smith-callout</Policy>
+        <Policy>newman-greene-callout</Policy>
+        <Policy>ortiz-harris-callout</Policy>
+        <Policy>patrick-callout</Policy>
+        <Policy>perez-hartman-callout</Policy>
+        <Policy>powers-callout</Policy>
+        <Policy>shea-martinez-callout</Policy>
+        <Policy>simon-brown-callout</Policy>
+        <Policy>spencer-callout</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

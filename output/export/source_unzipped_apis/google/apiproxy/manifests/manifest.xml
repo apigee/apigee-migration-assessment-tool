@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="add-cors" version="SHA-512:08cc2ef69b08ee73467f7be74960047faa490fcc61ebba744cc1436358ed8068b052ee8c6e101ad00a5d54633c92d8195f7ed624372a59614265f0e515a1b5a1"/>
+        <VersionInfo resourceName="remove-query-param-apikey" version="SHA-512:fedac28ff50d0bca86015a692d1b6e093718a7c700308eebb8b74c4b95a71815a7bc9dd92d2809176c881a6affe89177a87205bb9ae618083036394d199b3d05"/>
+        <VersionInfo resourceName="verify-api-key" version="SHA-512:6595defb9a0b6d7fce111a9fe959f5e8a7aa03ffb301373c4c4e20e814648b42d5858631e95e4a8d698b5fe2139390c252e9011d9f1be8c3a35de73c1c269f97"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:e20346332d8c4dc5edca9035c46481676758b003881753d646361644343340d1afb54770037591c70ea11cc50f2a4842722049f51c5fb7d6b42100a34fb2d395"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:20bfa29a2695606b5a5fabe851366df01556087c2b7ee63cfa6a84e1092d32a5d4b01b7a41a81d27301db52b6ebb4c93f9cfc9f1701fb08d0b41c2ea2144fe3e"/>
+    </TargetEndpoints>
+</Manifest>

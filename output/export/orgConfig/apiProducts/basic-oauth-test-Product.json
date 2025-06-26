@@ -1,0 +1,51 @@
+{
+  "apiResources": [
+    "/**",
+    "/"
+  ],
+  "approvalType": "auto",
+  "attributes": [
+    {
+      "name": "description",
+      "value": "basic-oauth-test Product"
+    },
+    {
+      "name": "developer.quota.limit",
+      "value": "10000"
+    },
+    {
+      "name": "developer.quota.interval",
+      "value": "1"
+    },
+    {
+      "name": "developer.quota.timeunit",
+      "value": "month"
+    },
+    {
+      "name": "access",
+      "value": "public"
+    }
+  ],
+  "createdAt": 1749161492963,
+  "createdBy": "opdk@google.com",
+  "description": "basic-oauth-test Product",
+  "displayName": "basic-oauth-test Product",
+  "environments": [
+    "qa",
+    "test",
+    "dev"
+  ],
+  "lastModifiedAt": 1749167148049,
+  "lastModifiedBy": "opdk@google.com",
+  "name": "basic-oauth-test-Product",
+  "proxies": [
+    "basic-oauth-test",
+    "basic-test"
+  ],
+  "quota": "10000",
+  "quotaInterval": "1",
+  "quotaTimeUnit": "month",
+  "scopes": [
+    ""
+  ]
+}
