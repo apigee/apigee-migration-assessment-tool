@@ -156,7 +156,7 @@ The assessment tool can retrieve API traffic seen within a specified time range.
 
 Set the start and end date in the `input.properties` file. The script will automatically set the start timestamp to 00:00 on the start date and 23:59 on the end date, and aggregate total traffic during that range. 
 
-When `--resources api_traffic` is used, the report will only include APIs that *have* received traffic in the specified time period. To get traffic for *all* APIs (which will include zeroes for proxies with no traffic), you need to use `--resources apis,api_traffic`.  
+When `--resources api_traffic` is used, the report will only include APIs that *have* received traffic in the specified time period. To get traffic for *all* APIs (which will include zeroes for proxies with no traffic), you need to use `--resources apis,api_traffic` (or `--resources all`).
 
 
 ### Running Locally
