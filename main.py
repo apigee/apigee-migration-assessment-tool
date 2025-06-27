@@ -114,6 +114,14 @@ def main():
         'apiproducts', 'apis', 'apps', 'sharedflows', 'api_traffic' # Include new resource
     ]
 
+    if 'api_traffic' in resources_list: 
+        analytics_start_date = cfg.get('inputs', 'ANALYTICS_START_DATE')
+        analytics_end_date = cfg.get('inputs', 'ANALYTICS_END_DATE')
+        if not analytics_start_date or not analytics_end_date:
+            logger.error("To request API traffic, ANALYTICS_START_DATE and ANALYTICS_END_DATE must be set in input.properties in MM/DD/YYYY format. Please, check...")
+            return
+            
+
     if 'all' in resources_list:
         resources_list = all_assessable_resources
 
