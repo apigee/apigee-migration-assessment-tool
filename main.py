@@ -72,6 +72,7 @@ def main():
         * apiproducts
         * apis
         * apps
+        * api_traffic
 
         For Apigee Environment level objects choose
         -> targetservers,keyvaluemaps,references,
@@ -80,6 +81,7 @@ def main():
         For Apigee Organization level objects choose
         -> org_keyvaluemaps,developers,apiproducts,
             apis,apps,sharedflows
+        For Apigee Analytics choose -> api_traffic
 
         Example1: --resources targetservers,keyvaluemaps
         Example2: --resources keystores,apps
@@ -105,17 +107,28 @@ def main():
     report_data_file = f"{target_dir}/{export_dir}/report.json"
     report = parse_json(report_data_file)
 
+    # Handle 'all' resources and include 'api_traffic'
+    all_assessable_resources = [
+        'targetservers', 'keyvaluemaps', 'references', 'resourcefiles',
+        'keystores', 'flowhooks', 'org_keyvaluemaps', 'developers',
+        'apiproducts', 'apis', 'apps', 'sharedflows', 'api_traffic' # Include new resource
+    ]
+
+    if 'api_traffic' in resources_list: 
+        analytics_start_date = cfg.get('inputs', 'ANALYTICS_START_DATE')
+        analytics_end_date = cfg.get('inputs', 'ANALYTICS_END_DATE')
+        if not analytics_start_date or not analytics_end_date:
+            logger.error("To request API traffic, ANALYTICS_START_DATE and ANALYTICS_END_DATE must be set in input.properties in MM/DD/YYYY format. Please, check...")
+            return
+            
+
+    if 'all' in resources_list:
+        resources_list = all_assessable_resources
+
     if not export_data.get('export', False):
         export_data['export'] = False
         topology_mapping = {}
-
         # Export Artifacts from Apigee OPDK/Edge (4G)
-        if resources_list == []:
-            logger.error(
-                '''Please specify --resources argument.
-                Use -h with the script for help''')
-            return
-
         export_data = export_artifacts(cfg, resources_list)
         export_data['export'] = True
         write_json(export_data_file, export_data)

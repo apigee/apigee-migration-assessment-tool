@@ -202,3 +202,4 @@ unzip
 input.properties.*
 dev
 target*
+output*

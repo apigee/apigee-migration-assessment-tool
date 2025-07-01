@@ -97,6 +97,8 @@ The tool requires specific permissions to access and analyze your Apigee environ
     | `input` | `TARGET_DIR`            | Name of the directory where exported Apigee objects and reports will be saved (e.g., `output`). |
     | `input` | `TARGET_COMPARE`        | Set to `true` to export apigee objects from target environment and compare with source. Set to `false` to avoid export and compare. |
     | `input` | `SSL_VERIFICATION`      | Set to `false` to ignore SSL certificate verification, or `true` to enforce it. |
+    | `input` | `ANALYTICS_START_DATE`  | If exporting API Traffic, the start date of the range to export (max 6 months). Format: `MM/DD/YYYY` |
+    | `input` | `ANALYTICS_END_DATE`    | If exporting API Traffic, the start date of the range to export. Format: `MM/DD/YYYY` |
 
 2.  **Authentication Tokens:**
     Export the necessary authentication tokens as environment variables before running the tool.
@@ -134,6 +136,7 @@ The primary script for running the assessment is `main.py`.
     *   Provide a comma-separated list for selective assessment.
     *   **Available Environment-Level Resources:** `targetservers`, `keyvaluemaps`, `references`, `resourcefiles`, `keystores`, `flowhooks`
     *   **Available Organization-Level Resources:** `org_keyvaluemaps`, `developers`, `apiproducts`, `apis`, `apps`, `sharedflows`
+    *   **Retrieve API Traffic:** `api_traffic`
 
     **Examples:**
     ```bash
@@ -146,6 +149,15 @@ The primary script for running the assessment is `main.py`.
     # Assess Keystores and Apps
     python3 main.py --resources keystores,apps
     ```
+
+#### Getting API Traffic
+
+The assessment tool can retrieve API traffic seen within a specified time range. This allows you to see what APIs may not need to be migrated at all if there is no data. 
+
+Set the start and end date in the `input.properties` file. The script will automatically set the start timestamp to 00:00 on the start date and 23:59 on the end date, and aggregate total traffic during that range. 
+
+When `--resources api_traffic` is used, the report will only include APIs that *have* received traffic in the specified time period. To get traffic for *all* APIs (which will include zeroes for proxies with no traffic), you need to use `--resources apis,api_traffic` (or `--resources all`).
+
 
 ### Running Locally
 

@@ -34,6 +34,7 @@ from qualification_report_mapping.header_mapping import (
     aliases_with_private_keys,
     sharded_proxies,
     org_resourcefiles,
+    api_traffic_mapping, # New import
     validation_report,
 )
 from qualification_report_mapping.report_summary import report_summary
@@ -73,7 +74,7 @@ class QualificationReport():  # noqa pylint: disable=R0902,R0904
         self.backend_cfg = backend_cfg
         # Heading formats
         self.heading_format = self.workbook.add_format(
-            {'bold': True, 'bg_color': 'lightblue', 'font_color': 'white'})
+            {'bold': True, 'bg_color': '#ADD8E6', 'font_color': 'white'})
 
         # Format to represent resource migration status
         self.danger_format = self.workbook.add_format({'bg_color': '#f5cbcc'})
@@ -1042,6 +1043,48 @@ class QualificationReport():  # noqa pylint: disable=R0902,R0904
         # Info block
         self.qualification_report_info_box(
             org_resourcefiles, org_resourcefiles_sheet)
+
+    def report_api_traffic(self):
+        """Generates the "API Traffic" report sheet."""
+        logger.info(
+            '------------------- API Traffic -----------------------')
+        api_traffic_sheet = self.workbook.add_worksheet(
+            name='API Traffic')
+
+        start_date = self.cfg.get('inputs', 'ANALYTICS_START_DATE')
+        end_date = self.cfg.get('inputs', 'ANALYTICS_END_DATE')
+
+        api_traffic_mapping["headers"][3] = f"Total Traffic {start_date} - {end_date}"
+
+        # Headings
+        self.qualification_report_heading(
+            api_traffic_mapping["headers"], api_traffic_sheet)
+
+        env_config = self.export_data.get('envConfig')
+        row = 1
+
+        for env, value in env_config.items():
+            api_traffic_data = value.get('api_traffic', {})
+            if not api_traffic_data:
+                logger.info(f"No API traffic data found for environment: {env}")
+                continue
+
+            for proxy_data in api_traffic_data.values():
+                col = 0
+                api_traffic_sheet.write(row, col, self.org_name)
+                col += 1
+                api_traffic_sheet.write(row, col, env)
+                col += 1
+                api_traffic_sheet.write(row, col, proxy_data.get('proxy_name', 'N/A'))
+                col += 1
+                api_traffic_sheet.write(row, col, proxy_data.get('total_traffic', 0))
+                row += 1
+
+        api_traffic_sheet.autofit()
+
+        # Info block
+        self.qualification_report_info_box(
+            api_traffic_mapping, api_traffic_sheet)
 
     def report_network_topology(self):
         """Generates the "Apigee (4G) components" report sheet (Topology)."""
