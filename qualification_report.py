@@ -1051,6 +1051,11 @@ class QualificationReport():  # noqa pylint: disable=R0902,R0904
         api_traffic_sheet = self.workbook.add_worksheet(
             name='API Traffic')
 
+        start_date = self.cfg.get('inputs', 'ANALYTICS_START_DATE')
+        end_date = self.cfg.get('inputs', 'ANALYTICS_END_DATE')
+
+        api_traffic_mapping["headers"][3] = f"Total Traffic {start_date} - {end_date}"
+
         # Headings
         self.qualification_report_heading(
             api_traffic_mapping["headers"], api_traffic_sheet)
@@ -1076,6 +1081,7 @@ class QualificationReport():  # noqa pylint: disable=R0902,R0904
                 row += 1
 
         api_traffic_sheet.autofit()
+
         # Info block
         self.qualification_report_info_box(
             api_traffic_mapping, api_traffic_sheet)
