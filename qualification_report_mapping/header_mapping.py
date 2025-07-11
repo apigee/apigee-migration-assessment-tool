@@ -62,5 +62,7 @@ sharded_proxies = parse_json(
     "./qualification_report_mapping_json/sharded_proxies.json")
 org_resourcefiles = parse_json(
     "./qualification_report_mapping_json/org_resourcefiles.json")
+api_traffic_mapping = parse_json(
+    "./qualification_report_mapping_json/api_traffic.json")
 validation_report = parse_json(
     "./qualification_report_mapping_json/validation_report.json")

@@ -1,0 +1,15 @@
+{
+    "headers": [
+        "Org Name",
+        "Environment",
+        "API Proxy Name",
+        "Total Traffic (Message Count)"
+    ],
+    "info_block": {
+        "text": "<b>API Traffic Report\n\nThis sheet provides the sum of API Traffic proxies have received in each environment during the time range specified. \nProxies with no traffic may not need to be migrated.\n\nReference the tool configuration. When APIs are not included for export, only proxies receiving traffic will appear. Include apis in the export to see zero-counts.\nOnly proxies deployed to environments can have traffic data, undeployed proxies will not appear in this report. ",
+        "start_row": 1,
+        "end_row": 10,
+        "col_merge": 3,
+        "text_line_no_for_col_count": 2
+    }
+}
