@@ -71,7 +71,7 @@ class ApigeeExporter():  # pylint: disable=R0902
         self.token = token
         self.auth_type = auth_type
         self.apigee = (ApigeeNewGen(baseurl, org, token,
-                       'ENVIRONMENT_TYPE_UNSPECIFIED')
+                       'ENVIRONMENT_TYPE_UNSPECIFIED', ssl_verify)
                        if 'apigee.googleapis.com' in baseurl else
                        ApigeeClassic(baseurl, org, token,
                        self.auth_type, ssl_verify=ssl_verify))

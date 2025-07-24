@@ -79,7 +79,7 @@ def get_env_variable(key):
     return None
 
 
-def is_token_valid(token):
+def is_token_valid(token, ssl_verify=True):
     """Checks if an access token is valid.
 
     Args:
@@ -90,7 +90,7 @@ def is_token_valid(token):
         False otherwise.
     """
     url = f"https://www.googleapis.com/oauth2/v1/tokeninfo?access_token={token}"  # noqa
-    r = requests.get(url, timeout=5)
+    r = requests.get(url, timeout=5, verify=ssl_verify)
     if r.status_code == 200:
         response_json = r.json()
         if 'email' not in response_json:
@@ -100,7 +100,7 @@ def is_token_valid(token):
     return False
 
 
-def get_access_token():
+def get_access_token(ssl_verify=True):
     """Retrieves the Apigee access token.
 
     Returns:
@@ -108,7 +108,7 @@ def get_access_token():
     """
     token = os.getenv('APIGEE_ACCESS_TOKEN')
     if token is not None:
-        if is_token_valid(token):
+        if is_token_valid(token, ssl_verify):
             return token
     logger.error(
         'please run "export APIGEE_ACCESS_TOKEN=$(gcloud auth print-access-token)" first !! ')   # noqa pylint: disable=C0301

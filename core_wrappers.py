@@ -153,11 +153,11 @@ def pre_validation_checks(cfg, skip_target_validation=False):  # noqa pylint: di
     # check for target org
     target_url = cfg.get("inputs", "TARGET_URL")
     gcp_project_id = cfg.get("inputs", "GCP_PROJECT_ID")
-    gcp_token = get_access_token()
+    gcp_token = get_access_token(ssl_verification)
     gcp_env_type = DEFAULT_GCP_ENV_TYPE
 
     xorhybrid = ApigeeNewGen(target_url, gcp_project_id,
-                             gcp_token, gcp_env_type)
+                             gcp_token, gcp_env_type, ssl_verification)
     missing_permissions = xorhybrid.validate_permissions()
     if len(missing_permissions) > 0:
         logger.error(  # pylint: disable=W1203
@@ -271,11 +271,12 @@ def validate_artifacts(
     create_dir(sf_export_dir)
 
     gcp_env_type = DEFAULT_GCP_ENV_TYPE
-
+    ssl_verification = cfg.getboolean("inputs",
+                                      "SSL_VERIFICATION", fallback=True)
     if not skip_target_validation:
         target_url = cfg.get("inputs", "TARGET_URL")
         gcp_project_id = cfg.get("inputs", "GCP_PROJECT_ID")
-        gcp_token = get_access_token()
+        gcp_token = get_access_token(ssl_verification)
     else:
         target_url = None
         gcp_project_id = None
@@ -310,7 +311,7 @@ def validate_artifacts(
     target_export_data = parse_json(target_export_data_file)
     if target_compare and (not target_export_data.get("export", False)):
         apigee_export = ApigeeExporter(
-            target_url, gcp_project_id, gcp_token, "oauth", True
+            target_url, gcp_project_id, gcp_token, "oauth", ssl_verification
         )
         target_export_data = apigee_export.get_export_data(
             target_resource_list, target_export_dir
@@ -325,6 +326,7 @@ def validate_artifacts(
         target_export_data,
         target_compare,
         skip_target_validation,
+        ssl_verification
     )  # noqa pylint: disable=C0301
 
     for env, _ in export_data["envConfig"].items():
