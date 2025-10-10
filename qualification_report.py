@@ -358,6 +358,16 @@ class QualificationReport():  # noqa pylint: disable=R0902,R0904
         self.qualification_report_info_box(
             northbound_mtls_mapping, nb_mtls_sheet)
 
+    def _safe_value(self, value):
+        """Safely converts a value to a type supported by the excel writer."""
+        if isinstance(value, (bool, int, float)):
+            return value
+        try:
+            return str(value)
+        except Exception as e:
+            logger.error(f"Error converting value to string: {e}")
+            return "ERROR"
+
     def report_company_and_developer(self):
         """Generates the "Company And Developers" report sheet."""
 
@@ -414,9 +424,13 @@ class QualificationReport():  # noqa pylint: disable=R0902,R0904
                 col += 1
                 anti_patterns_sheet.write(row, col, policy)
                 col += 1
-                anti_patterns_sheet.write(row, col, value.get('distributed', 'default_false'))   # noqa pylint: disable=C0301
+                anti_patterns_sheet.write(
+                    row, col, self._safe_value(
+                        value.get('distributed', 'default_false')))
                 col += 1
-                anti_patterns_sheet.write(row, col, value.get('Synchronous', 'default_false'))   # noqa pylint: disable=C0301
+                anti_patterns_sheet.write(
+                    row, col, self._safe_value(
+                        value.get('Synchronous', 'default_false')))
 
                 row += 1
 
