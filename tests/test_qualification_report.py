@@ -889,9 +889,9 @@ class TestQualificationReport(unittest.TestCase):
         self.mock_workbook.close.assert_called_once()
 
     @patch('qualification_report.anti_patterns_mapping')
-    def test_report_anti_patterns_with_none_values(self, mock_mapping):
+    def test_report_anti_patterns_missing_attrs(self, mock_mapping):
         """
-        Test report_anti_patterns method with None values (missing XML attributes).
+        Test report_anti_patterns with missing XML attributes (None values).
         """
         mock_mapping.__getitem__.side_effect = (
             self.anti_patterns_mapping.__getitem__)
@@ -918,15 +918,58 @@ class TestQualificationReport(unittest.TestCase):
         mock_sheet = Mock()
         self.mock_workbook.add_worksheet.return_value = mock_sheet
         report.report_anti_patterns()
-        
-        # Verify the complex lines with multiple invocations work with None values
-        mock_sheet.write.assert_any_call(1, 3, "None")   # _safe_value(None) returns "None"
-        mock_sheet.write.assert_any_call(1, 4, "None")   # _safe_value(None) returns "None"
+
+        # Verify complex lines work with None values
+        mock_sheet.write.assert_any_call(1, 3, "None")
+        mock_sheet.write.assert_any_call(1, 4, "None")
+
+    @patch('qualification_report.anti_patterns_mapping')
+    def test_report_anti_patterns_corrupted_data(self, mock_mapping):
+        """
+        Test report_anti_patterns with corrupted data (dict values).
+        """
+        mock_mapping.__getitem__.side_effect = (
+            self.anti_patterns_mapping.__getitem__)
+        self.export_data['proxy_dependency_map'] = {
+            'proxy1': {
+                'qualification': {
+                    'AntiPatternQuota': {
+                        'policy1': {
+                            'distributed': {
+                                'nested_key': 'nested_value',
+                                'another_key': 123
+                            },
+                            'Synchronous': 'true'  # Normal string value
+                        }
+                    }
+                }
+            }
+        }
+        report = QualificationReport(
+            'test.xlsx',
+            self.export_data,
+            self.topology_mapping,
+            self.cfg,
+            self.backend_cfg,
+            self.org_name
+        )
+        mock_sheet = Mock()
+        self.mock_workbook.add_worksheet.return_value = mock_sheet
+        report.report_anti_patterns()
+
+        # Verify complex lines handle corrupted data
+        expected_distributed = str({
+            'nested_key': 'nested_value',
+            'another_key': 123
+        })
+        mock_sheet.write.assert_any_call(1, 3, expected_distributed)
+        mock_sheet.write.assert_any_call(1, 4, 'true')
 
     @patch('qualification_report.anti_patterns_mapping')
     def test_report_anti_patterns_with_boolean_values(self, mock_mapping):
         """
-        Test report_anti_patterns method with boolean values (XML parser conversion).
+        Test report_anti_patterns method with boolean values
+        (XML parser conversion).
         """
         mock_mapping.__getitem__.side_effect = (
             self.anti_patterns_mapping.__getitem__)
@@ -935,8 +978,8 @@ class TestQualificationReport(unittest.TestCase):
                 'qualification': {
                     'AntiPatternQuota': {
                         'policy1': {
-                            'distributed': True,  # XML parser converted "true" to boolean
-                            'Synchronous': False  # XML parser converted "false" to boolean
+                            'distributed': True,  # XML "true" to boolean
+                            'Synchronous': False  # XML "false" to boolean
                         }
                     }
                 }
@@ -953,15 +996,16 @@ class TestQualificationReport(unittest.TestCase):
         mock_sheet = Mock()
         self.mock_workbook.add_worksheet.return_value = mock_sheet
         report.report_anti_patterns()
-        
+
         # Verify the complex lines with multiple invocations work with booleans
-        mock_sheet.write.assert_any_call(1, 3, True)   # _safe_value(True) returns True
-        mock_sheet.write.assert_any_call(1, 4, False)  # _safe_value(False) returns False
+        mock_sheet.write.assert_any_call(1, 3, True)   # _safe_value(True)
+        mock_sheet.write.assert_any_call(1, 4, False)  # _safe_value(False)
 
     @patch('qualification_report.anti_patterns_mapping')
     def test_report_anti_patterns_with_integer_values(self, mock_mapping):
         """
-        Test report_anti_patterns method with integer values (XML parser conversion).
+        Test report_anti_patterns method with integer values
+        (XML parser conversion).
         """
         mock_mapping.__getitem__.side_effect = (
             self.anti_patterns_mapping.__getitem__)
@@ -970,8 +1014,8 @@ class TestQualificationReport(unittest.TestCase):
                 'qualification': {
                     'AntiPatternQuota': {
                         'policy1': {
-                            'distributed': 1,     # XML parser converted "true" to 1
-                            'Synchronous': 0      # XML parser converted "false" to 0
+                            'distributed': 1,     # XML parser "true" to 1
+                            'Synchronous': 0      # XML parser "false" to 0
                         }
                     }
                 }
@@ -988,15 +1032,16 @@ class TestQualificationReport(unittest.TestCase):
         mock_sheet = Mock()
         self.mock_workbook.add_worksheet.return_value = mock_sheet
         report.report_anti_patterns()
-        
+
         # Verify the complex lines with multiple invocations work with integers
-        mock_sheet.write.assert_any_call(1, 3, 1)    # _safe_value(1) returns 1
-        mock_sheet.write.assert_any_call(1, 4, 0)    # _safe_value(0) returns 0
+        mock_sheet.write.assert_any_call(1, 3, 1)    # _safe_value(1)
+        mock_sheet.write.assert_any_call(1, 4, 0)    # _safe_value(0)
 
     @patch('qualification_report.anti_patterns_mapping')
     def test_report_anti_patterns_with_dictionary_values(self, mock_mapping):
         """
-        Test report_anti_patterns method with dictionary values (malformed XML parsing).
+        Test report_anti_patterns method with dictionary values
+        (malformed XML parsing).
         """
         mock_mapping.__getitem__.side_effect = (
             self.anti_patterns_mapping.__getitem__)
@@ -1026,8 +1071,9 @@ class TestQualificationReport(unittest.TestCase):
         mock_sheet = Mock()
         self.mock_workbook.add_worksheet.return_value = mock_sheet
         report.report_anti_patterns()
-        
-        # Verify the complex lines handle dictionary values (the customer's error scenario)
+
+        # Verify the complex lines handle dictionary values
+        # (the customer's error scenario)
         expected_distributed = str({
             'nested_key': 'nested_value',
             'another_key': 123
