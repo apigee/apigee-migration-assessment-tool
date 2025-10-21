@@ -38,7 +38,6 @@ You can run this tool locally using Python or via a Docker container.
     python3 -m venv dev
     source dev/bin/activate
     ```
-    *(Note: On Windows, use `dev\Scripts\activate`)*
 3.  **Install Python dependencies:**
     ```bash
     pip install -r requirements.txt
