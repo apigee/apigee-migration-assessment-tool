@@ -7,7 +7,7 @@
     "Proxies Shared Flows"
   ],
   "info_block": {
-    "text": "<b>[Feature Parity] Max Proxies + SharedFlows per Environment\n\nUnder the Subscription 2021 plan, Apigee X has a limit of 60 Proxies + SharedFlow (with maximum of 50 for deployed proxies) per environment.\n\n<iu>Workaround:\nEnsure you are entitled to Apigee X via a Subscription 2024 contract. Or, Depending on your implementation, sharding the proxies and sharedflows to multiple environments to make the limit could be a workaround. Please be aware of environment-level properties before doing this (i.e. cache)\n",
+    "text": "<b>[Feature Parity] Max Proxies + SharedFlows per Environment\n\nUnder the Subscription 2021 plan, Apigee X has a limit of 6000 Proxies + SharedFlow.\n\nApigee hybrid supports : 4,250 Proxies + SharedFlow.(Subscription 2021) Apigee hybrid: 6,000 Proxies + SharedFlow. (Subscription 2024)\n",
     "text_line_no_for_col_count": 2,
     "col_merge": 3,
     "start_row": 2,
