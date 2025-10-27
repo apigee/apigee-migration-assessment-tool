@@ -1,7 +1,7 @@
 {
     "headers": ["Organization", "Api Name", "New Sharded Proxies"],
     "info_block": {
-        "text": "<b>[Feature Parity] Proxy Unifier\n\nProxy Unifier is required because Apigee X currently supports only 5 proxy endpoints.\n",
+        "text": "<b>[Feature Parity] Proxy Unifier\n\nProxy Unifier is required because Apigee X currently supports only 10 proxy endpoints.\n",
         "text_line_no_for_col_count": 2,
         "col_merge": 3,
         "start_row": 2,
