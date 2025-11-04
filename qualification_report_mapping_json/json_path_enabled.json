@@ -8,7 +8,7 @@
         "end_row": 12,
         "link":[{
             "link_text": "Use this to understand how to switch to latest jsonpath",
-            "link": "https://jsonpath-comparison-lwy4scuauq-wl.a.run.app/"
+            "link": "https://cloud.google.com/apigee/docs/api-platform/reference/message-template-intro#json-path-function"
         }]
     }
 }
