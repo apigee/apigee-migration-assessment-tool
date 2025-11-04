@@ -1,7 +1,7 @@
 {
     "headers": ["Organization", "Api Name", "Base Paths"],
     "info_block": {
-        "text": "<b>[Anti-pattern] APIs with Multiple Basepaths\n\nApigee X currently supports only 5 proxy endpoints. Best practice is to have only one Proxy Endpoint in an API Proxy",
+        "text": "<b>[Anti-pattern] APIs with Multiple Basepaths\n\nApigee X currently supports only 10 proxy endpoints. Best practice is to have only one Proxy Endpoint in an API Proxy",
         "text_line_no_for_col_count": 2,
         "col_merge": 3,
         "start_row": 2,
