@@ -148,6 +148,8 @@ jobs:
 
       - name: Run tests on Apigee Edge SAAS.
         run: |
+          mkdir ${{ github.workspace }}/output
+          sudo chmod 777 ${{ github.workspace }}/output
           docker run \
             -v "${{ github.workspace }}/input.properties:/app/input.properties" \
             -v "${{ github.workspace }}/output:/app/target" \
