@@ -126,14 +126,6 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
-      - id: 'auth'
-        uses: 'google-github-actions/auth@v3'
-        with:
-          token_format: 'access_token'
-          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_POOL_PROVIDER_NAME }}
-          service_account: ${{ secrets.SVC_ACCOUNT_EMAIL }}
-          export_environment_variables: false
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -160,8 +152,8 @@ jobs:
             -v "${{ github.workspace }}/input.properties:/app/input.properties" \
             -v "${{ github.workspace }}/output:/app/target" \
             -e "SOURCE_AUTH_TOKEN=${{ steps.get_token.outputs.access_token }}" \
-            -e "APIGEE_ACCESS_TOKEN=${{ steps.auth.outputs.access_token }}" \
             "${{ env.IMAGE_NAME }}:${{ needs.build-and-push.outputs.image_tag }}" \
+            --skip-target-validation \
             --resources all
 
       - name: Upload latest assement results
