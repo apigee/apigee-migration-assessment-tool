@@ -143,7 +143,7 @@ jobs:
         run: pip install requests pyotp
 
       - name: Generate Apigee Token
-        id: get_token # This ID is important!
+        id: get_token
         env:
           APIGEE_EDGE_USER: ${{ secrets.APIGEE_EDGE_USER }}
           APIGEE_EDGE_PASSWORD: ${{ secrets.APIGEE_EDGE_PASSWORD }}
@@ -158,7 +158,14 @@ jobs:
         run: |
           docker run \
             -v "${{ github.workspace }}/input.properties:/app/input.properties" \
+            -v "${{ github.workspace }}/output:/app/target" \
             -e "SOURCE_AUTH_TOKEN=${{ steps.get_token.outputs.access_token }}" \
             -e "APIGEE_ACCESS_TOKEN=${{ steps.auth.outputs.access_token }}" \
             "${{ env.IMAGE_NAME }}:${{ needs.build-and-push.outputs.image_tag }}" \
             --resources all
+
+      - name: Upload latest assement results
+        uses: actions/upload-artifact@v4
+        with:
+          name: assessment-report
+          path: "${{ github.workspace }}/output/qualification_report.xlsx"
