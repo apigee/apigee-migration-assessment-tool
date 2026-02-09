@@ -134,6 +134,8 @@ The tool requires specific permissions to access and analyze your Apigee environ
         ```
         > **Note:** This token is not required if you use the `--skip-target-validation` flag.
 
+For detailed instructions on how to run the tool, especially with MFA, please see the [MFA Token Generation Instructions](MFA_TOKEN_INSTRUCTIONS.md).
+
 ## Running the Tool
 
 The primary script for running the assessment is `main.py`.

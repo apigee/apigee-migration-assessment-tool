@@ -2,6 +2,7 @@ input.properties
 visualization.html
 qualification_report.xlsx
 target/
+output/
 *.csv
 unzip/
 
