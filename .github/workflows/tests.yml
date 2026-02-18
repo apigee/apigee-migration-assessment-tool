@@ -98,11 +98,11 @@ jobs:
         run: |
           if [[ "${{ github.event_name }}" == "pull_request_target" ]]; then
             echo "tag=pr-${{ github.event.number }}" >> "$GITHUB_OUTPUT"
-          elif [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+          elif [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
             echo "tag=latest" >> "$GITHUB_OUTPUT"
           else
             # For feature branches, etc.
-            echo "tag=${{ github.ref_name }}" | sed 's/\//-/g' >> "$GITHUB_OUTPUT"
+            echo "tag=${GITHUB_REF_NAME}" | sed 's/\//-/g' >> "$GITHUB_OUTPUT"
           fi
 
       - name: Build and push Docker image
@@ -153,10 +153,13 @@ jobs:
           docker run \
             -v "${{ github.workspace }}/input.properties:/app/input.properties" \
             -v "${{ github.workspace }}/output:/app/target" \
-            -e "SOURCE_AUTH_TOKEN=${{ steps.get_token.outputs.access_token }}" \
-            "${{ env.IMAGE_NAME }}:${{ needs.build-and-push.outputs.image_tag }}" \
+            -e "SOURCE_AUTH_TOKEN=${STEPS_GET_TOKEN_OUTPUTS_ACCESS_TOKEN}" \
+            "${IMAGE_NAME}:${NEEDS_BUILD_AND_PUSH_OUTPUTS_IMAGE_TAG}" \
             --skip-target-validation \
             --resources all
+        env:
+          STEPS_GET_TOKEN_OUTPUTS_ACCESS_TOKEN: ${{ steps.get_token.outputs.access_token }}
+          NEEDS_BUILD_AND_PUSH_OUTPUTS_IMAGE_TAG: ${{ needs.build-and-push.outputs.image_tag }}
 
       - name: Upload latest assement results
         uses: actions/upload-artifact@v4
