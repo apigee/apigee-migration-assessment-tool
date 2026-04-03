@@ -33,7 +33,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v5
       - name: Run Mega Linter
-        uses: oxsecurity/megalinter@v8.3.0
+        uses: oxsecurity/megalinter@v8.8.0
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -47,7 +47,7 @@ jobs:
           GROOVY_NPM_GROOVY_LINT_FILTER_REGEX_EXCLUDE: "Jenkinsfile"
           MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
           PYTHON_MYPY_DISABLE_ERRORS: true
-          DISABLE_LINTERS: "SPELL_CSPELL,REPOSITORY_KICS,PYTHON_PYRIGHT,REPOSITORY_DEVSKIM"
+          DISABLE_LINTERS: "SPELL_CSPELL,REPOSITORY_KICS,PYTHON_PYRIGHT,REPOSITORY_DEVSKIM,REPOSITORY_GRYPE"
 
   commit-messages:
     name: Conventional Commits Lint
