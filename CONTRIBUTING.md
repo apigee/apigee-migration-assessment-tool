@@ -36,6 +36,43 @@ We welcome code contributions! Here's how to submit a pull request:
 7. **Create a pull request:** Go to the original repository and click the "New pull request" button. Select your forked repository and branch.
 8. **Provide a detailed description:** Explain the changes you made and why.
 
+## Local Development Setup
+
+This project includes a `Makefile` to streamline common development tasks.
+
+### Prerequisites
+
+- Python 3.12
+- `make`
+
+### Installation
+
+To set up your local development environment, run the following command:
+
+```bash
+make install
+```
+
+This will create a Python virtual environment in `venv/`, and install all the required dependencies from `requirements.txt` and `test-requirements.txt`.
+
+### Running Tests
+
+To run the full suite of unit tests, use the following command:
+
+```bash
+make test
+```
+
+You can also run specific tests by passing the `TESTS` variable:
+
+```bash
+make test TESTS=tests/test_scripts.py
+```
+
+### Running the Tool
+
+For instructions on how to run the tool using the `make` commands, please refer to the [MFA Token Generation Instructions](MFA_TOKEN_INSTRUCTIONS.md).
+
 ## Code Style
 
 * **Follow PEP 8:** Adhere to the [PEP 8 style guide](https://www.python.org/dev/peps/pep-0008/) for Python code.
