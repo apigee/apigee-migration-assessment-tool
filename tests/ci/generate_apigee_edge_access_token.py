@@ -53,7 +53,6 @@ def fetch_apigee_token():
     headers = {
         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
         "Accept": "application/json;charset=utf-8",
-        "Authorization": "Basic ZWRnZWNsaTplZGdlY2xpc2VjcmV0",
     }
     params = {"mfa_token": mfa_token}
     data = {
@@ -63,7 +62,14 @@ def fetch_apigee_token():
     }
 
     try:
-        response = requests.post(url, headers=headers, params=params, data=data, timeout=3)   # noqa
+        response = requests.post(
+            url,
+            headers=headers,
+            params=params,
+            data=data,
+            auth=("edgecli", "edgeclisecret"),
+            timeout=3,
+        )
         response.raise_for_status()
         access_token = response.json().get("access_token")
         if not access_token:

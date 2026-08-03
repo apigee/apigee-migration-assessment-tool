@@ -19,3 +19,5 @@ diagrams>=0.24.0
 google-auth==2.38.0
 google-cloud-resource-manager==1.14.0
 defusedxml==0.7.1
+filelock>=3.20.3
+idna>=3.15
