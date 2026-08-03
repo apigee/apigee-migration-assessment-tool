@@ -1,7 +1,7 @@
 {
     "headers": ["Organization", "Env Name", "Sharded Env", "Proxies List","Shared Flows List","Proxies count","Shared Flows Count","Total Count"],
     "info_block": {
-        "text": "<b>[Proxy Updates] In Apigee X, the total number of proxies and shareflows in an environment can't be more than 60.\nIf any environmrnt is exceeding that limit, it needs to be sharded into multiple environments.\nThis sheet presents the target environments after sharding the respective environments.",
+        "text": "<b>[Proxy Updates] In Apigee X, the total number of proxies and shareflows in an environment can't be more than 6000.\nIf any environment is exceeding that limit, it needs to be sharded into multiple environments.\nThis sheet presents the target environments after sharding the respective environments.",
         "text_line_no_for_col_count": 0,
         "col_merge": 3,
         "start_row": 2,

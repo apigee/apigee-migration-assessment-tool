@@ -8,7 +8,7 @@
         "sheets": [{
             "text_col": "Proxies Per Env",
             "link_of_text": "internal:'Proxies Per Env'!A1",
-            "result_col": "=IF(OR(MAX('Proxies Per Env'!C:C)>50, MAX('Proxies Per Env'!E:E)>60), \"FAILED\", \"PASSED\")"
+            "result_col": "=IF(OR(MAX('Proxies Per Env'!C:C)>6000, MAX('Proxies Per Env'!D:D)>75, MAX('Proxies Per Env'!E:E)>6000), \"FAILED\", \"PASSED\")"
         },
         {
             "text_col": "Northbound mTLS",
@@ -51,7 +51,7 @@
         {
             "text_col": "Product Limits - Env Limits",
             "link_of_text": "internal:'Product Limits - Env Limits'!A1",
-            "result_col": "=IF(OR(MAX('Product Limits - Env Limits'!C:C)>1000, MAX('Product Limits - Env Limits'!F:F)>100), \"FAILED\", \"PASSED\")"
+            "result_col": "=IF(OR(MAX('Product Limits - Env Limits'!C:C)>1000, MAX('Product Limits - Env Limits'!F:F)>900), \"FAILED\", \"PASSED\")"
         },
         {
             "text_col": "Product Limits - Org Limits",
@@ -66,7 +66,7 @@
         {
             "text_col": "APIs with Multiple BasePaths",
             "link_of_text": "internal:'APIs With Multiple BasePaths'!A1",
-            "result_col": "=IF(ArrayFormula(MAX(COUNTIF('APIs With Multiple BasePaths'!B2:B971, 'APIs With Multiple BasePaths'!B2:B971))) > 5, \"FAILED\", \"PASSED\")"
+            "result_col": "=IF(ArrayFormula(MAX(COUNTIF('APIs With Multiple BasePaths'!B2:B971, 'APIs With Multiple BasePaths'!B2:B971))) > 10, \"FAILED\", \"PASSED\")"
         }]
     },
     {
