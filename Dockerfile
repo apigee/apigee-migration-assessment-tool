@@ -18,7 +18,7 @@ FROM python:3.12-alpine
 # create apigee use and group.
 RUN addgroup -S apigee && adduser -S apigee -G apigee && \
     apk add --no-cache --virtual .build-deps build-base && \
-    apk add --no-cache graphviz=12.2.1-r0
+    apk add --no-cache graphviz
 
 # Copy only the requirements file first to leverage Docker's build cache.
 # hadolint ignore=DL3045
