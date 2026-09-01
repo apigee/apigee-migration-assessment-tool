@@ -367,6 +367,36 @@ class TestUtils(unittest.TestCase):
             'w',
             zipfile.ZIP_DEFLATED))
 
+    def test_safe_join_path(self):
+        """Test safe_join_path prevents path traversal."""
+        base_dir = "/app/target/export"
+        # Normal safe join
+        result = utils.safe_join_path(base_dir, "resourceFiles", "jsc", "test.js")
+        self.assertEqual(
+            result, os.path.abspath("/app/target/export/resourceFiles/jsc/test.js")
+        )
+
+        # Path traversal attempts
+        with self.assertRaises(ValueError):
+            utils.safe_join_path(base_dir, "..", "evil.txt")
+
+        with self.assertRaises(ValueError):
+            utils.safe_join_path(base_dir, "resourceFiles", "../../../etc/passwd")
+
+        with self.assertRaises(ValueError):
+            utils.safe_join_path(base_dir, "/etc/shadow")
+
+    def test_sanitize_filename(self):
+        """Test sanitize_filename strips path traversal and invalid characters."""
+        self.assertEqual(utils.sanitize_filename("test.js"), "test.js")
+        self.assertEqual(utils.sanitize_filename("../../etc/passwd"), "passwd")
+        self.assertEqual(utils.sanitize_filename("/var/log/app.log"), "app.log")
+        self.assertEqual(utils.sanitize_filename(".."), "")
+        self.assertEqual(utils.sanitize_filename("."), "")
+        self.assertEqual(utils.sanitize_filename(""), "")
+        self.assertEqual(utils.sanitize_filename(None), "")
+        self.assertEqual(utils.sanitize_filename("test\x00.js"), "test.js")
+
 
 if __name__ == "__main__":
     unittest.main()

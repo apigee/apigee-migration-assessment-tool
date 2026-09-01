@@ -2,8 +2,17 @@
 """
 Tests for the exporter module.
 """
+import os
+import sys
 import unittest
 from unittest.mock import MagicMock, patch, mock_open
+
+if 'google.cloud.resourcemanager_v3' not in sys.modules:
+    sys.modules['google'] = MagicMock()
+    sys.modules['google.cloud'] = MagicMock()
+    sys.modules['google.cloud.resourcemanager_v3'] = MagicMock()
+    sys.modules['google.oauth2'] = MagicMock()
+    sys.modules['google.oauth2.credentials'] = MagicMock()
 
 from exporter import ApigeeExporter
 
@@ -72,9 +81,49 @@ class TestApigeeExporter(unittest.TestCase):
             'resourceFile': [{'name': 'test.js', 'type': 'jsc'}]}
         self.exporter.apigee.get_env_object.return_value = b"content"
         self.exporter.export_env_objects(['resourcefiles'], 'export_dir')
-        mock_create_dir.assert_called_with('export_dir/resourceFiles/jsc')
-        mock_write_file.assert_called_with(
-            'export_dir/resourceFiles/jsc/test.js', b"content")
+        expected_dir = os.path.abspath('export_dir/resourceFiles/jsc')
+        expected_file = os.path.abspath('export_dir/resourceFiles/jsc/test.js')
+        mock_create_dir.assert_called_with(expected_dir)
+        mock_write_file.assert_called_with(expected_file, b"content")
+
+    @patch('exporter.create_dir')
+    @patch('exporter.write_file')
+    def test_export_env_objects_resourcefiles_path_traversal(
+        self, mock_write_file, mock_create_dir
+    ):
+        """
+        Test that export_env_objects prevents path traversal in resourcefiles.
+        """
+        self.exporter.export_data['envConfig'] = {"test":
+                                                  {"resourcefiles": {}}}
+        # Attempt traversal via name and type
+        self.exporter.apigee.list_env_objects.return_value = {
+            'resourceFile': [
+                {'name': '../../etc/cron.d/malicious', 'type': 'jsc'},
+                {'name': 'safe.js', 'type': '../../../tmp'},
+                {'name': '..', 'type': 'jsc'},
+            ]
+        }
+        self.exporter.apigee.get_env_object.return_value = b"malicious_code"
+        self.exporter.export_env_objects(['resourcefiles'], 'export_dir')
+
+        # '../../etc/cron.d/malicious' -> sanitized to 'malicious' under export_dir/resourceFiles/jsc
+        expected_file_1 = os.path.abspath('export_dir/resourceFiles/jsc/malicious')
+        # '../../../tmp' -> sanitized to 'tmp' under export_dir/resourceFiles/tmp
+        expected_file_2 = os.path.abspath('export_dir/resourceFiles/tmp/safe.js')
+
+        written_paths = [call[0][0] for call in mock_write_file.call_args_list]
+        base_export_dir = os.path.abspath('export_dir/resourceFiles')
+
+        for path in written_paths:
+            self.assertTrue(
+                path.startswith(base_export_dir),
+                f"Path {path} escaped base export directory {base_export_dir}"
+            )
+        self.assertIn(expected_file_1, written_paths)
+        self.assertIn(expected_file_2, written_paths)
+        # '..' should be skipped entirely
+        self.assertEqual(len(written_paths), 2)
 
     def test_export_org_objects(self):
         """
