@@ -107,10 +107,16 @@ class TestApigeeExporter(unittest.TestCase):
         self.exporter.apigee.get_env_object.return_value = b"malicious_code"
         self.exporter.export_env_objects(['resourcefiles'], 'export_dir')
 
-        # '../../etc/cron.d/malicious' -> sanitized to 'malicious' under export_dir/resourceFiles/jsc
-        expected_file_1 = os.path.abspath('export_dir/resourceFiles/jsc/malicious')
-        # '../../../tmp' -> sanitized to 'tmp' under export_dir/resourceFiles/tmp
-        expected_file_2 = os.path.abspath('export_dir/resourceFiles/tmp/safe.js')
+        # '../../etc/cron.d/malicious' -> sanitized to 'malicious'
+        # under export_dir/resourceFiles/jsc
+        expected_file_1 = os.path.abspath(
+            'export_dir/resourceFiles/jsc/malicious'
+        )
+        # '../../../tmp' -> sanitized to 'tmp'
+        # under export_dir/resourceFiles/tmp
+        expected_file_2 = os.path.abspath(
+            'export_dir/resourceFiles/tmp/safe.js'
+        )
 
         written_paths = [call[0][0] for call in mock_write_file.call_args_list]
         base_export_dir = os.path.abspath('export_dir/resourceFiles')
