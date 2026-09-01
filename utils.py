@@ -130,7 +130,9 @@ def get_source_auth_token():
 
 
 def safe_join_path(base_dir, *paths):
-    """Safely joins path components to a base directory, preventing path traversal.
+    """Safely joins path components to a base directory.
+
+    Prevents path traversal.
 
     Args:
         base_dir: The trusted base directory.
@@ -148,16 +150,23 @@ def safe_join_path(base_dir, *paths):
     try:
         common = os.path.commonpath([base_abs, joined_path])
     except ValueError as e:
-        raise ValueError(f"Path traversal detected: {joined_path} is outside {base_abs}") from e
+        raise ValueError(
+            f"Path traversal detected: {joined_path} is outside {base_abs}"
+        ) from e
 
     if common != base_abs:
-        raise ValueError(f"Path traversal detected: {joined_path} escapes base directory {base_abs}")
+        raise ValueError(
+            f"Path traversal detected: {joined_path} "
+            f"escapes base directory {base_abs}"
+        )
 
     return joined_path
 
 
 def sanitize_filename(filename):
-    """Sanitizes a single filename or directory component to prevent traversal.
+    """Sanitizes a single filename or directory component.
+
+    Prevents path traversal.
 
     Args:
         filename: The untrusted file or folder name.
