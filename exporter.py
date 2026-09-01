@@ -37,7 +37,14 @@ import os
 import json
 from classic import ApigeeClassic
 from nextgen import ApigeeNewGen
-from utils import create_dir, run_parallel, write_file, write_json
+from utils import (
+    create_dir,
+    run_parallel,
+    safe_join_path,
+    sanitize_filename,
+    write_file,
+    write_json,
+)
 from base_logger import logger
 
 
@@ -156,20 +163,43 @@ class ApigeeExporter():  # pylint: disable=R0902
                         env_objects['resourceFile'] = []
                     env_objects = env_objects['resourceFile']
                     for each_env_object in env_objects:
-                        logger.info(      # noqa pylint: disable=W1203
-                            f"Exporting Resourcefile {each_env_object['name']}")  # noqa
-                        create_dir(
-                            f"{export_dir}/resourceFiles/{each_env_object['type']}")    # noqa pylint: disable=W1203
+                        raw_name = each_env_object.get('name', '')
+                        raw_type = each_env_object.get('type', '')
+
+                        clean_type = sanitize_filename(raw_type)
+                        clean_name = sanitize_filename(raw_name)
+
+                        if not clean_type or not clean_name:
+                            logger.warning(
+                                f"Skipping invalid or unsafe resourcefile: type='{raw_type}', name='{raw_name}'"  # noqa pylint: disable=C0301
+                            )
+                            continue
+
+                        try:
+                            resource_type_dir = safe_join_path(
+                                export_dir, "resourceFiles", clean_type
+                            )
+                            target_file_path = safe_join_path(
+                                resource_type_dir, clean_name
+                            )
+                        except ValueError as e:
+                            logger.error(
+                                f"Path traversal attempt blocked for resourcefile: {e}"  # noqa pylint: disable=C0301
+                            )
+                            continue
+
+                        logger.info(
+                            f"Exporting Resourcefile {clean_name}")  # noqa pylint: disable=W1203
+                        create_dir(resource_type_dir)
                         obj_data = self.apigee.get_env_object(
                             env, each_env_object_type, each_env_object)
                         obj_data = (obj_data if isinstance(obj_data, bytes)
                                     else obj_data.encode('utf-8'))
-                        write_file(
-                            f"{export_dir}/resourceFiles/{each_env_object['type']}/{each_env_object['name']}", obj_data)  # noqa pylint: disable=C0301
-                        self.export_data['envConfig'][env][self.env_object_types[each_env_object_type]][each_env_object['name']] = {  # noqa pylint: disable=C0301
-                            'name': each_env_object['name'],
-                            'type': each_env_object['type'],
-                            'file': f"{export_dir}/resourceFiles/{each_env_object['type']}/{each_env_object['name']}"  # noqa pylint: disable=C0301
+                        write_file(target_file_path, obj_data)
+                        self.export_data['envConfig'][env][self.env_object_types[each_env_object_type]][raw_name] = {  # noqa pylint: disable=C0301
+                            'name': raw_name,
+                            'type': raw_type,
+                            'file': target_file_path
                         }
                 elif each_env_object_type == 'keystores':
                     create_dir(f"{export_dir}/keystore_certificates/env-{env}")  # noqa
