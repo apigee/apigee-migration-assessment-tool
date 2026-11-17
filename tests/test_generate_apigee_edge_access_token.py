@@ -1,5 +1,6 @@
 """Tests for CI Apigee Edge access token TOTP generation."""
 
+import base64
 import importlib.util
 import os
 import unittest
@@ -28,14 +29,14 @@ class TestGenerateApigeeEdgeAccessToken(unittest.TestCase):
 
     def test_rfc6238_sha1_vector(self):
         """Verify TOTP output matches RFC 6238 SHA-1 test vector at t=59."""
-        # Key = b"12345678901234567890" -> GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ
-        secret = "GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ"
+        # RFC 6238 Appendix B ASCII test seed: b"12345678901234567890"
+        seed_b32 = base64.b32encode(b"12345678901234567890").decode("ascii")
         self.assertEqual(
-            self.token_mod.generate_totp(secret, digits=8, for_time=59),
+            self.token_mod.generate_totp(seed_b32, digits=8, for_time=59),
             "94287082",
         )
         self.assertEqual(
-            self.token_mod.generate_totp(secret, digits=6, for_time=59),
+            self.token_mod.generate_totp(seed_b32, digits=6, for_time=59),
             "287082",
         )
 
