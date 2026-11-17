@@ -1,5 +1,6 @@
 """Module docstring."""
 
+import os
 import unittest
 from unittest.mock import MagicMock, mock_open, patch
 
@@ -154,8 +155,31 @@ class TestApigeeNewGen(unittest.TestCase):
         self.nextgen_client.client.file_get.return_value = b"bundle_data"
         self.nextgen_client.fetch_api_revision("apis", "test_api", "1",
                                                "export_dir")
-        mock_file.assert_called_with("./export_dir/test_api.zip", "wb")
+        expected_path = os.path.abspath(
+            os.path.join("export_dir", "test_api.zip")
+        )
+        mock_file.assert_called_with(expected_path, "wb")
         mock_file().write.assert_called_with(b"bundle_data")
+
+    def test_write_proxy_bundle_blocks_traversal(self):
+        """Test _write_proxy_bundle rejects path traversal names."""
+        for bad_name in ["../../evil", "dir/proxy", "dir\\proxy", "..", ""]:
+            with self.assertRaises(ValueError):
+                self.nextgen_client._write_proxy_bundle(  # noqa pylint: disable=W0212
+                    "export_dir", bad_name, b"data"
+                )
+
+    @patch('nextgen.RestClient')
+    def test_googleapis_enforces_ssl_verify(self, mock_rest_client):
+        """Test googleapis.com endpoints enforce ssl_verify=True."""
+        ApigeeNewGen(
+            "https://apigee.googleapis.com/v1",
+            "proj",
+            "tok",
+            "hybrid",
+            False,
+        )
+        mock_rest_client.assert_called_once_with('oauth', 'tok', True)
 
     @patch("builtins.open", new_callable=mock_open, read_data=b"data")
     def test_create_api(self, _):

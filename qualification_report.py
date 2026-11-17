@@ -65,7 +65,10 @@ class QualificationReport():  # noqa pylint: disable=R0902,R0904
                                 configurations.
             org_name (str): The name of the Apigee organization.
         """
-        self.workbook = xlsxwriter.Workbook(workbookname)
+        self.workbook = xlsxwriter.Workbook(
+            workbookname,
+            {'strings_to_formulas': False, 'strings_to_urls': False},
+        )
         self.export_data = export_data
         self.topology_mapping = topology_mapping
         self.org_name = org_name

@@ -43,7 +43,9 @@ Constants:
 - `DEFAULT_GCP_ENV_TYPE`: Default GCP environment type.
 """
 
+import html
 import os
+from urllib.parse import quote
 
 import networkx as nx  # pylint: disable=E0401
 from pyvis.network import Network  # pylint: disable=E0401
@@ -453,31 +455,46 @@ def visualize_artifacts(
                     final_report[res][i["name"]] = violations  # noqa
 
     # Org level resources
-    org_url = source_ui_url + source_url
+    org_url = html.escape(
+        source_ui_url + quote(str(source_url), safe=""), quote=True
+    )
+    source_url_escaped = html.escape(str(source_url), quote=True)
     dg.add_node("ORG" + SEPERATOR + source_url, size=30, color="pink")
     dg.nodes["ORG" + SEPERATOR + source_url][
         "title"
-    ] = f'<a href={org_url} target="_blank">Organization - {source_url}</a>'  # noqa pylint: disable=C0301
+    ] = f'<a href="{org_url}" target="_blank">Organization - {source_url_escaped}</a>'  # noqa pylint: disable=C0301
     for key, value in exportorg.items():  # noqa pylint: disable=R1702
         dg.add_edge("ORG" + SEPERATOR + key.upper(), "ORG" + SEPERATOR + source_url) # noqa
         dg.nodes["ORG" + SEPERATOR + key.upper()]["size"] = 20
+        key_escaped = html.escape(str(key), quote=True)
 
         # for titles of key nodes
         if key == "apiProducts":
-            res_url = source_ui_url + source_url + "/products"
+            res_url = html.escape(
+                source_ui_url + quote(str(source_url), safe="") + "/products",
+                quote=True,
+            )
             dg.nodes["ORG" + SEPERATOR + key.upper()][
                 "title"
-            ] = f'<a href={res_url} target="_blank">Org level {key}</a>'  # noqa
+            ] = f'<a href="{res_url}" target="_blank">Org level {key_escaped}</a>'  # noqa
         elif key == "kvms":
-            res_url = api_url + "/key-value-maps/1/overview"
+            res_url = html.escape(
+                api_url + "/key-value-maps/1/overview", quote=True
+            )
             dg.nodes["ORG" + SEPERATOR + key.upper()][
                 "title"
-            ] = f'<a href={res_url} target="_blank">Org level {key}</a>'  # noqa
+            ] = f'<a href="{res_url}" target="_blank">Org level {key_escaped}</a>'  # noqa
         else:
-            res_url = source_ui_url + source_url + "/" + key
+            res_url = html.escape(
+                source_ui_url
+                + quote(str(source_url), safe="")
+                + "/"
+                + quote(str(key), safe=""),
+                quote=True,
+            )
             dg.nodes["ORG" + SEPERATOR + key.upper()][
                 "title"
-            ] = f'<a href={res_url} target="_blank">Org level {key}</a>'  # noqa
+            ] = f'<a href="{res_url}" target="_blank">Org level {key_escaped}</a>'  # noqa
 
         # check threshold for resources
         threshold = 100
@@ -491,19 +508,24 @@ def visualize_artifacts(
             ] = "black"  # noqa
             dg.nodes["More than " + str(threshold) + " " + key]["size"] = 20
             dg.nodes["More than " + str(threshold) + " " + key]["title"] = (
-                "Total - " + str(len(value)) + " " + key
+                "Total - " + str(len(value)) + " " + key_escaped
             )  # noqa
             continue
 
         for name, val in value.items():
             dg.add_edge("ORG" + SEPERATOR + name, "ORG" + SEPERATOR + key.upper()) # noqa
+            name_escaped = html.escape(str(name), quote=True)
+            key_prefix_escaped = html.escape(str(key[:-1]), quote=True)
             if key in ["apis", "sharedflows"]:
                 dg.nodes["ORG" + SEPERATOR + name]["title"] = (
-                    key[:-1] + " named " + name
+                    key_prefix_escaped + " named " + name_escaped
                 )  # noqa
             else:
                 dg.nodes["ORG" + SEPERATOR + name]["title"] = (
-                    "Org level " + key[:-1] + " named " + name
+                    "Org level "
+                    + key_prefix_escaped
+                    + " named "
+                    + name_escaped
                 )
 
             # check if importable or not
@@ -524,50 +546,63 @@ def visualize_artifacts(
                                 viols += str(violation) + " "
                             count = count + 1
                         dg.nodes["ORG" + SEPERATOR + name]["title"] = (
-                            "<b>Reason</b> : " + viols
+                            "<b>Reason</b> : "
+                            + html.escape(str(viols), quote=True)
                         )  # noqa
 
     # Environment level resources
     dg.add_edge("ORG" + SEPERATOR + "ENVs", "ORG" + SEPERATOR + source_url)
     dg.nodes["ORG" + SEPERATOR + "ENVs"]["size"] = 20
-    env_url = api_url + "/environments/1/overview"
+    env_url = html.escape(api_url + "/environments/1/overview", quote=True)
     dg.nodes["ORG" + SEPERATOR + "ENVs"][
         "title"
-    ] = f'<a href={env_url} target="_blank">Environments</a>'  # noqa
+    ] = f'<a href="{env_url}" target="_blank">Environments</a>'  # noqa
 
     for env, value in exportenv.items():
         dg.add_edge(env, "ORG | ENVs")
-        dg.nodes[env]["title"] = env + " Environment"
-        base_url = source_ui_url + source_url + "/environments/" + env + "/"  # noqa
+        env_escaped = html.escape(str(env), quote=True)
+        dg.nodes[env]["title"] = env_escaped + " Environment"
+        base_url = (
+            source_ui_url
+            + quote(str(source_url), safe="")
+            + "/environments/"
+            + quote(str(env), safe="")
+            + "/"
+        )
         for resource, val in value.items():
             dg.add_edge(env + SEPERATOR + resource.upper(), env)
+            resource_escaped = html.escape(str(resource), quote=True)
 
             # hyperlinks in titles
             if resource == "resourcefiles":
-                res_url = api_url + "/resource-files/1/overview"
+                res_url = html.escape(
+                    api_url + "/resource-files/1/overview", quote=True
+                )
                 dg.nodes[env + SEPERATOR + resource.upper()][
                     "title"
-                ] = f'<a href={res_url} target="_blank">Env {env} level {resource}</a>'  # noqa pylint: disable=C0301
+                ] = f'<a href="{res_url}" target="_blank">Env {env_escaped} level {resource_escaped}</a>'  # noqa pylint: disable=C0301
             elif resource == "kvms":
-                res_url = base_url + "key-value-maps"
+                res_url = html.escape(base_url + "key-value-maps", quote=True)
                 dg.nodes[env + SEPERATOR + resource.upper()][
                     "title"
-                ] = f'<a href={res_url} target="_blank">Env {env} level {resource}</a>'  # noqa pylint: disable=C0301
+                ] = f'<a href="{res_url}" target="_blank">Env {env_escaped} level {resource_escaped}</a>'  # noqa pylint: disable=C0301
             elif resource == "vhosts":
-                res_url = base_url + "virtual-hosts"
+                res_url = html.escape(base_url + "virtual-hosts", quote=True)
                 dg.nodes[env + SEPERATOR + resource.upper()][
                     "title"
-                ] = f'<a href={res_url} target="_blank">Env {env} level {resource}</a>'  # noqa pylint: disable=C0301
+                ] = f'<a href="{res_url}" target="_blank">Env {env_escaped} level {resource_escaped}</a>'  # noqa pylint: disable=C0301
             elif resource == "targetServers":
-                res_url = base_url + "target-servers"
+                res_url = html.escape(base_url + "target-servers", quote=True)
                 dg.nodes[env + SEPERATOR + resource.upper()][
                     "title"
-                ] = f'<a href={res_url} target="_blank">Env {env} level {resource}</a>'  # noqa pylint: disable=C0301
+                ] = f'<a href="{res_url}" target="_blank">Env {env_escaped} level {resource_escaped}</a>'  # noqa pylint: disable=C0301
             else:
-                res_url = base_url + resource
+                res_url = html.escape(
+                    base_url + quote(str(resource), safe=""), quote=True
+                )
                 dg.nodes[env + SEPERATOR + resource.upper()][
                     "title"
-                ] = f'<a href={res_url} target="_blank">Env {env} level {resource}</a>'  # noqa pylint: disable=C0301
+                ] = f'<a href="{res_url}" target="_blank">Env {env_escaped} level {resource_escaped}</a>'  # noqa pylint: disable=C0301
 
             # check threshold for env level resources
             threshold = 100
@@ -589,14 +624,18 @@ def visualize_artifacts(
                 dg.nodes[
                     "More than " + str(threshold) + " " + resource + " in env " + env # noqa
                 ]["title"] = (
-                    "Total - " + str(len(val)) + " " + resource
+                    "Total - " + str(len(val)) + " " + resource_escaped
                 )  # noqa pylint: disable=C0301
                 continue
 
             for name, _ in val.items():
                 dg.add_edge(env + SEPERATOR + name, env + SEPERATOR + resource.upper()) # noqa
+                name_escaped = html.escape(str(name), quote=True)
+                resource_prefix_escaped = html.escape(
+                    str(resource[:-1]), quote=True
+                )
                 dg.nodes[env + SEPERATOR + name]["title"] = (
-                    "Env " + env + " level " + resource[:-1] + " named " + name
+                    "Env " + env_escaped + " level " + resource_prefix_escaped + " named " + name_escaped  # noqa pylint: disable=C0301
                 )
 
                 # check if importable or not
@@ -611,7 +650,8 @@ def visualize_artifacts(
                             .get("message", "")
                         )  # noqa pylint: disable=C0301
                         dg.nodes[env + SEPERATOR + name]["title"] = (
-                            "<b>Reason</b> : " + error_message
+                            "<b>Reason</b> : "
+                            + html.escape(str(error_message), quote=True)
                         )  # noqa pylint: disable=C0301
 
     net = Network(notebook=True, cdn_resources="in_line", width=1000, height=800) # noqa

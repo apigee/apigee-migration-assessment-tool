@@ -121,6 +121,55 @@ class TestCoreWrappers(unittest.TestCase):
         mock_network.return_value.show.assert_called_with(
             '/tmp/visualization.html')
 
+    @patch('core_wrappers.parse_config')
+    @patch('core_wrappers.Network')
+    def test_visualize_artifacts_escapes_html(
+        self, mock_network, mock_parse_config
+    ):
+        """Test visualize_artifacts HTML-escapes untrusted graph tooltips."""
+        mock_parse_config.return_value.get.return_value = 'visualization.html'
+        self.cfg.set(
+            'inputs', 'SOURCE_ORG', 'org"><img src=x onerror=alert(1)>'
+        )
+        export_data = {
+            'orgConfig': {
+                'apis': {'<script>alert(1)</script>': {}}
+            },
+            'envConfig': {
+                'dev" onclick="alert(2)': {
+                    'targetServers': {'ts<svg/onload=alert(3)>': {}}
+                }
+            },
+        }
+        report = {
+            'report': {},
+            'apis': [
+                {
+                    'name': '<script>alert(1)</script>',
+                    'importable': False,
+                    'reason': [
+                        {'violations': [{'description': '<img/src=x>'}]}
+                    ],
+                }
+            ],
+            'dev" onclick="alert(2) | targetServers': [
+                {
+                    'name': 'ts<svg/onload=alert(3)>',
+                    'importable': False,
+                    'error': {'code': 400, 'message': '<script>xss</script>'},
+                    'error_msg': {'message': '<script>xss</script>'},
+                }
+            ],
+        }
+        visualize_artifacts(self.cfg, export_data, report)
+        graph = mock_network.return_value.from_nx.call_args[0][0]
+        for _, attrs in graph.nodes(data=True):
+            title = attrs.get('title', '')
+            self.assertNotIn('<script>', title)
+            self.assertNotIn('<img', title)
+            self.assertNotIn('<svg', title)
+            self.assertNotIn('" onclick="', title)
+
     @patch('core_wrappers.QualificationReport')
     def test_qualification_report(self, mock_qualification_report):
         """

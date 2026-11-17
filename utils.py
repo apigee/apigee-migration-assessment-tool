@@ -32,6 +32,7 @@ import hashlib
 import configparser
 import concurrent.futures
 from time import sleep
+from urllib.parse import urlparse
 import zipfile
 import requests  # pylint: disable=E0401
 import xmltodict  # pylint: disable=E0401
@@ -79,18 +80,21 @@ def get_env_variable(key):
     return None
 
 
-def is_token_valid(token, ssl_verify=True):
+def is_token_valid(token, ssl_verify=True):  # noqa pylint: disable=W0613
     """Checks if an access token is valid.
 
     Args:
         token: The access token to validate.
+        ssl_verify: Unused; TLS verification is always enforced for
+            Google APIs.
 
     Returns:
         True if the token is valid, \
         False otherwise.
     """
-    url = f"https://www.googleapis.com/oauth2/v1/tokeninfo?access_token={token}"  # noqa
-    r = requests.get(url, timeout=5, verify=ssl_verify)
+    url = "https://www.googleapis.com/oauth2/v1/tokeninfo"
+    headers = {"Authorization": f"Bearer {token}"}
+    r = requests.post(url, headers=headers, timeout=5, verify=True)
     if r.status_code == 200:
         response_json = r.json()
         if 'email' not in response_json:
@@ -180,6 +184,70 @@ def sanitize_filename(filename):
     if clean_name in {".", ".."}:
         return ""
     return clean_name
+
+
+def validate_path_component(component):
+    """Validates that a string is a safe single path component.
+
+    Rejects empty strings, NUL bytes, path separators, and '.' / '..'.
+
+    Args:
+        component: The untrusted single path segment.
+
+    Returns:
+        The validated path component string.
+
+    Raises:
+        ValueError: If the component is invalid or unsafe.
+    """
+    if not isinstance(component, str) or not component:
+        raise ValueError("Invalid path component: must be a non-empty string")
+    if (
+        '\x00' in component
+        or '/' in component
+        or '\\' in component
+        or component in {'.', '..'}
+    ):
+        raise ValueError(f"Unsafe path component detected: {component!r}")
+    return component
+
+
+def is_googleapis_url(url):
+    """Returns True if the URL targets googleapis.com or a subdomain."""
+    if not url:
+        return False
+    hostname = urlparse(str(url)).hostname
+    if not hostname:
+        return False
+    hostname = hostname.lower()
+    return hostname == "googleapis.com" or hostname.endswith(".googleapis.com")
+
+
+def safe_extract_zip(zip_path, dest_dir):
+    """Safely extracts a zip archive into dest_dir preventing Zip Slip.
+
+    Validates all archive members before extracting and rejects symlinks
+    or entries whose resolved target escapes dest_dir.
+
+    Args:
+        zip_path: Path to the zip archive.
+        dest_dir: Trusted destination directory.
+
+    Raises:
+        ValueError: If any archive entry escapes dest_dir or is a symlink.
+    """
+    dest_abs = os.path.abspath(dest_dir)
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        for member in zip_ref.infolist():
+            if not member.filename:
+                continue
+            if (member.external_attr >> 16) & 0o170000 == 0o120000:
+                raise ValueError(
+                    f"Symlink entry not allowed in zip: {member.filename}"
+                )
+            normalized = member.filename.replace('\\', '/')
+            safe_join_path(dest_abs, normalized)
+        zip_ref.extractall(dest_abs)
 
 
 def create_dir(dir_name):
@@ -656,8 +724,9 @@ def read_proxy_artifacts(dir_name, entrypoint):
             proxy_endpoints = ([proxy_endpoints] if isinstance(
                 proxy_endpoints, str) else proxy_endpoints)
             for each_pe in proxy_endpoints:
-                proxy_dict['ProxyEndpoints'][each_pe] = parse_xml(
-                    os.path.join(dir_name, 'proxies', f"{each_pe}.xml"))
+                validate_path_component(each_pe)
+                pe_path = safe_join_path(dir_name, 'proxies', f"{each_pe}.xml")
+                proxy_dict['ProxyEndpoints'][each_pe] = parse_xml(pe_path)
 
             if api_proxy.get('Basepaths', None) is not None:
                 proxy_dict['BasePaths'] = api_proxy.get('Basepaths')
@@ -670,8 +739,11 @@ def read_proxy_artifacts(dir_name, entrypoint):
                 api_proxy['Policies']['Policy'], str) else policies)
 
             for each_policy in policies:
-                proxy_dict['Policies'][each_policy] = parse_xml(
-                    os.path.join(dir_name, 'policies', f"{each_policy}.xml"))
+                validate_path_component(each_policy)
+                policy_path = safe_join_path(
+                    dir_name, 'policies', f"{each_policy}.xml"
+                )
+                proxy_dict['Policies'][each_policy] = parse_xml(policy_path)
 
         if api_proxy.get('TargetEndpoints') is not None:
 
@@ -679,8 +751,11 @@ def read_proxy_artifacts(dir_name, entrypoint):
             target_endpoints = ([target_endpoints] if isinstance(
                 target_endpoints, str) else target_endpoints)
             for each_te in target_endpoints:
-                proxy_dict['TargetEndpoints'][each_te] = parse_xml(
-                    os.path.join(dir_name, 'targets', f"{each_te}.xml"))
+                validate_path_component(each_te)
+                te_path = safe_join_path(
+                    dir_name, 'targets', f"{each_te}.xml"
+                )
+                proxy_dict['TargetEndpoints'][each_te] = parse_xml(te_path)
     except Exception as error: # noqa pylint: disable=W1203,W0718
         logger.error(f"Error: raised error in read_proxy_artifacts {error}")  # noqa pylint: disable=W1203
     return proxy_dict
@@ -1286,7 +1361,8 @@ def clone_proxies(source_dir, target_dir,
         dict: The merged proxy endpoints.
     """
     try:
-        target_dir = f"{target_dir}/apiproxy"
+        validate_path_component(objects['Name'])
+        target_dir = safe_join_path(target_dir, "apiproxy")
         delete_folder(target_dir)
         copy_folder(source_dir, target_dir)
         file = get_proxy_entrypoint(target_dir)
@@ -1298,20 +1374,26 @@ def clone_proxies(source_dir, target_dir,
             root['APIProxy']['Policies'], 'Policy', objects['Policies'])
         root['APIProxy']['TargetEndpoints'] = filter_objects(
             root['APIProxy']['TargetEndpoints'], 'TargetEndpoint', objects['TargetEndpoints'])   # noqa pylint: disable=C0301
-        clean_up_artifacts(f"{target_dir}/policies", objects['Policies'])
-        clean_up_artifacts(f"{target_dir}/targets", objects['TargetEndpoints'])
+        policies_dir = safe_join_path(target_dir, "policies")
+        targets_dir = safe_join_path(target_dir, "targets")
+        proxies_dir = safe_join_path(target_dir, "proxies")
+        clean_up_artifacts(policies_dir, objects['Policies'])
+        clean_up_artifacts(targets_dir, objects['TargetEndpoints'])
         for pe in objects['ProxyEndpoints']:
-            write_xml_from_dict(
-                f"{target_dir}/proxies/{pe}.xml", merged_pes[pe])
-        clean_up_artifacts(f"{target_dir}/proxies", objects['ProxyEndpoints'])
+            validate_path_component(pe)
+            pe_path = safe_join_path(proxies_dir, f"{pe}.xml")
+            write_xml_from_dict(pe_path, merged_pes[pe])
+        clean_up_artifacts(proxies_dir, objects['ProxyEndpoints'])
         root['APIProxy']['ProxyEndpoints'] = {'ProxyEndpoint': (
             objects['ProxyEndpoints'] if len(objects['ProxyEndpoints']) > 1 else objects['ProxyEndpoints'][0])}   # noqa pylint: disable=C0301
-        transformed_file = file.split('/')
-        transformed_file[-1] = f"{objects['Name']}.xml"
-        write_xml_from_dict("/".join(transformed_file), root)
-        delete_folder(f"{target_dir}/manifests")
+        entrypoint_path = safe_join_path(target_dir, f"{objects['Name']}.xml")
+        write_xml_from_dict(entrypoint_path, root)
+        delete_folder(safe_join_path(target_dir, "manifests"))
 
-        with zipfile.ZipFile(f"{proxy_bundle_directory}/{objects['Name']}.zip", 'w', zipfile.ZIP_DEFLATED) as zipf:   # noqa pylint: disable=C0301
+        bundle_path = safe_join_path(
+            proxy_bundle_directory, f"{objects['Name']}.zip"
+        )
+        with zipfile.ZipFile(bundle_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
             zipdir(target_dir, zipf)
 
     except Exception as error: # noqa pylint: disable=W1203,W0718

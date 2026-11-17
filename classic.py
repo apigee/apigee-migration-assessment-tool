@@ -28,6 +28,7 @@ import os
 from requests.utils import quote as urlencode  # pylint: disable=E0401
 from base_logger import logger
 from rest import RestClient
+from utils import safe_join_path, validate_path_component
 
 
 class ApigeeClassic():
@@ -330,7 +331,8 @@ class ApigeeClassic():
             file_name (str): The name of the file.
             data (bytes): The bundle data.
         """
-        file_path = f"./{export_dir}/{file_name}.zip"
+        validate_path_component(file_name)
+        file_path = safe_join_path(export_dir, f"{file_name}.zip")
         with open(file_path, 'wb') as fl:
             fl.write(data)
 
