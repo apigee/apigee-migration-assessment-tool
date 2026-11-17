@@ -1,8 +1,11 @@
 """
 Tests for the qualification_report module.
 """
+import os
+import tempfile
 import unittest
 from unittest.mock import Mock, patch
+import zipfile
 
 from qualification_report import QualificationReport
 
@@ -120,7 +123,10 @@ class TestQualificationReport(unittest.TestCase):
             self.backend_cfg,
             self.org_name
         )
-        self.mock_workbook_class.assert_called_once_with('test.xlsx')
+        self.mock_workbook_class.assert_called_once_with(
+            'test.xlsx',
+            {'strings_to_formulas': False, 'strings_to_urls': False},
+        )
         self.assertEqual(report.workbook, self.mock_workbook)
         self.assertEqual(report.export_data, self.export_data)
         self.assertEqual(report.topology_mapping, self.topology_mapping)
@@ -1080,3 +1086,26 @@ class TestQualificationReport(unittest.TestCase):
         })
         mock_sheet.write.assert_any_call(1, 3, expected_distributed)
         mock_sheet.write.assert_any_call(1, 4, True)
+
+
+class TestQualificationReportSecurity(unittest.TestCase):
+    """Security regression tests for QualificationReport."""
+
+    def test_disables_string_to_formula_promotion(self):
+        """Test formula-like strings are not stored as formulas in XLSX."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            xlsx_path = os.path.join(tmpdir, 'report.xlsx')
+            report = QualificationReport(
+                xlsx_path, {}, {}, Mock(), Mock(), 'test_org'
+            )
+            ws = report.workbook.add_worksheet('SecurityTest')
+            ws.write(0, 0, "=CMD|'/C calc'!A0")
+            ws.write(0, 1, "=SUM(1,2)")
+            report.close()
+
+            with zipfile.ZipFile(xlsx_path, 'r') as zf:
+                sheet_xml = zf.read('xl/worksheets/sheet1.xml').decode(
+                    'utf-8'
+                )
+            self.assertNotIn('<f>', sheet_xml)
+            self.assertNotIn('<f ', sheet_xml)

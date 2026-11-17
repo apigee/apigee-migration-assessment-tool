@@ -20,7 +20,6 @@ for Apigee proxies.
 
 
 import os
-import zipfile
 import utils
 import unifier
 from base_logger import logger
@@ -104,28 +103,29 @@ def unzip_all_bundles(input_cfg):
     source_unzipped_apis = backend_cfg.get('unifier', 'source_unzipped_apis')  # noqa pylint: disable=C0301
 
     extension = ".zip"
-    current_dir = os.getcwd()
-    unzip_dir_name = current_dir+'/'+target_dir + \
-        '/'+export_dir_name+source_unzipped_apis
+    export_base_dir = utils.safe_join_path(target_dir, export_dir_name)
+    apis_dir = utils.safe_join_path(export_base_dir, "apis")
+    unzip_dir_name = utils.safe_join_path(
+        export_base_dir, source_unzipped_apis.lstrip('/')
+    )
 
     if not os.path.isdir(unzip_dir_name):
         os.makedirs(unzip_dir_name)  # create unzip directory
 
-    # change directory from working dir to dir with files
-    os.chdir('./'+target_dir+'/'+export_dir_name+'/apis')
-    for item in os.listdir('./'):  # loop through items in dir
-
+    for item in os.listdir(apis_dir):  # loop through items in dir
         if item.endswith(extension):  # check for ".zip" extension
-
-            file_name = os.path.abspath(item)  # get full path of files
-
-            zip_ref = zipfile.ZipFile(file_name)  # create zipfile object  # noqa pylint: disable=R1732
-
-            # extract file to dir
-            zip_ref.extractall(f"../{source_unzipped_apis}/{item[:-4]}/")
-            zip_ref.close()  # close file
-
-    os.chdir(current_dir)  # revert to current directory
+            archive_stem = item[:-4]
+            try:
+                utils.validate_path_component(archive_stem)
+                file_name = utils.safe_join_path(apis_dir, item)
+                target_extract_dir = utils.safe_join_path(
+                    unzip_dir_name, archive_stem
+                )
+                utils.safe_extract_zip(file_name, target_extract_dir)
+            except ValueError as err:
+                logger.error(
+                    "Skipping unsafe archive %r: %s", item, err
+                )
 
 
 def proxy_dependency_map(cfg, export_data):  # noqa pylint: disable=R0914
@@ -192,15 +192,16 @@ def proxy_dependency_map_parallel(arg_tuple):  # noqa pylint: disable=R0914
         proxy_dir = arg_tuple[1]
         proxy_dependency_map_data = arg_tuple[2]
         logger.info(f"processing {each_dir}")  # noqa pylint: disable=W1203
-        if not os.path.exists(f"{proxy_dir}/{each_dir}/apiproxy"):
+        utils.validate_path_component(each_dir)
+        apiproxy_dir = utils.safe_join_path(proxy_dir, each_dir, "apiproxy")
+        if not os.path.exists(apiproxy_dir):
             proxy_dependency_map_data[each_dir] = {
                 'is_split': False
             }
             return proxy_dependency_map_data
         each_proxy_dict = utils.read_proxy_artifacts(
-            f"{proxy_dir}/{each_dir}/apiproxy",
-            utils.parse_proxy_root_sharding(
-                f"{proxy_dir}/{each_dir}/apiproxy")
+            apiproxy_dir,
+            utils.parse_proxy_root_sharding(apiproxy_dir),
         )
 
         each_proxy_rel = utils.get_proxy_objects_relationships(each_proxy_dict)  # noqa pylint: disable=C0301
@@ -220,11 +221,18 @@ def proxy_dependency_map_parallel(arg_tuple):  # noqa pylint: disable=R0914
             proxy_dependency_map_data[each_dir]["is_split"] = True
             proxy_dependency_map_data[each_dir]["split_output_names"] = []
             for dir_name in proxy_split_result:
+                utils.validate_path_component(dir_name)
+                unifier_apiproxy_dir = utils.safe_join_path(
+                    target_dir,
+                    export_dir_name,
+                    unifier_output_dir.lstrip('/'),
+                    dir_name,
+                    "apiproxy",
+                )
                 proxy_dependency_map_data[dir_name] = {}
                 proxy_dict = utils.read_proxy_artifacts(
-                    f"./{target_dir}/{export_dir_name}/{unifier_output_dir}/{dir_name}/apiproxy",  # noqa pylint: disable=C0301
-                    utils.parse_proxy_root_sharding(
-                        f"./{target_dir}/{export_dir_name}/{unifier_output_dir}/{dir_name}/apiproxy")  # noqa pylint: disable=C0301
+                    unifier_apiproxy_dir,
+                    utils.parse_proxy_root_sharding(unifier_apiproxy_dir),
                 )
 
                 proxy_rel = utils.get_proxy_objects_relationships(proxy_dict)

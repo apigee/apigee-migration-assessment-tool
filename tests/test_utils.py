@@ -38,14 +38,20 @@ class TestUtils(unittest.TestCase):
             self.assertEqual(utils.get_env_variable("TEST_KEY"), "test_value")
         self.assertIsNone(utils.get_env_variable("NON_EXISTENT_KEY"))
 
-    @patch("requests.get")
-    def test_is_token_valid(self, mock_get):
+    @patch("requests.post")
+    def test_is_token_valid(self, mock_post):
         """Test is token valid."""
         mock_response = MagicMock()
         mock_response.status_code = 200
         mock_response.json.return_value = {"email": "test@example.com"}
-        mock_get.return_value = mock_response
-        self.assertTrue(utils.is_token_valid("valid_token"))
+        mock_post.return_value = mock_response
+        self.assertTrue(utils.is_token_valid("valid_token", ssl_verify=False))
+        mock_post.assert_called_with(
+            "https://www.googleapis.com/oauth2/v1/tokeninfo",
+            headers={"Authorization": "Bearer valid_token"},
+            timeout=5,
+            verify=True,
+        )
 
         mock_response.status_code = 400
         self.assertFalse(utils.is_token_valid("invalid_token"))
@@ -358,14 +364,17 @@ class TestUtils(unittest.TestCase):
                 source_dir, target_dir, objects, merged_pes,
                 proxy_bundle_directory
                 )
-        mock_copy.assert_called_with(source_dir, f"{target_dir}/apiproxy")
+        mock_copy.assert_called_with(
+            source_dir, os.path.abspath(f"{target_dir}/apiproxy")
+        )
         mock_write_xml.assert_called()
         self.assertEqual(mock_clean_up.call_count, 3)
         self.assertEqual(mock_filter.call_count, 2)
-        (mock_zipfile.assert_called_with(
-            f"{proxy_bundle_directory}/test_proxy.zip",
+        mock_zipfile.assert_called_with(
+            os.path.abspath(f"{proxy_bundle_directory}/test_proxy.zip"),
             'w',
-            zipfile.ZIP_DEFLATED))
+            zipfile.ZIP_DEFLATED,
+        )
 
     def test_safe_join_path(self):
         """Test safe_join_path prevents path traversal."""
@@ -403,6 +412,71 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(utils.sanitize_filename(""), "")
         self.assertEqual(utils.sanitize_filename(None), "")
         self.assertEqual(utils.sanitize_filename("test\x00.js"), "test.js")
+
+    def test_validate_path_component(self):
+        """Test validate_path_component accepts safe names and rejects bad."""
+        self.assertEqual(
+            utils.validate_path_component("my-proxy_1.v2"), "my-proxy_1.v2"
+        )
+        for bad in ["", None, ".", "..", "a/b", "a\\b", "../evil", "a\x00b"]:
+            with self.assertRaises(ValueError):
+                utils.validate_path_component(bad)
+
+    def test_is_googleapis_url(self):
+        """Test is_googleapis_url checks hostname suffix safely."""
+        self.assertTrue(
+            utils.is_googleapis_url("https://apigee.googleapis.com/v1")
+        )
+        self.assertTrue(utils.is_googleapis_url("https://googleapis.com"))
+        self.assertFalse(
+            utils.is_googleapis_url("https://evil-googleapis.com/v1")
+        )
+        self.assertFalse(
+            utils.is_googleapis_url("https://opdk.example.com/v1")
+        )
+
+    def test_safe_extract_zip(self):
+        """Test safe_extract_zip allows safe archives and blocks Zip Slip."""
+        safe_zip = os.path.join(self.test_dir, "safe.zip")
+        with zipfile.ZipFile(safe_zip, "w") as zf:
+            zf.writestr("apiproxy/proxy.xml", "<APIProxy/>")
+        out_dir = os.path.join(self.test_dir, "out_safe")
+        utils.safe_extract_zip(safe_zip, out_dir)
+        self.assertTrue(
+            os.path.exists(os.path.join(out_dir, "apiproxy", "proxy.xml"))
+        )
+
+        evil_zip = os.path.join(self.test_dir, "evil.zip")
+        with zipfile.ZipFile(evil_zip, "w") as zf:
+            zf.writestr("../../escaped.txt", "pwned")
+        with self.assertRaises(ValueError):
+            utils.safe_extract_zip(evil_zip, out_dir)
+        self.assertFalse(
+            os.path.exists(os.path.join(self.test_dir, "escaped.txt"))
+        )
+
+        symlink_zip = os.path.join(self.test_dir, "symlink.zip")
+        with zipfile.ZipFile(symlink_zip, "w") as zf:
+            info = zipfile.ZipInfo("apiproxy/link")
+            info.create_system = 3
+            info.external_attr = 0o120777 << 16
+            zf.writestr(info, "/etc/passwd")
+        with self.assertRaises(ValueError):
+            utils.safe_extract_zip(symlink_zip, out_dir)
+
+    @patch('utils.write_xml_from_dict')
+    @patch('utils.copy_folder')
+    def test_clone_proxies_blocks_traversal(self, mock_copy, mock_write_xml):
+        """Test clone_proxies rejects path traversal in Name/ProxyEndpoints."""
+        objects = {
+            "Name": "../../evil",
+            "Policies": [],
+            "TargetEndpoints": [],
+            "ProxyEndpoints": ["default"],
+        }
+        utils.clone_proxies("src", self.test_dir, objects, {}, self.test_dir)
+        mock_copy.assert_not_called()
+        mock_write_xml.assert_not_called()
 
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@ Tests for the exporter module.
 """
 import os
 import sys
+import tempfile
 import unittest
 from unittest.mock import MagicMock, patch, mock_open
 
@@ -197,6 +198,130 @@ class TestApigeeExporter(unittest.TestCase):
         self.assertIn('references', data)
         self.assertIn('test', data['references'])
         self.assertIn('ref1', data['references']['test'])
+
+    def test_export_env_objects_keystores_blocks_traversal(self):
+        """Test keystores export skips traversal names and writes valid."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            self.exporter.apigee_type = 'edge'
+            self.exporter.export_data['envConfig'] = {'dev': {'keystores': {}}}
+            self.exporter.apigee.list_env_objects.return_value = [
+                '../evil_ks',
+                'safe_ks',
+            ]
+
+            def fake_get_env_object(env, obj_type, name):
+                if obj_type == 'keystores':
+                    return {
+                        'aliases': [
+                            {'aliasName': '../../evil_alias'},
+                            {'aliasName': 'safe_alias'},
+                        ]
+                    }
+                if name.endswith('/certificate'):
+                    return b'CERTDATA'
+                return {'aliasName': name}
+
+            self.exporter.apigee.get_env_object.side_effect = (
+                fake_get_env_object
+            )
+            self.exporter.export_env_objects(['keystores'], tmpdir)
+
+            valid_cert = os.path.join(
+                tmpdir,
+                'keystore_certificates',
+                'env-dev',
+                'safe_ks',
+                'safe_alias',
+                'certificate.pem',
+            )
+            self.assertTrue(os.path.exists(valid_cert))
+            self.assertFalse(
+                os.path.exists(
+                    os.path.join(tmpdir, 'keystore_certificates', 'evil_ks')
+                )
+            )
+            self.assertFalse(
+                os.path.exists(
+                    os.path.join(tmpdir, 'evil_alias', 'certificate.pem')
+                )
+            )
+
+    def test_create_export_state_blocks_traversal(self):
+        """Test create_export_state skips unsafe resource and env names."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            export_dir = os.path.join(tmpdir, 'export')
+            os.makedirs(export_dir)
+            self.exporter.export_data = {
+                'orgConfig': {
+                    'developers': {
+                        'valid_dev': {'email': 'a@b.com'},
+                        '../../pwned_org': {'evil': True},
+                    }
+                },
+                'envConfig': {
+                    'prod': {
+                        'targetServers': {
+                            'valid_ts': {'host': 'example.com'},
+                            '../pwned_env': {'evil': True},
+                        }
+                    },
+                    '../evil_env': {'targetServers': {'x': {}}},
+                },
+            }
+            self.exporter.create_export_state(export_dir)
+            self.assertTrue(
+                os.path.exists(
+                    os.path.join(
+                        export_dir, 'orgConfig', 'developers', 'valid_dev.json'
+                    )
+                )
+            )
+            self.assertTrue(
+                os.path.exists(
+                    os.path.join(
+                        export_dir,
+                        'envConfig',
+                        'prod',
+                        'targetServers',
+                        'valid_ts.json',
+                    )
+                )
+            )
+            self.assertFalse(
+                os.path.exists(os.path.join(tmpdir, 'pwned_org.json'))
+            )
+            self.assertFalse(
+                os.path.exists(os.path.join(export_dir, 'pwned_env.json'))
+            )
+            self.assertFalse(
+                os.path.exists(os.path.join(export_dir, 'evil_env'))
+            )
+
+    @patch('exporter.ApigeeNewGen')
+    @patch('exporter.ApigeeClassic')
+    def test_googleapis_enforces_ssl_verify(self, mock_classic, mock_newgen):
+        """Test googleapis.com ignores ssl_verify=False while OPDK keeps it."""
+        ApigeeExporter(
+            'https://apigee.googleapis.com/v1', 'org', 'tok', 'oauth', False
+        )
+        mock_newgen.assert_called_once_with(
+            'https://apigee.googleapis.com/v1',
+            'org',
+            'tok',
+            'ENVIRONMENT_TYPE_UNSPECIFIED',
+            True,
+        )
+
+        ApigeeExporter(
+            'https://opdk.internal:8080/v1', 'org', 'tok', 'basic', False
+        )
+        mock_classic.assert_called_once_with(
+            'https://opdk.internal:8080/v1',
+            'org',
+            'tok',
+            'basic',
+            ssl_verify=False,
+        )
 
 
 if __name__ == '__main__':

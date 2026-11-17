@@ -49,9 +49,22 @@ def proxy_unifier(proxy_dir_name):  # noqa pylint: disable=R0914
         inputs_cfg = utils.parse_config('input.properties')
 
         cfg = utils.parse_config('backend.properties')
-        proxy_dir = f"./{inputs_cfg.get('inputs', 'TARGET_DIR')}/{cfg.get('export','EXPORT_DIR')}{cfg['unifier']['source_unzipped_apis']}"  # noqa pylint: disable=C0301
-        proxy_dest_dir = f"./{inputs_cfg.get('inputs', 'TARGET_DIR')}/{cfg.get('export','EXPORT_DIR')}/{cfg['unifier']['unifier_output_dir']}"  # noqa pylint: disable=C0301
-        proxy_bundle_directory = f"./{inputs_cfg.get('inputs', 'TARGET_DIR')}/{cfg.get('export','EXPORT_DIR')}/{cfg['unifier']['unifier_zipped_bundles']}"  # noqa pylint: disable=C0301
+        export_base = utils.safe_join_path(
+            inputs_cfg.get('inputs', 'TARGET_DIR'),
+            cfg.get('export', 'EXPORT_DIR'),
+        )
+        proxy_dir = utils.safe_join_path(
+            export_base,
+            cfg['unifier']['source_unzipped_apis'].lstrip('/'),
+        )
+        proxy_dest_dir = utils.safe_join_path(
+            export_base,
+            cfg['unifier']['unifier_output_dir'].lstrip('/'),
+        )
+        proxy_bundle_directory = utils.safe_join_path(
+            export_base,
+            cfg['unifier']['unifier_zipped_bundles'].lstrip('/'),
+        )
 
         export_debug_file = cfg.getboolean('unifier', 'debug')
 
@@ -60,12 +73,14 @@ def proxy_unifier(proxy_dir_name):  # noqa pylint: disable=R0914
 
         final_dict = {}
         processed_dict = {}
-        each_dir = proxy_dir_name
+        each_dir = utils.validate_path_component(proxy_dir_name)
+        source_apiproxy_dir = utils.safe_join_path(
+            proxy_dir, each_dir, "apiproxy"
+        )
 
         each_proxy_dict = utils.read_proxy_artifacts(
-            f"{proxy_dir}/{each_dir}/apiproxy",
-            utils.parse_proxy_root(
-                f"{proxy_dir}/{each_dir}/apiproxy")
+            source_apiproxy_dir,
+            utils.parse_proxy_root(source_apiproxy_dir),
         )
 
         if len(each_proxy_dict) > 0:
@@ -105,7 +120,10 @@ def proxy_unifier(proxy_dir_name):  # noqa pylint: disable=R0914
                         each_path,
                         pes
                     )
-                    merged_objects[f"{each_api}_{index}"]['Name'] = f"{final_dict[each_api]['proxyName']}_{index}"  # noqa pylint: disable=C0301
+                    proxy_name = utils.validate_path_component(
+                        final_dict[each_api]['proxyName']
+                    )
+                    merged_objects[f"{each_api}_{index}"]['Name'] = f"{proxy_name}_{index}"  # noqa pylint: disable=C0301
                     merged_objects[f"{each_api}_{index}"]['Policies'].extend(  # noqa
                         [item for pe in pes for item in processed_dict[each_api][pe]['Policies']])   # noqa pylint: disable=C0301
                     merged_objects[f"{each_api}_{index}"]['TargetEndpoints'].extend(  # noqa
@@ -118,8 +136,10 @@ def proxy_unifier(proxy_dir_name):  # noqa pylint: disable=R0914
             for index, each_group in enumerate(grouped_api):
 
                 utils.clone_proxies(
-                    f"{proxy_dir}/{each_api}/apiproxy",
-                    f"{proxy_dest_dir}/{each_api}_{index}",
+                    utils.safe_join_path(proxy_dir, each_api, "apiproxy"),
+                    utils.safe_join_path(
+                        proxy_dest_dir, f"{each_api}_{index}"
+                    ),
                     merged_objects[f"{each_api}_{index}"],
                     merged_pes,
                     proxy_bundle_directory

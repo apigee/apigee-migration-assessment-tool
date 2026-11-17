@@ -39,9 +39,11 @@ from classic import ApigeeClassic
 from nextgen import ApigeeNewGen
 from utils import (
     create_dir,
+    is_googleapis_url,
     run_parallel,
     safe_join_path,
     sanitize_filename,
+    validate_path_component,
     write_file,
     write_json,
 )
@@ -77,11 +79,18 @@ class ApigeeExporter():  # pylint: disable=R0902
         self.org = org
         self.token = token
         self.auth_type = auth_type
+        effective_ssl_verify = ssl_verify
+        if is_googleapis_url(baseurl) and not ssl_verify:
+            logger.warning(
+                "Enforcing SSL verification for Google API endpoint: %s",
+                baseurl,
+            )
+            effective_ssl_verify = True
         self.apigee = (ApigeeNewGen(baseurl, org, token,
-                       'ENVIRONMENT_TYPE_UNSPECIFIED', ssl_verify)
+                       'ENVIRONMENT_TYPE_UNSPECIFIED', effective_ssl_verify)
                        if 'apigee.googleapis.com' in baseurl else
                        ApigeeClassic(baseurl, org, token,
-                       self.auth_type, ssl_verify=ssl_verify))
+                       self.auth_type, ssl_verify=effective_ssl_verify))
         self.apigee_type = ('x' if 'apigee.googleapis.com' in baseurl
                             else 'edge')
         self.env_object_types = {
@@ -202,12 +211,37 @@ class ApigeeExporter():  # pylint: disable=R0902
                             'file': target_file_path
                         }
                 elif each_env_object_type == 'keystores':
-                    create_dir(f"{export_dir}/keystore_certificates/env-{env}")  # noqa
+                    try:
+                        validate_path_component(env)
+                        ks_env_dir = safe_join_path(
+                            export_dir,
+                            "keystore_certificates",
+                            f"env-{env}",
+                        )
+                    except ValueError as err:
+                        logger.error(
+                            "Skipping unsafe env %r for keystores: %s",
+                            env,
+                            err,
+                        )
+                        continue
+                    create_dir(ks_env_dir)
                     logger.info("--Exporting keystores--")
                     for each_env_object in env_objects:
+                        try:
+                            validate_path_component(each_env_object)
+                            ks_dir = safe_join_path(
+                                ks_env_dir, each_env_object
+                            )
+                        except ValueError as err:
+                            logger.error(
+                                "Skipping unsafe keystore name %r: %s",
+                                each_env_object,
+                                err,
+                            )
+                            continue
                         logger.info(f"Exporting keystore {each_env_object}")    # noqa pylint: disable=W1203
-                        create_dir(
-                            f"{export_dir}/keystore_certificates/env-{env}/{each_env_object}")  # noqa pylint: disable=C0301
+                        create_dir(ks_dir)
                         obj_data = self.apigee.get_env_object(
                             env, each_env_object_type, each_env_object)
                         obj_data['alias_data'] = {}
@@ -216,13 +250,27 @@ class ApigeeExporter():  # pylint: disable=R0902
                                 alias_name = alias
                             else:
                                 alias_name = alias.get('aliasName')
-                            create_dir(
-                                f"{export_dir}/keystore_certificates/env-{env}/{each_env_object}/{alias_name}")  # noqa pylint: disable=C0301
+                            try:
+                                validate_path_component(alias_name)
+                                alias_dir = safe_join_path(ks_dir, alias_name)
+                                cert_path = safe_join_path(
+                                    alias_dir, "certificate.pem"
+                                )
+                            except ValueError as err:
+                                logger.error(
+                                    "Skipping unsafe alias name %r in "
+                                    "keystore %r: %s",
+                                    alias_name,
+                                    each_env_object,
+                                    err,
+                                )
+                                continue
+                            create_dir(alias_dir)
                             alias_data = self.apigee.get_env_object(
                                 env, f"keystores/{each_env_object}/aliases", alias_name)  # noqa pylint: disable=C0301
                             certificate = self.apigee.get_env_object(
                                 env, f"keystores/{each_env_object}/aliases", f"{alias_name}/certificate")  # noqa pylint: disable=C0301
-                            with open(f"{export_dir}/keystore_certificates/env-{env}/{each_env_object}/{alias_name}/certificate.pem", "wb") as f:  # noqa pylint: disable=C0301
+                            with open(cert_path, "wb") as f:
                                 if isinstance(certificate, bytes):
                                     f.write(certificate)
                                 else:
@@ -447,22 +495,73 @@ class ApigeeExporter():  # pylint: disable=R0902
         Args:
             export_dir (str): The directory to create the export state in.
         """
-        create_dir(f"{export_dir}/orgConfig")
-        create_dir(f"{export_dir}/envConfig")
+        org_config_dir = safe_join_path(export_dir, "orgConfig")
+        env_config_dir = safe_join_path(export_dir, "envConfig")
+        create_dir(org_config_dir)
+        create_dir(env_config_dir)
 
         for resource, metadata in self.export_data["orgConfig"].items():
-            create_dir(f"{export_dir}/orgConfig/{resource}")
+            try:
+                validate_path_component(resource)
+                res_dir = safe_join_path(org_config_dir, resource)
+            except ValueError as err:
+                logger.error(
+                    "Skipping unsafe org resource %r: %s", resource, err
+                )
+                continue
+            create_dir(res_dir)
             for res_name, res_metadata in metadata.items():
-                write_json(
-                    f"{export_dir}/orgConfig/{resource}/{res_name}.json", res_metadata)  # noqa
+                try:
+                    validate_path_component(res_name)
+                    res_file = safe_join_path(res_dir, f"{res_name}.json")
+                except ValueError as err:
+                    logger.error(
+                        "Skipping unsafe org resource name %r in %r: %s",
+                        res_name,
+                        resource,
+                        err,
+                    )
+                    continue
+                write_json(res_file, res_metadata)
 
         for env, env_data in self.export_data["envConfig"].items():
-            create_dir(f"{export_dir}/envConfig/{env}")
+            try:
+                validate_path_component(env)
+                env_dir = safe_join_path(env_config_dir, env)
+            except ValueError as err:
+                logger.error("Skipping unsafe env %r: %s", env, err)
+                continue
+            create_dir(env_dir)
             for resource, metadata in env_data.items():
-                create_dir(f"{export_dir}/envConfig/{env}/{resource}")
+                try:
+                    validate_path_component(resource)
+                    res_dir = safe_join_path(env_dir, resource)
+                except ValueError as err:
+                    logger.error(
+                        "Skipping unsafe env resource %r in %r: %s",
+                        resource,
+                        env,
+                        err,
+                    )
+                    continue
+                create_dir(res_dir)
                 for res_name, res_metadata in metadata.items():
-                    write_json(
-                        f"{export_dir}/envConfig/{env}/{resource}/{res_name}.json", res_metadata)  # noqa pylint: disable=C0301
+                    try:
+                        validate_path_component(res_name)
+                        res_file = safe_join_path(
+                            res_dir, f"{res_name}.json"
+                        )
+                    except ValueError as err:
+                        logger.error(
+                            "Skipping unsafe env resource name %r in "
+                            "%r/%r: %s",
+                            res_name,
+                            env,
+                            resource,
+                            err,
+                        )
+                        continue
+                    write_json(res_file, res_metadata)
 
     def read_export_state(self, folder_path):
         """Reads the export state from JSON files.

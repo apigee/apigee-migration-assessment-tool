@@ -23,7 +23,13 @@ It offers methods for creating and validating API proxies and sharedflows.
 from requests.utils import quote as urlencode  # pylint: disable=E0401
 from google.cloud import resourcemanager_v3  # pylint: disable=E0401
 from google.oauth2.credentials import Credentials  # pylint: disable=E0401
-from utils import parse_json
+from base_logger import logger
+from utils import (
+    is_googleapis_url,
+    parse_json,
+    safe_join_path,
+    validate_path_component,
+)
 from rest import RestClient
 
 class ApigeeNewGen():   # noqa pylint: disable=R0902
@@ -62,7 +68,14 @@ class ApigeeNewGen():   # noqa pylint: disable=R0902
         }
         self.env_objects = ['keyvaluemaps', 'targetservers', 'flowhooks',
                             'keystores', 'caches']
-        self.client = RestClient('oauth', token, ssl_verify)
+        effective_ssl_verify = ssl_verify
+        if is_googleapis_url(baseurl) and not ssl_verify:
+            logger.warning(
+                "Enforcing SSL verification for Google API endpoint: %s",
+                baseurl,
+            )
+            effective_ssl_verify = True
+        self.client = RestClient('oauth', token, effective_ssl_verify)
 
     def validate_permissions(self):
         """Validate if the user has right permissions.
@@ -350,7 +363,8 @@ class ApigeeNewGen():   # noqa pylint: disable=R0902
             file_name (str): The name of the file.
             data (bytes): The bundle data.
         """
-        file_path = f"./{export_dir}/{file_name}.zip"
+        validate_path_component(file_name)
+        file_path = safe_join_path(export_dir, f"{file_name}.zip")
         with open(file_path, 'wb') as fl:
             fl.write(data)
 

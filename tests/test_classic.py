@@ -2,6 +2,7 @@
 """
 Tests for the classic module.
 """
+import os
 import unittest
 from unittest.mock import MagicMock, patch
 
@@ -171,7 +172,10 @@ class TestApigeeClassic(unittest.TestCase):
         self.classic_client.client.file_get.return_value = b"test_bundle_data"
         self.classic_client.fetch_api_revision("apis", "test_api", "1",
                                                "export_dir")
-        mock_open.assert_called_with("./export_dir/test_api.zip", "wb")
+        expected_path = os.path.abspath(
+            os.path.join("export_dir", "test_api.zip")
+        )
+        mock_open.assert_called_with(expected_path, "wb")
         mock_open().write.assert_called_with(b"test_bundle_data")
 
     @patch("builtins.open", new_callable=unittest.mock.mock_open)
@@ -181,8 +185,19 @@ class TestApigeeClassic(unittest.TestCase):
         """
         self.classic_client.write_proxy_bundle("export_dir", "test_api",
                                                b"test_data")
-        mock_open.assert_called_with("./export_dir/test_api.zip", "wb")
+        expected_path = os.path.abspath(
+            os.path.join("export_dir", "test_api.zip")
+        )
+        mock_open.assert_called_with(expected_path, "wb")
         mock_open().write.assert_called_with(b"test_data")
+
+    def test_write_proxy_bundle_blocks_traversal(self):
+        """Test write_proxy_bundle rejects path traversal names."""
+        for bad_name in ["../../evil", "dir/proxy", "dir\\proxy", "..", ""]:
+            with self.assertRaises(ValueError):
+                self.classic_client.write_proxy_bundle(
+                    "export_dir", bad_name, b"data"
+                )
 
     @patch.object(ApigeeClassic, 'list_api_revisions')
     @patch.object(ApigeeClassic, 'fetch_api_revision')
