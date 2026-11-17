@@ -20,10 +20,37 @@ Generates Apigee Edge SAAS Access Token
 """
 
 
+import base64
+import hashlib
+import hmac
 import os
+import struct
 import sys
+import time
 import requests  # pylint: disable=E0401
-import pyotp  # pylint: disable=E0401
+
+
+def generate_totp(otp_secret, interval=30, digits=6, for_time=None):
+    """Generates an RFC 6238 SHA-1 TOTP code using the Python stdlib."""
+    cleaned = otp_secret.strip().replace(" ", "").upper()
+    if not cleaned:
+        raise ValueError("OTP secret must not be empty")
+    missing_padding = len(cleaned) % 8
+    if missing_padding:
+        cleaned += "=" * (8 - missing_padding)
+    key = base64.b32decode(cleaned, casefold=True)
+    current_time = time.time() if for_time is None else for_time
+    counter = int(current_time // interval)
+    msg = struct.pack(">Q", counter)
+    digest = hmac.new(key, msg, hashlib.sha1).digest()
+    offset = digest[-1] & 0x0F
+    code_int = (
+        ((digest[offset] & 0x7F) << 24)
+        | (digest[offset + 1] << 16)
+        | (digest[offset + 2] << 8)
+        | digest[offset + 3]
+    )
+    return f"{code_int % (10 ** digits):0{digits}d}"
 
 
 def fetch_apigee_token():
@@ -43,8 +70,7 @@ def fetch_apigee_token():
         sys.exit(1)
 
     try:
-        totp = pyotp.TOTP(otp_secret)
-        mfa_token = totp.now()
+        mfa_token = generate_totp(otp_secret)
     except Exception as e:    # noqa pylint: disable=W0718
         print(f"Error generating MFA token: {e}", file=sys.stderr)
         sys.exit(1)
