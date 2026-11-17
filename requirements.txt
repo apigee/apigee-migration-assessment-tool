@@ -19,5 +19,7 @@ diagrams>=0.24.0
 google-auth==2.38.0
 google-cloud-resource-manager==1.14.0
 defusedxml==0.7.1
-filelock>=3.20.3
+filelock>=4.2.1
 idna>=3.15
+certifi>=2026.10.18
+virtualenv>=21.14.9
